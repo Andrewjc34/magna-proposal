@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Magna Money | Engagement Letter</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --charcoal: #1C1C1C;
+      --charcoal-panel: rgba(29,30,32,0.95);
+      --panel-border: rgba(255,255,255,0.07);
+      --text-main: #FFFFFF;
+      --text-dim: rgba(255,255,255,0.8);
+      --text-faint: rgba(255,255,255,0.6);
+      --gold: #C6A76B;
+      --gold-dark: #8f7749;
+      --gold-shadow: rgba(198,167,107,0.3);
+      --max-width: 900px;
+      --radius-lg: 12px;
+      --radius-sm: 6px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--charcoal);
+      font-family: "Lato", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      color: var(--text-main);
+      padding: 24px;
+      display:flex;
+      justify-content:center;
+    }
+
+    .page-wrap {
+      width:100%;
+      max-width: var(--max-width);
+    }
+
+    .panel {
+      background: linear-gradient(
+        180deg,
+        rgba(29,30,32,0.95),
+        rgba(29,30,32,0.9)
+      );
+      border-radius: var(--radius-lg);
+      border:1px solid var(--panel-border);
+      box-shadow:0 16px 40px rgba(0,0,0,0.6);
+      padding:24px 24px 32px;
+    }
+
+    /* HEADER / BRAND */
+    .header-block {
+      text-align:center;
+      margin-bottom:24px;
+    }
+
+    .logo-wrap {
+      display:inline-flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      margin-bottom:12px;
+    }
+
+    .crown-logo {
+      width:72px;
+      height:72px;
+      background-size:contain;
+      background-repeat:no-repeat;
+      background-position:center;
+      background-image:url("https://magna-money-enquiry-form.neocities.org/Magna%20Money%20logo_full_colour.png");
+      filter:drop-shadow(0 4px 12px var(--gold-shadow));
+    }
+
+    .brand-name {
+      color:var(--text-main);
+      font-weight:700;
+      font-size:18px;
+      line-height:1.2;
+      letter-spacing:0.05em;
+      margin-top:12px;
+      text-transform:uppercase;
+    }
+
+    .brand-tag {
+      color:var(--gold);
+      font-size:13px;
+      font-weight:400;
+      margin-top:6px;
+      text-align:center;
+      max-width:540px;
+    }
+
+    .doc-title {
+      font-size:20px;
+      font-weight:700;
+      line-height:1.3;
+      color:var(--text-main);
+      margin:24px 0 8px;
+      text-align:center;
+    }
+
+    .intro-line {
+      color:var(--text-dim);
+      font-size:14px;
+      font-weight:300;
+      line-height:1.4;
+      text-align:center;
+      max-width:640px;
+      margin:0 auto 24px;
+    }
+
+    /* BODY COPY BLOCK */
+    .body-copy {
+      font-size:14px;
+      line-height:1.5;
+      color:var(--text-main);
+      font-weight:300;
+    }
+
+    .body-copy h4 {
+      margin:20px 0 8px;
+      font-size:15px;
+      font-weight:700;
+      color:var(--text-main);
+    }
+
+    .body-copy p {
+      margin:0 0 12px;
+      color:var(--text-main);
+    }
+
+    .body-copy ul {
+      margin:0 0 16px 18px;
+      padding:0;
+      color:var(--text-main);
+    }
+
+    .body-copy li {
+      margin-bottom:8px;
+    }
+
+    .fee-block {
+      background:rgba(255,255,255,0.02);
+      border:1px solid rgba(255,255,255,0.07);
+      border-radius:var(--radius-sm);
+      padding:12px 16px;
+      margin:16px 0 20px;
+      font-size:14px;
+      line-height:1.5;
+    }
+
+    .fee-line {
+      margin-bottom:10px;
+      color:var(--text-main);
+    }
+
+    .fee-label {
+      font-weight:600;
+      color:var(--gold);
+      display:block;
+      margin-bottom:4px;
+      font-size:13px;
+    }
+
+    .fee-input-line {
+      background:rgba(255,255,255,0.02);
+      border:1px solid rgba(255,255,255,0.15);
+      border-radius:6px;
+      padding:10px 12px;
+      color:var(--text-main);
+      font-weight:400;
+      font-size:14px;
+      min-height:40px;
+      /* YOU fill this before sending, client should NOT edit after you lock */
+    }
+
+    .fee-input-line[contenteditable="true"] {
+      outline:1px solid rgba(198,167,107,0.4);
+    }
+
+    /* SIGNATURE AREA */
+    .signature-wrapper-outer {
+      margin-top:28px;
+      background:rgba(255,255,255,0.02);
+      border:1px solid rgba(255,255,255,0.07);
+      border-radius:var(--radius-sm);
+      padding:16px;
+    }
+
+    .signature-heading {
+      font-size:15px;
+      font-weight:700;
+      color:var(--gold);
+      margin:0 0 16px;
+    }
+
+    .sig-grid {
+      display:flex;
+      flex-wrap:wrap;
+      gap:16px;
+    }
+
+    .sig-field {
+      flex:1 1 200px;
+      min-width:200px;
+    }
+
+    .sig-label {
+      font-size:13px;
+      font-weight:600;
+      color:var(--text-main);
+      margin-bottom:6px;
+    }
+
+    .sig-value-box {
+      border:1px solid rgba(255,255,255,0.15);
+      background:rgba(255,255,255,0.02);
+      border-radius:6px;
+      min-height:42px;
+      padding:10px 12px;
+      font-size:14px;
+      font-weight:400;
+      color:var(--text-main);
+      display:flex;
+      align-items:center;
+      line-height:1.4;
+    }
+
+    .sig-value-box.editable[contenteditable="true"] {
+      outline:1px solid rgba(198,167,107,0.4);
+    }
+
+    .sig-hint {
+      color:var(--text-faint);
+      font-size:12px;
+      font-style:italic;
+    }
+
+    .legal-footer-text {
+      margin-top:24px;
+      font-size:12px;
+      line-height:1.4;
+      color:var(--text-faint);
+    }
+
+    /* CTA BUTTON AREA */
+    .cta-bar-wrap {
+      margin-top:28px;
+      display:flex;
+      justify-content:center;
+    }
+
+    .cta-btn {
+      background:var(--gold);
+      color:var(--text-main);
+      border:none;
+      border-radius:8px;
+      font-weight:700;
+      font-size:15px;
+      padding:14px 24px;
+      min-width:260px;
+      text-align:center;
+      box-shadow:0 12px 30px rgba(198,167,107,0.22);
+      cursor:pointer;
+    }
+
+    @media (max-width:640px){
+      .sig-field{
+        min-width:100%;
+        flex:1 1 100%;
+      }
+      .cta-btn{
+        width:100%;
+        min-width:0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page-wrap">
+    <div class="panel">
+
+      <!-- HEADER -->
+      <div class="header-block">
+        <div class="logo-wrap">
+          <div class="crown-logo" aria-hidden="true"></div>
+          <div class="brand-name">MAGNAMONEY</div>
+          <div class="brand-tag">
+            The Commercial Finance Boutique – Bespoke, Collaborative &amp; Expert Funding Advisory
+          </div>
+        </div>
+
+        <div class="doc-title">Engagement Letter</div>
+        <div class="intro-line">
+          Thank you for instructing Magna Money to act on behalf of you and your business.
+          We take pride in offering a world class service and providing the best solution for our clients.
+        </div>
+      </div>
+
+      <!-- BODY COPY (LEGAL TEXT - DO NOT TOUCH WORDING) -->
+      <div class="body-copy">
+        <p>
+          In order to do this, it is important to set out our understanding of the Commercial Finance
+          services that you require us to perform for your business, and the respective fees we will
+          charge you:-
+        </p>
+
+        <h4>The Services</h4>
+        <p>You have asked us to source business finance for you. The service will consist of:</p>
+
+        <ul>
+          <li>Receiving and reviewing financial information from you</li>
+          <li>Shortlisting relevant lenders from our lender panel</li>
+          <li>Packaging and submitting a lending proposal to each lender</li>
+          <li>Negotiating with each lender to ensure best offer</li>
+          <li>Reviewing and presenting a list of offers back to you</li>
+          <li>Assistance in the execution of the chosen facility</li>
+        </ul>
+
+        <h4>Fees</h4>
+        <p>
+          In accordance with normal professional practice, our fees are based upon the degree of
+          responsibility, skill involved, and the time necessarily occupied on the work.
+        </p>
+
+        <!-- FEE LINES YOU WILL FILL MANUALLY BEFORE SENDING -->
+        <div class="fee-block">
+          <div class="fee-line">
+            <div class="fee-label">1. Upfront engagement fee (£)</div>
+            <div class="fee-input-line" contenteditable="true"></div>
+          </div>
+
+          <div class="fee-line">
+            <div class="fee-label">2. Success fee (% of funding taken)</div>
+            <div class="fee-input-line" contenteditable="true"></div>
+          </div>
+
+          <div class="fee-line">
+            <div class="fee-label">3. Success fee (fixed £ amount, if applicable)</div>
+            <div class="fee-input-line" contenteditable="true"></div>
+          </div>
+        </div>
+
+        <p>
+          Whichever lender you choose, we may also receive a commission from them (either a fixed fee
+          or fixed % of the amount you borrow) and different lenders pay different rates.
+        </p>
+
+        <h4>Important Disclosure</h4>
+        <p>
+          This engagement letter asks for personal data relating to directors, shareholders, partners,
+          members &amp; proprietors. The information which is collected will be used in order to administer
+          our relationship with you, to provide our services to your organisation and to properly conduct
+          our business. This personal information will also be used by Magna Money or any of its partners,
+          agents and affiliates for the purpose of conducting credit reference checks in respect of those
+          individuals whose details are included on the proposal form.
+        </p>
+
+        <p>Yours faithfully,<br>Magna Money Ltd</p>
+      </div>
+
+      <!-- SIGNATURE AREA -->
+      <div class="signature-wrapper-outer">
+        <div class="signature-heading">
+          Please click the secure e-sign link below to confirm the details and authorise the engagement:
+        </div>
+
+        <div class="sig-grid">
+          <div class="sig-field">
+            <div class="sig-label">Company Name</div>
+            <div class="sig-value-box editable" contenteditable="true"></div>
+          </div>
+
+          <div class="sig-field">
+            <div class="sig-label">Signatory Name</div>
+            <div class="sig-value-box editable" contenteditable="true"></div>
+          </div>
+
+          <div class="sig-field">
+            <div class="sig-label">Date</div>
+            <div class="sig-value-box">
+              <span class="sig-hint">Will be completed via secure e-sign</span>
+            </div>
+          </div>
+
+          <div class="sig-field">
+            <div class="sig-label">Signature</div>
+            <div class="sig-value-box">
+              <span class="sig-hint">Will be completed via secure e-sign</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="legal-footer-text">
+          Magna Money is a trading style of Sedulo Funding Solutions Ltd (10276541). This engagement
+          letter asks for personal data relating to directors, shareholders, partners, members &
+          proprietors. The information which is collected will be used in order to administer our
+          relationship with you, to provide our services to your organisation and to properly conduct
+          our business. This personal information will also be used by Sedulo Funding Solutions Ltd
+          (10276541) or any of its partners, agents and affiliates for the purpose of conducting
+          credit reference checks in respect of those individuals whose details are included on the
+          proposal form.
+        </div>
+      </div>
+
+      <!-- CTA BAR -->
+      <div class="cta-bar-wrap">
+        <button class="cta-btn" type="button">
+          CONTINUE TO SECURE E-SIGN
+        </button>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>
