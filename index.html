@@ -40,75 +40,26 @@
       margin:0 auto;
     }
 
-    /* HEADER / BRAND (match Engagement Letter) */
-    .header-block {
-      text-align:center;
-      margin-bottom:24px;
-    }
-
-    .logo-wrap {
-      display:inline-flex;
-      flex-direction:column;
-      align-items:center;
-      justify-content:center;
-      margin-bottom:12px;
-    }
-
+    /* HEADER / BRAND */
+    .header-block { text-align:center; margin-bottom:24px; }
+    .logo-wrap { display:inline-flex; flex-direction:column; align-items:center; justify-content:center; margin-bottom:12px; }
     .crown-logo {
-      width:72px;
-      height:72px;
-      background-size:contain;
-      background-repeat:no-repeat;
-      background-position:center;
+      width:72px; height:72px;
+      background-size:contain; background-repeat:no-repeat; background-position:center;
       background-image:url("https://magna-money-enquiry-form.neocities.org/Magna%20Money%20logo_full_colour.png");
       filter:drop-shadow(0 4px 12px var(--gold-shadow));
     }
-
     .brand-name {
-      color:var(--text-main);
-      font-weight:700;
-      font-size:18px;
-      line-height:1.2;
-      letter-spacing:0.05em;
-      margin-top:12px;
-      text-transform:uppercase;
+      color:var(--text-main); font-weight:700; font-size:18px; line-height:1.2;
+      letter-spacing:0.05em; margin-top:12px; text-transform:uppercase;
     }
-
-    .brand-tag {
-      color:var(--gold);
-      font-size:13px;
-      font-weight:400;
-      margin-top:6px;
-      text-align:center;
-      max-width:540px;
-    }
-
-    .doc-title {
-      font-size:20px;
-      font-weight:700;
-      line-height:1.3;
-      color:var(--text-main);
-      margin:24px 0 8px;
-      text-align:center;
-    }
-
-    .intro-line {
-      color:var(--text-dim);
-      font-size:14px;
-      font-weight:300;
-      line-height:1.4;
-      text-align:center;
-      max-width:640px;
-      margin:0 auto 24px;
-    }
+    .brand-tag { color:var(--gold); font-size:13px; font-weight:400; margin-top:6px; text-align:center; max-width:540px; }
+    .doc-title { font-size:20px; font-weight:700; line-height:1.3; color:var(--text-main); margin:24px 0 8px; text-align:center; }
+    .intro-line { color:var(--text-dim); font-size:14px; font-weight:300; line-height:1.4; text-align:center; max-width:640px; margin:0 auto 24px; }
 
     /* FORM PANEL */
     .form-panel {
-      background: linear-gradient(
-        180deg,
-        rgba(29,30,32,0.95),
-        rgba(29,30,32,0.9)
-      );
+      background: linear-gradient(180deg, rgba(29,30,32,0.95), rgba(29,30,32,0.9));
       border-radius: var(--radius-lg);
       border:1px solid var(--panel-border);
       box-shadow:0 16px 40px rgba(0,0,0,0.6);
@@ -127,163 +78,50 @@
       flex-wrap:wrap;
     }
 
-    .subtext {
-      font-size:13px;
-      color: rgba(255,255,255,0.65);
-      margin-top:6px;
-    }
+    .subtext { font-size:13px; color: rgba(255,255,255,0.65); margin-top:6px; }
 
-    .row {
-      display:flex;
-      gap:16px;
-      flex-wrap:wrap;
-    }
+    .row { display:flex; gap:16px; flex-wrap:wrap; }
+    .col { flex: 1 1 280px; min-width:220px; }
 
-    .col {
-      flex: 1 1 280px;
-      min-width:220px;
+    label { display:block; font-weight:400; margin-bottom:8px; color:var(--text-main); font-size:14px; }
+    input[type="text"], input[type="email"], input[type="tel"], input[type="number"], input[type="date"], textarea, select {
+      width:100%; padding:10px 12px; border-radius:6px; border:1px solid rgba(198,167,107,0.18);
+      background: rgba(255,255,255,0.02); color:var(--text-main); outline:none; font-size:15px;
     }
+    textarea { min-height:110px; resize:vertical; }
+    .field { margin-bottom:14px; width:100%; }
+    .radio-row { display:flex; gap:12px; flex-wrap:wrap; }
+    .choice-item { display:flex; align-items:center; gap:10px; color:var(--text-main); font-size:15px; }
+    .choice-item input { width:auto; }
+    hr.section-sep { border:none; border-top:1px solid rgba(255,255,255,0.07); margin:20px 0; }
 
-    label {
-      display:block;
-      font-weight:400;
-      margin-bottom:8px;
-      color:var(--text-main);
-      font-size:14px;
-    }
-
-    input[type="text"],
-    input[type="email"],
-    input[type="tel"],
-    input[type="number"],
-    input[type="date"],
-    textarea,
-    select {
-      width:100%;
-      padding:10px 12px;
-      border-radius:6px;
-      border:1px solid rgba(198,167,107,0.18);
-      background: rgba(255,255,255,0.02);
-      color:var(--text-main);
-      outline:none;
-      font-size:15px;
-    }
-
-    textarea {
-      min-height:110px;
-      resize:vertical;
-    }
-
-    .field {
-      margin-bottom:14px;
-      width:100%;
-    }
-
-    .radio-row {
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-    }
-
-    .choice-item {
-      display:flex;
-      align-items:center;
-      gap:10px;
-      color:var(--text-main);
-      font-size:15px;
-    }
-
-    .choice-item input {
-      width:auto;
-    }
-
-    hr.section-sep {
-      border:none;
-      border-top:1px solid rgba(255,255,255,0.07);
-      margin:20px 0;
-    }
-
-    table.finance-table {
-      width:100%;
-      border-collapse:collapse;
-      margin-bottom:12px;
-      font-size:14px;
-      color:var(--text-main);
-    }
-
+    table.finance-table { width:100%; border-collapse:collapse; margin-bottom:12px; font-size:14px; color:var(--text-main); }
     table.finance-table th {
-      text-align:left;
-      font-weight:600;
-      padding:8px 6px;
-      color:var(--gold);
-      border-bottom:1px solid rgba(255,255,255,0.12);
-      font-size:13px;
+      text-align:left; font-weight:600; padding:8px 6px; color:var(--gold);
+      border-bottom:1px solid rgba(255,255,255,0.12); font-size:13px;
     }
-
-    table.finance-table td {
-      padding:8px 6px;
-      vertical-align:top;
-      border-bottom:1px solid rgba(255,255,255,0.07);
-    }
-
+    table.finance-table td { padding:8px 6px; vertical-align:top; border-bottom:1px solid rgba(255,255,255,0.07); }
     table.finance-table input[type="text"] {
-      font-size:14px;
-      padding:8px 10px;
-      border-radius:6px;
-      border:1px solid rgba(198,167,107,0.18);
-      background: rgba(255,255,255,0.02);
-      color:var(--text-main);
-      outline:none;
-      width:100%;
+      font-size:14px; padding:8px 10px; border-radius:6px; border:1px solid rgba(198,167,107,0.18);
+      background: rgba(255,255,255,0.02); color:var(--text-main); outline:none; width:100%;
     }
 
     .disclosure-block {
-      font-size:13px;
-      color: rgba(255,255,255,0.72);
-      background: rgba(255,255,255,0.02);
-      border:1px solid rgba(255,255,255,0.07);
-      border-radius:var(--radius-sm);
-      padding:12px;
-      margin-top:20px;
-      line-height:1.4;
+      font-size:13px; color: rgba(255,255,255,0.72); background: rgba(255,255,255,0.02);
+      border:1px solid rgba(255,255,255,0.07); border-radius:var(--radius-sm); padding:12px; margin-top:20px; line-height:1.4;
     }
 
-    /* SUBMIT BUTTON (bottom CTA style) */
-    .submit-row {
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:12px;
-      margin-top:28px;
-      flex-wrap:wrap;
-    }
+    .submit-row { display:flex; align-items:center; justify-content:center; gap:12px; margin-top:28px; flex-wrap:wrap; }
+    .btn-submit { background:var(--gold); color:var(--text-main); border:none; border-radius:8px; font-weight:700; font-size:15px; padding:14px 24px; min-width:260px; text-align:center; box-shadow:0 12px 30px rgba(198,167,107,0.22); cursor:pointer; }
 
-    .btn-submit {
-      background:var(--gold);
-      color:var(--text-main);
-      border:none;
-      border-radius:8px;
-      font-weight:700;
-      font-size:15px;
-      padding:14px 24px;
-      min-width:260px;
-      text-align:center;
-      box-shadow:0 12px 30px rgba(198,167,107,0.22);
-      cursor:pointer;
-    }
+    input:focus, textarea:focus, select:focus { box-shadow:0 0 0 3px rgba(198,167,107,0.08); border-color:var(--gold); }
 
-    input:focus,
-    textarea:focus,
-    select:focus {
-      box-shadow:0 0 0 3px rgba(198,167,107,0.08);
-      border-color:var(--gold);
-    }
+    .hidden { display: none !important; }
+    .lookup { font-size:12px; color: var(--gold); cursor:pointer; display:inline-block; margin-top:6px; }
+    .hint { font-size:12px; color: var(--text-faint); margin-top:4px; }
 
     @media (max-width:640px){
-      .btn-submit{
-        width:100%;
-        min-width:0;
-      }
+      .btn-submit{ width:100%; min-width:0; }
     }
   </style>
 </head>
@@ -295,9 +133,7 @@
       <div class="logo-wrap">
         <div class="crown-logo" aria-hidden="true"></div>
         <div class="brand-name">MAGNAMONEY</div>
-        <div class="brand-tag">
-          The Commercial Finance Boutique – Bespoke, Collaborative &amp; Expert Funding Advisory
-        </div>
+        <div class="brand-tag">The Commercial Finance Boutique – Bespoke, Collaborative &amp; Expert Funding Advisory</div>
       </div>
 
       <div class="doc-title">Client Proposal Form</div>
@@ -317,285 +153,709 @@
         novalidate
       >
 
-        <!-- Hidden redirect to branded thank-you page -->
+        <!-- Hidden redirect to branded thank-you page (left unchanged per instruction) -->
         <input type="hidden" name="redirect" value="https://YOUR-PROPOSAL-THANK-YOU-PAGE-URL.example.com/proposal-thank-you.html" />
 
         <!-- ========================= -->
-        <!-- SECTION 1: BUSINESS INFO  -->
+        <!-- SECTION 1: BUSINESS INFORMATION -->
         <!-- ========================= -->
         <h3 class="section">1. Business Information</h3>
 
         <div class="row">
           <div class="col field">
-            <label for="businessName">Business Name</label>
-            <input id="businessName" name="Business Name" type="text" />
+            <label for="businessName">Business / Sole Trader / Owner / Individual / Partnership Name</label>
+            <input id="businessName" name="Business / Sole Trader / Owner / Individual / Partnership Name" type="text" />
           </div>
-
           <div class="col field">
-            <label for="mainContact">Main Contact Name</label>
+            <label for="companyReg">Companies House Registered Number (If Applicable)</label>
+            <input id="companyReg" name="Companies House Registered Number (If Applicable)" type="text" />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col field">
+            <label for="mainContact">Main Contact Name (Who Are We To Correspond With)</label>
             <input id="mainContact" name="Main Contact Name" type="text" />
           </div>
-        </div>
-
-        <div class="row">
           <div class="col field">
-            <label for="companyReg">Registered No.</label>
-            <input id="companyReg" name="Registered Number" type="text" />
-          </div>
-
-          <div class="col field">
-            <label for="email">Email</label>
-            <input id="email" name="Email" type="email" />
+            <label for="mainContactPhone">Main Contact’s Mobile / Direct Dial Work Number</label>
+            <input id="mainContactPhone" name="Main Contact’s Mobile / Direct Dial Work Number" type="tel" />
+            <div class="hint">Must contain a '0' to submit.</div>
           </div>
         </div>
 
         <div class="row">
           <div class="col field">
-            <label for="registeredAddress">Registered Address</label>
-            <input id="registeredAddress" name="Registered Address" type="text" />
+            <label for="mainWorkEmail">Main Contact’s Direct Work Email Address</label>
+            <input id="mainWorkEmail" name="Main Contact’s Direct Work Email Address" type="email" />
+            <div class="hint">Must include '@' to submit.</div>
           </div>
-
           <div class="col field">
-            <label for="businessPhone">Business Phone</label>
-            <input id="businessPhone" name="Business Phone" type="tel" />
+            <label for="mainPersonalEmail">Main Contact’s Personal / Additional Email Address (If Applicable)</label>
+            <input id="mainPersonalEmail" name="Main Contact’s Personal / Additional Email Address (If Applicable)" type="email" />
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="companyWebsite">Business Website Address (If Applicable)</label>
+          <input id="companyWebsite" name="Business Website Address (If Applicable)" type="text" placeholder="Please start the address with www." pattern="^www\\..+" />
+          <div class="hint">If text is entered, it must start with “www.”</div>
+        </div>
+
+        <!-- Registered Business Address -->
+        <div class="field">
+          <label>Registered Business Address (LTD / LLP / PLC Must Match Companies House)</label>
+          <input id="registeredAddress" name="Registered Address - Street" type="text" placeholder="Street / Building" />
+          <div style="height:8px"></div>
+          <input id="registeredCity" name="Registered Address - City/Town" type="text" placeholder="City / Town" />
+          <div style="height:8px"></div>
+          <input id="registeredPostcode" name="Registered Address - Postcode" type="text" placeholder="Postcode" />
+          <span class="lookup" data-prefix="registered">Lookup Postcode</span>
+        </div>
+
+        <!-- Trading Address -->
+        <div class="field">
+          <label>Trading Address</label>
+          <label class="choice-item" style="margin-bottom:8px;">
+            <input type="checkbox" id="sameAsRegistered" name="Trading Address - Same As Registered Address" />
+            Same As Registered Address
+          </label>
+
+          <div id="tradingAddressBlock">
+            <input id="tradingAddress" name="Trading Address - Street" type="text" placeholder="Street / Building" />
+            <div style="height:8px"></div>
+            <input id="tradingCity" name="Trading Address - City/Town" type="text" placeholder="City / Town" />
+            <div style="height:8px"></div>
+            <input id="tradingPostcode" name="Trading Address - Postcode" type="text" placeholder="Postcode" />
+            <span class="lookup" data-prefix="trading">Lookup Postcode</span>
           </div>
         </div>
 
         <div class="row">
           <div class="col field">
-            <label for="tradingAddress">Trading Address</label>
-            <input id="tradingAddress" name="Trading Address" type="text" />
+            <label for="vatNumber">VAT Number (If Applicable)</label>
+            <input id="vatNumber" name="VAT Number (If Applicable)" type="text" />
           </div>
 
           <div class="col field">
-            <label for="mobilePhone">Mobile Phone</label>
-            <input id="mobilePhone" name="Mobile Phone" type="tel" />
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col field">
-            <label for="companyType">Company Type</label>
-            <select id="companyType" name="Company Type">
-              <option value="">Please choose...</option>
-              <option>Limited</option>
-              <option>Partnership</option>
-              <option>Sole Trader</option>
+            <label for="companyType">Business / Company Type</label>
+            <select id="companyType" name="Business / Company Type">
+              <option value="">Please Choose...</option>
+              <option>Limited Company</option>
               <option>LLP</option>
               <option>PLC</option>
+              <option>Sole Trader (Under Business Name)</option>
+              <option>Sole Trader (Under Own Name)</option>
+              <option>Owner (Individual)</option>
+              <option>Owners (Partnership - Two Or More People)</option>
               <option>Other</option>
             </select>
           </div>
-
-          <div class="col field">
-            <label for="annualTurnover">Annual Business Turnover (£)</label>
-            <input id="annualTurnover" name="Annual Business Turnover" type="text" />
-          </div>
         </div>
 
         <div class="row">
           <div class="col field">
-            <label for="vatNumber">VAT Number</label>
-            <input id="vatNumber" name="VAT Number" type="text" />
+            <label for="incorpDate">Company Incorporation Date (LTD / LLP / PLC Only)</label>
+            <input id="incorpDate" name="Company Incorporation Date" type="date" />
+          </div>
+          <div class="col field">
+            <label for="tradingStart">When Did The Business Start Trading (If Unsure, Please Estimate)</label>
+            <input id="tradingStart" name="Business Start Trading Date" type="date" />
+            <label class="choice-item" style="margin-top:6px;">
+              <input type="checkbox" id="sameAsIncorp" /> Same As Registered Incorporation Date
+            </label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="numEmployees">Number Of Employees Including Self On Payroll (If Applicable)</label>
+          <select id="numEmployees" name="Number Of Employees Including Self On Payroll">
+            <option value="">Please Choose...</option>
+            <option>1 - Just Me</option>
+            <option>1 - 5</option>
+            <option>6 - 10</option>
+            <option>10 - 20</option>
+            <option>20 - 50</option>
+            <option>50 - 100</option>
+            <option>100 +</option>
+          </select>
+        </div>
+
+        <hr class="section-sep" />
+
+        <!-- ========================= -->
+        <!-- TURNOVER / PROFIT / BUSINESS INCOME -->
+        <!-- ========================= -->
+        <h3 class="section">Turnover / Profit / Business Income</h3>
+        <div class="subtext">To Carefully Select &amp; Match You With The Most Competitive Lenders &amp; Funding Options We Need To Understand &amp; Determine What Financial Information You Have Available Upon Our Request (Please Select One Option Which Most Closely Applies To You Or Your Business. Please Tick All Subsequent Boxes That Apply)</div>
+
+        <!-- Start-Up -->
+        <div class="field">
+          <label class="choice-item"><input type="checkbox" id="startupChk" name="New / Not Trading Yet" value="Yes"> Brand New Start Up / Not Trading Yet</label>
+        </div>
+
+        <div id="startupNextSection" class="hidden subtext">As A Start-Up, Please Proceed To Section 2.</div>
+
+        <!-- Trading Under 12 Months -->
+        <div class="field">
+          <label class="choice-item"><input type="checkbox" id="under12Chk" name="Trading Under 12 Months" value="Yes"> Limited / LLP / PLC / Sole Trader / Partnership / Individual Owner / Other — Trading Under 12 Months</label>
+        </div>
+
+        <div id="under12Block" class="hidden">
+          <div class="field"><label>Which Documents Are Available Upon Request (Select All That Apply)</label></div>
+          <div class="radio-row" style="flex-direction:column;align-items:flex-start">
+            <label class="choice-item"><input type="checkbox" name="Under 12m Docs" value="No Digital Accounting / Bookkeeping / Own Records Available"> No Digital Accounting / Bookkeeping / Own Records Available</label>
+            <label class="choice-item"><input type="checkbox" name="Under 12m Docs" value="Limited Digital Accounts (Sage/QuickBooks/Xero) Y/E 2025 (To Date)"> Limited Digital Accounts (Sage/QuickBooks/Xero) Y/E 2025 (To Date)</label>
+            <label class="choice-item"><input type="checkbox" name="Under 12m Docs" value="Limited Bookkeeping / Own Records Available Y/E 2025 (To Date)"> Limited Bookkeeping / Own Records Available Y/E 2025 (To Date)</label>
+            <label class="choice-item"><input type="checkbox" name="Under 12m Docs" value="Business / Personal Bank Statements Y/E 2025 (To Date)"> Business / Personal Bank Statements Y/E 2025 (To Date)</label>
           </div>
 
-          <div class="col field">
-            <label for="tradingSince">Date Trading Commenced</label>
-            <input id="tradingSince" name="Date Trading Commenced" type="text" placeholder="DD/MM/YYYY" />
+          <div class="row">
+            <div class="col field">
+              <label for="expTurnover2025">What Is Your Turnover Expected To Be Y/E 2025 (If Unsure, Please Estimate)</label>
+              <input id="expTurnover2025" name="Expected Turnover Y/E 2025" type="text" placeholder="Please provide a figure. State if exact or estimated." />
+            </div>
+            <div class="col field">
+              <label for="expProfit2025">What Is Your Profit Expected To Be Y/E 2025 (If Unsure, Please Estimate)</label>
+              <input id="expProfit2025" name="Expected Profit Y/E 2025" type="text" placeholder="Please provide a figure. State if exact or estimated." />
+            </div>
+          </div>
+        </div>
+
+        <!-- Trading Over 12 Months -->
+        <div class="field">
+          <label class="choice-item"><input type="checkbox" id="over12Chk" name="Trading Over 12 Months" value="Yes"> Limited / LLP / PLC / Sole Trader / Partnership / Individual Owner / Other — Trading Over 12 Months</label>
+        </div>
+
+        <div id="over12Block" class="hidden">
+          <div class="field">
+            <label>LTD / LLP / PLC</label>
+            <div class="radio-row" style="flex-direction:column;align-items:flex-start">
+              <label class="choice-item"><input type="checkbox" name="Over 12m LTD Docs" value="Full Submitted Co. House Accounts Y/E 2023"> Full Submitted Co. House Accounts Financial Y/E 2023</label>
+              <label class="choice-item"><input type="checkbox" name="Over 12m LTD Docs" value="Full Submitted Co. House Accounts Y/E 2024"> Full Submitted Co. House Accounts Financial Y/E 2024</label>
+              <label class="choice-item"><input type="checkbox" name="Over 12m LTD Docs" value="Full Submitted Co. House Accounts Y/E 2025"> Full Submitted Co. House Accounts Financial Y/E 2025</label>
+              <label class="choice-item"><input type="checkbox" name="Over 12m LTD Docs" value="Draft Co. House Accounts Y/E 2025"> Draft Co. House Accounts Financial Y/E 2025</label>
+              <label class="choice-item"><input type="checkbox" name="Over 12m LTD Docs" value="Management Accounts 2025"> Management Accounts Financial Y/E 2025 (P&L + Balance Sheet, within 1 month)</label>
+              <label class="choice-item"><input type="checkbox" name="Over 12m LTD Docs" value="Biz Bank 6m"> Last 6 Months Business Bank Statements (All Inter-Company Accounts)</label>
+              <label class="choice-item"><input type="checkbox" name="Over 12m LTD Docs" value="Pers Bank 6m"> Last 6 Months Personal Bank Statements (If Required)</label>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Sole Trader / Partnership / Individual Owner / Other</label>
+            <div class="radio-row" style="flex-direction:column;align-items:flex-start">
+              <label class="choice-item"><input type="checkbox" name="Over 12m ST Docs" value="Mgmt/Bookkeeping 2023"> Management Accounts / Digital Accounts / Bookkeeping Y/E 2023</label>
+              <label class="choice-item"><input type="checkbox" name="Over 12m ST Docs" value="Mgmt/Bookkeeping 2024"> Management Accounts / Digital Accounts / Bookkeeping Y/E 2024</label>
+              <label class="choice-item"><input type="checkbox" name="Over 12m ST Docs" value="SA302 2023"> SA302 / Self Assessment Y/E 2023</label>
+              <label class="choice-item"><input type="checkbox" name="Over 12m ST Docs" value="SA302 2024"> SA302 / Self Assessment Y/E 2024</label>
+              <label class="choice-item"><input type="checkbox" name="Over 12m ST Docs" value="Mgmt/Bookkeeping 2025"> Management Accounts / Digital Accounts / Bookkeeping Y/E 2025 (To Date)</label>
+              <label class="choice-item"><input type="checkbox" name="Over 12m ST Docs" value="Biz/Personal 2023"> Business / Personal Bank Statements Y/E 2023</label>
+              <label class="choice-item"><input type="checkbox" name="Over 12m ST Docs" value="Biz/Personal 2024"> Business / Personal Bank Statements Y/E 2024</label>
+              <label class="choice-item"><input type="checkbox" name="Over 12m ST Docs" value="Payslips 2024"> Payslips / Proof Of Income Y/E 2024</label>
+              <label class="choice-item"><input type="checkbox" name="Over 12m ST Docs" value="Payslips 2025"> Payslips / Proof Of Income Y/E 2025 (To Date)</label>
+              <label class="choice-item"><input type="checkbox" name="Over 12m ST Docs" value="Biz/Personal 2025"> Business / Personal Bank Statements Y/E 2025 (To Date)</label>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Provide Final Year End Turnover &amp; Profit For Each Year The Business Traded (Please Tick N/A Or Provide An Answer To Each Financial Question Below)</label>
+          </div>
+
+          <div class="row">
+            <div class="col field">
+              <label for="turnover2023">What Was Your Turnover Financial Y/E 2023 (If Unsure, Please Estimate)</label>
+              <label class="choice-item" style="margin-bottom:6px;"><input type="checkbox" id="naTurnover2023"> Not Applicable / Not Trading Y/E 2023</label>
+              <input id="turnover2023" name="Turnover Y/E 2023" type="text" placeholder="Please provide a figure. State if exact or estimated." />
+            </div>
+            <div class="col field">
+              <label for="profit2023">What Was Your Profit Financial Y/E 2023 (If Unsure, Please Estimate)</label>
+              <label class="choice-item" style="margin-bottom:6px;"><input type="checkbox" id="naProfit2023"> Not Applicable / Not Trading Y/E 2023</label>
+              <input id="profit2023" name="Profit Y/E 2023" type="text" placeholder="Please provide a figure. State if exact or estimated." />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col field">
+              <label for="turnover2024">What Was Your Turnover Financial Y/E 2024 (If Unsure, Please Estimate)</label>
+              <label class="choice-item" style="margin-bottom:6px;"><input type="checkbox" id="naTurnover2024"> Not Applicable / Not A Full Trading Y/E 2024</label>
+              <input id="turnover2024" name="Turnover Y/E 2024" type="text" placeholder="Please provide a figure. State if exact or estimated." />
+            </div>
+            <div class="col field">
+              <label for="profit2024">What Was Your Profit Financial Y/E 2024 (If Unsure, Please Estimate)</label>
+              <label class="choice-item" style="margin-bottom:6px;"><input type="checkbox" id="naProfit2024"> Not Applicable / Not A Full Trading Y/E 2024</label>
+              <input id="profit2024" name="Profit Y/E 2024" type="text" placeholder="Please provide a figure. State if exact or estimated." />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col field">
+              <label for="turnover2025">What Is Your Turnover Expected To Be Financial Y/E 2025 (If Unsure, Please Estimate)</label>
+              <input id="turnover2025" name="Expected Turnover Y/E 2025" type="text" placeholder="Please provide a figure. State if exact or estimated." />
+            </div>
+            <div class="col field">
+              <label for="profit2025">What Is Your Profit Expected To Be Financial Y/E 2025 (If Unsure, Please Estimate)</label>
+              <input id="profit2025" name="Expected Profit Y/E 2025" type="text" placeholder="Please provide a figure. State if exact or estimated." />
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="bankingWith">Who Is Your Business Banking With (Provide One Or More Answers In Text Box)</label>
+            <input id="bankingWith" name="Business Banks" type="text" placeholder="Please list all banks the business has active accounts with." />
+          </div>
+
+          <div class="field">
+            <label>Does The Business Have Any Active Bank Account Overdraft Facilities?</label>
+            <div class="radio-row">
+              <label class="choice-item"><input type="radio" name="Active Overdraft" value="Yes"> Yes</label>
+              <label class="choice-item"><input type="radio" name="Active Overdraft" value="No"> No</label>
+            </div>
+          </div>
+
+          <div id="overdraftBlock" class="hidden field">
+            <label for="overdraftDetails">Please Provide The Name Of The Bank And An Accurate Figure For Each</label>
+            <textarea id="overdraftDetails" name="Overdraft Details"></textarea>
           </div>
         </div>
 
         <hr class="section-sep" />
 
-        <!-- ====================================================== -->
-        <!-- SECTION 2.x DIRECTORS / SHAREHOLDERS / PARTNERS / ETC. -->
-        <!-- ====================================================== -->
+        <!-- ========================= -->
+        <!-- SECTION 2: DIRECTORS / OWNERS (25%+) -->
+        <!-- ========================= -->
+        <h3 class="section">2. Directors / Shareholders / Owners / Partners / Members / Proprietors (25%+)</h3>
 
-        <h3 class="section">2.1 Directors / Shareholders / Partners / Members / Proprietors</h3>
-
+        <!-- Person 1 -->
         <div class="row">
           <div class="col field">
             <label for="dir1Name">Full Name</label>
             <input id="dir1Name" name="Director 1 - Full Name" type="text" />
           </div>
           <div class="col field">
-            <label for="dir1DOB">Date of Birth</label>
-            <input id="dir1DOB" name="Director 1 - Date of Birth" type="text" placeholder="DD/MM/YYYY" />
+            <label for="dir1DOB">Date Of Birth</label>
+            <input id="dir1DOB" name="Director 1 - Date Of Birth" type="text" placeholder="DD/MM/YYYY" />
           </div>
+        </div>
+
+        <div class="field">
+          <label>Current Residential Home Address</label>
+          <input name="Director 1 - Home Street" type="text" placeholder="Street / Building" />
+          <div style="height:8px"></div>
+          <input id="dir1City" name="Director 1 - Home City" type="text" placeholder="City / Town" />
+          <div style="height:8px"></div>
+          <input id="dir1Postcode" name="Director 1 - Home Postcode" type="text" placeholder="Postcode" />
+          <span class="lookup" data-prefix="dir1">Lookup Postcode</span>
         </div>
 
         <div class="row">
           <div class="col field">
-            <label for="dir1Share">Shareholding %</label>
-            <input id="dir1Share" name="Director 1 - Shareholding %" type="text" />
+            <label for="dir1MovedIn1">Date Moved In (If Unsure, Please Estimate)</label>
+            <input id="dir1MovedIn1" name="Director 1 - Date Moved In (Current)" type="text" placeholder="DD/MM/YYYY" />
           </div>
           <div class="col field">
-            <label>Homeowner?</label>
-            <div class="radio-row">
-              <label class="choice-item"><input type="radio" name="Director 1 - Homeowner" value="Yes" /> Yes</label>
-              <label class="choice-item"><input type="radio" name="Director 1 - Homeowner" value="No" /> No</label>
+            <label>If You Have Lived At Your Current Address Less Than 3 Years, Please Tick The Box Below</label>
+            <label class="choice-item"><input type="checkbox" id="dir1PrevToggle"> I Have Lived Here Less Than 3 Years</label>
+          </div>
+        </div>
+
+        <div id="dir1PrevBlock" class="hidden field">
+          <label>Please Provide Your Previous Residential Home Address</label>
+          <input name="Director 1 - Previous Street" type="text" placeholder="Street / Building" />
+          <div style="height:8px"></div>
+          <input id="dir1PrevCity" name="Director 1 - Previous City" type="text" placeholder="City / Town" />
+          <div style="height:8px"></div>
+          <input id="dir1PrevPostcode" name="Director 1 - Previous Postcode" type="text" placeholder="Postcode" />
+          <span class="lookup" data-prefix="dir1Prev">Lookup Postcode</span>
+        </div>
+
+        <div class="field">
+          <label>Are You A Homeowner</label>
+          <div class="radio-row">
+            <label class="choice-item"><input type="radio" name="Director 1 - Homeowner" value="Yes" /> Yes</label>
+            <label class="choice-item"><input type="radio" name="Director 1 - Homeowner" value="No" /> No</label>
+          </div>
+        </div>
+
+        <div id="dir1HomeownerBlock" class="hidden">
+          <div class="row">
+            <div class="col field">
+              <label for="dir1PropertyVal">What Is The Current Value Of Your Property (If Unsure, Please Estimate) £</label>
+              <input id="dir1PropertyVal" name="Director 1 - Property Valuation" type="text" />
+            </div>
+            <div class="col field">
+              <label>Is There Any Outstanding Mortgage Against The Property</label>
+              <div class="radio-row">
+                <label class="choice-item"><input type="radio" name="Director 1 - Has Mortgage" value="Yes"> Yes</label>
+                <label class="choice-item"><input type="radio" name="Director 1 - Has Mortgage" value="No"> No</label>
+              </div>
+            </div>
+          </div>
+
+          <div id="dir1MortgageBlock" class="hidden">
+            <div class="row">
+              <div class="col field">
+                <label for="dir1MortgageDebt">What Is The Outstanding Mortgage Amount Owed £ (If Unsure, Please Estimate)</label>
+                <input id="dir1MortgageDebt" name="Director 1 - Mortgage Outstanding" type="text" />
+              </div>
+              <div class="col field">
+                <label for="dir1MortgageEnd">When Does Your Current Mortgage Deal / Fixed Term End (If Unsure, Please Estimate)</label>
+                <input id="dir1MortgageEnd" name="Director 1 - Mortgage Deal Ends" type="text" placeholder="DD/MM/YYYY" />
+                <label class="choice-item" style="margin-top:6px;"><input type="checkbox" id="dir1NoFixed"> I Am Not In A Fixed Term</label>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="dir1MortgageLender">Who Is Your Current Mortgage Lender</label>
+              <input id="dir1MortgageLender" name="Director 1 - Mortgage Lender" type="text" />
+            </div>
+
+            <div class="field">
+              <label>Is There Any Additional Finance Secured Against Your Home (Not Mortgage)</label>
+              <div class="radio-row">
+                <label class="choice-item"><input type="radio" name="Director 1 - Other Secured Finance" value="Yes"> Yes</label>
+                <label class="choice-item"><input type="radio" name="Director 1 - Other Secured Finance" value="No"> No</label>
+              </div>
+            </div>
+
+            <div id="dir1OtherFinanceBlock" class="hidden">
+              <div class="row">
+                <div class="col field">
+                  <label for="dir1FirstDebt">How Much Is The Outstanding Amount Owed £ (If Unsure, Please Estimate)</label>
+                  <input id="dir1FirstDebt" name="Director 1 - Additional Secured Amount Owed" type="text" />
+                </div>
+                <div class="col field">
+                  <label for="dir1FirstRedeem">When Is This Finance Due To Be Redeemed / Paid Off (If Unsure, Please Estimate)</label>
+                  <input id="dir1FirstRedeem" name="Director 1 - Additional Secured Redeem Date" type="text" placeholder="DD/MM/YYYY" />
+                </div>
+              </div>
+              <div class="field">
+                <label for="dir1FirstName">Who Is The Additional Secured Lender (Known As ‘Chargeholder’)</label>
+                <input id="dir1FirstName" name="Director 1 - Additional Secured Lender" type="text" />
+              </div>
+
+              <div class="field">
+                <label>Is There Any Further Finance In Addition To Above Secured Against The Property? (Not Mortgage Or Stated Above)</label>
+                <div class="radio-row">
+                  <label class="choice-item"><input type="radio" name="Director 1 - Further Secured Finance" value="Yes"> Yes</label>
+                  <label class="choice-item"><input type="radio" name="Director 1 - Further Secured Finance" value="No"> No</label>
+                </div>
+              </div>
+
+              <div id="dir1SecondChargeBlock" class="hidden">
+                <div class="row">
+                  <div class="col field">
+                    <label for="dir12ndDebt">How Much Is The Outstanding Amount Owed £ (If Unsure, Please Estimate)</label>
+                    <input id="dir12ndDebt" name="Director 1 - Further Secured Amount Owed" type="text" />
+                  </div>
+                  <div class="col field">
+                    <label for="dir12ndRedeem">When Is The Finance Due To Be Redeemed / Paid Off (If Unsure, Please Estimate)</label>
+                    <input id="dir12ndRedeem" name="Director 1 - Further Secured Redeem Date" type="text" placeholder="DD/MM/YYYY" />
+                  </div>
+                </div>
+                <div class="field">
+                  <label for="dir12ndName">Who Is The Further Secured Lender (Known As ‘Chargeholder’)</label>
+                  <input id="dir12ndName" name="Director 1 - Further Secured Lender" type="text" />
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="field">
-          <label for="dir1HomeAddress">Home Address</label>
-          <input id="dir1HomeAddress" name="Director 1 - Home Address" type="text" />
-        </div>
-
-        <div class="row">
-          <div class="col field">
-            <label for="dir1PrevAddress">Previous address if &lt; 3yrs</label>
-            <input id="dir1PrevAddress" name="Director 1 - Previous Address (<3yrs)" type="text" />
-          </div>
-          <div class="col field">
-            <label for="dir1MovedIn1">Date Moved In (Current)</label>
-            <input id="dir1MovedIn1" name="Director 1 - Date Moved In (Current)" type="text" placeholder="DD/MM/YYYY" />
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col field">
-            <label for="dir1MovedIn2">Date Moved In (Previous)</label>
-            <input id="dir1MovedIn2" name="Director 1 - Date Moved In (Previous)" type="text" placeholder="DD/MM/YYYY" />
-          </div>
-          <div class="col field">
-            <label for="dir1PropertyVal">Property Valuation (if homeowner) £</label>
-            <input id="dir1PropertyVal" name="Director 1 - Property Valuation" type="text" />
-          </div>
-        </div>
-
-        <div class="field">
-          <label for="dir1MortgageDebt">Property mortgage/debt £</label>
-          <input id="dir1MortgageDebt" name="Director 1 - Mortgage / Debt" type="text" />
-        </div>
-
         <hr class="section-sep" />
 
-        <h3 class="section">2.2 Directors / Shareholders / Partners / Members / Proprietors (continued)</h3>
-
-        <div class="row">
-          <div class="col field">
-            <label for="dir2Name">Full Name</label>
-            <input id="dir2Name" name="Director 2 - Full Name" type="text" />
-          </div>
-          <div class="col field">
-            <label for="dir2DOB">Date of Birth</label>
-            <input id="dir2DOB" name="Director 2 - Date of Birth" type="text" placeholder="DD/MM/YYYY" />
-          </div>
+        <!-- 2.2 Add Another Person (Yes/No) -->
+        <h3 class="section">2.2 Directors / Shareholders / Owners / Partners / Members / Proprietors (Continued)</h3>
+        <div class="field">
+          <label class="choice-item"><input type="radio" name="Add Director 2" value="Yes"> Do You Wish To Add Another Person With 25% Shareholding Or More — Yes</label>
+          <label class="choice-item"><input type="radio" name="Add Director 2" value="No"> Do You Wish To Add Another Person With 25% Shareholding Or More — No</label>
         </div>
 
-        <div class="row">
-          <div class="col field">
-            <label for="dir2Share">Shareholding %</label>
-            <input id="dir2Share" name="Director 2 - Shareholding %" type="text" />
+        <div id="director2Block" class="hidden">
+          <div class="row">
+            <div class="col field">
+              <label for="dir2Name">Full Name</label>
+              <input id="dir2Name" name="Director 2 - Full Name" type="text" />
+            </div>
+            <div class="col field">
+              <label for="dir2DOB">Date Of Birth</label>
+              <input id="dir2DOB" name="Director 2 - Date Of Birth" type="text" placeholder="DD/MM/YYYY" />
+            </div>
           </div>
-          <div class="col field">
-            <label>Homeowner?</label>
+
+          <div class="field">
+            <label>Current Residential Home Address</label>
+            <input name="Director 2 - Home Street" type="text" placeholder="Street / Building" />
+            <div style="height:8px"></div>
+            <input id="dir2City" name="Director 2 - Home City" type="text" placeholder="City / Town" />
+            <div style="height:8px"></div>
+            <input id="dir2Postcode" name="Director 2 - Home Postcode" type="text" placeholder="Postcode" />
+            <span class="lookup" data-prefix="dir2">Lookup Postcode</span>
+          </div>
+
+          <div class="row">
+            <div class="col field">
+              <label for="dir2MovedIn1">Date Moved In (If Unsure, Please Estimate)</label>
+              <input id="dir2MovedIn1" name="Director 2 - Date Moved In (Current)" type="text" placeholder="DD/MM/YYYY" />
+            </div>
+            <div class="col field">
+              <label>If You Have Lived At Your Current Address Less Than 3 Years, Please Tick The Box Below</label>
+              <label class="choice-item"><input type="checkbox" id="dir2PrevToggle"> I Have Lived Here Less Than 3 Years</label>
+            </div>
+          </div>
+
+          <div id="dir2PrevBlock" class="hidden field">
+            <label>Please Provide Your Previous Residential Home Address</label>
+            <input name="Director 2 - Previous Street" type="text" placeholder="Street / Building" />
+            <div style="height:8px"></div>
+            <input id="dir2PrevCity" name="Director 2 - Previous City" type="text" placeholder="City / Town" />
+            <div style="height:8px"></div>
+            <input id="dir2PrevPostcode" name="Director 2 - Previous Postcode" type="text" placeholder="Postcode" />
+            <span class="lookup" data-prefix="dir2Prev">Lookup Postcode</span>
+          </div>
+
+          <div class="field">
+            <label>Are You A Homeowner</label>
             <div class="radio-row">
               <label class="choice-item"><input type="radio" name="Director 2 - Homeowner" value="Yes" /> Yes</label>
               <label class="choice-item"><input type="radio" name="Director 2 - Homeowner" value="No" /> No</label>
             </div>
           </div>
-        </div>
 
-        <div class="field">
-          <label for="dir2HomeAddress">Home Address</label>
-          <input id="dir2HomeAddress" name="Director 2 - Home Address" type="text" />
-        </div>
+          <div id="dir2HomeownerBlock" class="hidden">
+            <div class="row">
+              <div class="col field">
+                <label for="dir2PropertyVal">What Is The Current Value Of Your Property (If Unsure, Please Estimate) £</label>
+                <input id="dir2PropertyVal" name="Director 2 - Property Valuation" type="text" />
+              </div>
+              <div class="col field">
+                <label>Is There Any Outstanding Mortgage Against The Property</label>
+                <div class="radio-row">
+                  <label class="choice-item"><input type="radio" name="Director 2 - Has Mortgage" value="Yes"> Yes</label>
+                  <label class="choice-item"><input type="radio" name="Director 2 - Has Mortgage" value="No"> No</label>
+                </div>
+              </div>
+            </div>
 
-        <div class="row">
-          <div class="col field">
-            <label for="dir2PrevAddress">Previous address if &lt; 3yrs</label>
-            <input id="dir2PrevAddress" name="Director 2 - Previous Address (<3yrs)" type="text" />
-          </div>
-          <div class="col field">
-            <label for="dir2MovedIn1">Date Moved In (Current)</label>
-            <input id="dir2MovedIn1" name="Director 2 - Date Moved In (Current)" type="text" placeholder="DD/MM/YYYY" />
-          </div>
-        </div>
+            <div id="dir2MortgageBlock" class="hidden">
+              <div class="row">
+                <div class="col field">
+                  <label for="dir2MortgageDebt">What Is The Outstanding Mortgage Amount Owed £ (If Unsure, Please Estimate)</label>
+                  <input id="dir2MortgageDebt" name="Director 2 - Mortgage Outstanding" type="text" />
+                </div>
+                <div class="col field">
+                  <label for="dir2MortgageEnd">When Does Your Current Mortgage Deal / Fixed Term End (If Unsure, Please Estimate)</label>
+                  <input id="dir2MortgageEnd" name="Director 2 - Mortgage Deal Ends" type="text" placeholder="DD/MM/YYYY" />
+                  <label class="choice-item" style="margin-top:6px;"><input type="checkbox" id="dir2NoFixed"> I Am Not In A Fixed Term</label>
+                </div>
+              </div>
 
-        <div class="row">
-          <div class="col field">
-            <label for="dir2MovedIn2">Date Moved In (Previous)</label>
-            <input id="dir2MovedIn2" name="Director 2 - Date Moved In (Previous)" type="text" placeholder="DD/MM/YYYY" />
-          </div>
-          <div class="col field">
-            <label for="dir2PropertyVal">Property Valuation (if homeowner) £</label>
-            <input id="dir2PropertyVal" name="Director 2 - Property Valuation" type="text" />
-          </div>
-        </div>
+              <div class="field">
+                <label for="dir2MortgageLender">Who Is Your Current Mortgage Lender</label>
+                <input id="dir2MortgageLender" name="Director 2 - Mortgage Lender" type="text" />
+              </div>
 
-        <div class="field">
-          <label for="dir2MortgageDebt">Property mortgage/debt £</label>
-          <input id="dir2MortgageDebt" name="Director 2 - Mortgage / Debt" type="text" />
+              <div class="field">
+                <label>Is There Any Additional Finance Secured Against Your Home (Not Mortgage)</label>
+                <div class="radio-row">
+                  <label class="choice-item"><input type="radio" name="Director 2 - Other Secured Finance" value="Yes"> Yes</label>
+                  <label class="choice-item"><input type="radio" name="Director 2 - Other Secured Finance" value="No"> No</label>
+                </div>
+              </div>
+
+              <div id="dir2OtherFinanceBlock" class="hidden">
+                <div class="row">
+                  <div class="col field">
+                    <label for="dir2FirstDebt">How Much Is The Outstanding Amount Owed £ (If Unsure, Please Estimate)</label>
+                    <input id="dir2FirstDebt" name="Director 2 - Additional Secured Amount Owed" type="text" />
+                  </div>
+                  <div class="col field">
+                    <label for="dir2FirstRedeem">When Is This Finance Due To Be Redeemed / Paid Off (If Unsure, Please Estimate)</label>
+                    <input id="dir2FirstRedeem" name="Director 2 - Additional Secured Redeem Date" type="text" placeholder="DD/MM/YYYY" />
+                  </div>
+                </div>
+                <div class="field">
+                  <label for="dir2FirstName">Who Is The Additional Secured Lender (Known As ‘Chargeholder’)</label>
+                  <input id="dir2FirstName" name="Director 2 - Additional Secured Lender" type="text" />
+                </div>
+
+                <div class="field">
+                  <label>Is There Any Further Finance In Addition To Above Secured Against The Property? (Not Mortgage Or Stated Above)</label>
+                  <div class="radio-row">
+                    <label class="choice-item"><input type="radio" name="Director 2 - Further Secured Finance" value="Yes"> Yes</label>
+                    <label class="choice-item"><input type="radio" name="Director 2 - Further Secured Finance" value="No"> No</label>
+                  </div>
+                </div>
+
+                <div id="dir2SecondChargeBlock" class="hidden">
+                  <div class="row">
+                    <div class="col field">
+                      <label for="dir22ndDebt">How Much Is The Outstanding Amount Owed £ (If Unsure, Please Estimate)</label>
+                      <input id="dir22ndDebt" name="Director 2 - Further Secured Amount Owed" type="text" />
+                    </div>
+                    <div class="col field">
+                      <label for="dir22ndRedeem">When Is The Finance Due To Be Redeemed / Paid Off (If Unsure, Please Estimate)</label>
+                      <input id="dir22ndRedeem" name="Director 2 - Further Secured Redeem Date" type="text" placeholder="DD/MM/YYYY" />
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label for="dir22ndName">Who Is The Further Secured Lender (Known As ‘Chargeholder’)</label>
+                    <input id="dir22ndName" name="Director 2 - Further Secured Lender" type="text" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         <hr class="section-sep" />
 
-        <h3 class="section">2.3 Directors / Shareholders / Partners / Members / Proprietors (continued)</h3>
-
-        <div class="row">
-          <div class="col field">
-            <label for="dir3Name">Full Name</label>
-            <input id="dir3Name" name="Director 3 - Full Name" type="text" />
-          </div>
-          <div class="col field">
-            <label for="dir3DOB">Date of Birth</label>
-            <input id="dir3DOB" name="Director 3 - Date of Birth" type="text" placeholder="DD/MM/YYYY" />
-          </div>
+        <!-- 2.3 Add Another Person (Yes/No) -->
+        <h3 class="section">2.3 Directors / Shareholders / Owners / Partners / Members / Proprietors (Continued)</h3>
+        <div class="field">
+          <label class="choice-item"><input type="radio" name="Add Director 3" value="Yes"> Do You Wish To Add Another Person With 25% Shareholding Or More — Yes</label>
+          <label class="choice-item"><input type="radio" name="Add Director 3" value="No"> Do You Wish To Add Another Person With 25% Shareholding Or More — No</label>
         </div>
 
-        <div class="row">
-          <div class="col field">
-            <label for="dir3Share">Shareholding %</label>
-            <input id="dir3Share" name="Director 3 - Shareholding %" type="text" />
+        <div id="director3Block" class="hidden">
+          <div class="row">
+            <div class="col field">
+              <label for="dir3Name">Full Name</label>
+              <input id="dir3Name" name="Director 3 - Full Name" type="text" />
+            </div>
+            <div class="col field">
+              <label for="dir3DOB">Date Of Birth</label>
+              <input id="dir3DOB" name="Director 3 - Date Of Birth" type="text" placeholder="DD/MM/YYYY" />
+            </div>
           </div>
-          <div class="col field">
-            <label>Homeowner?</label>
+
+          <div class="field">
+            <label>Current Residential Home Address</label>
+            <input name="Director 3 - Home Street" type="text" placeholder="Street / Building" />
+            <div style="height:8px"></div>
+            <input id="dir3City" name="Director 3 - Home City" type="text" placeholder="City / Town" />
+            <div style="height:8px"></div>
+            <input id="dir3Postcode" name="Director 3 - Home Postcode" type="text" placeholder="Postcode" />
+            <span class="lookup" data-prefix="dir3">Lookup Postcode</span>
+          </div>
+
+          <div class="row">
+            <div class="col field">
+              <label for="dir3MovedIn1">Date Moved In (If Unsure, Please Estimate)</label>
+              <input id="dir3MovedIn1" name="Director 3 - Date Moved In (Current)" type="text" placeholder="DD/MM/YYYY" />
+            </div>
+            <div class="col field">
+              <label>If You Have Lived At Your Current Address Less Than 3 Years, Please Tick The Box Below</label>
+              <label class="choice-item"><input type="checkbox" id="dir3PrevToggle"> I Have Lived Here Less Than 3 Years</label>
+            </div>
+          </div>
+
+          <div id="dir3PrevBlock" class="hidden field">
+            <label>Please Provide Your Previous Residential Home Address</label>
+            <input name="Director 3 - Previous Street" type="text" placeholder="Street / Building" />
+            <div style="height:8px"></div>
+            <input id="dir3PrevCity" name="Director 3 - Previous City" type="text" placeholder="City / Town" />
+            <div style="height:8px"></div>
+            <input id="dir3PrevPostcode" name="Director 3 - Previous Postcode" type="text" placeholder="Postcode" />
+            <span class="lookup" data-prefix="dir3Prev">Lookup Postcode</span>
+          </div>
+
+          <div class="field">
+            <label>Are You A Homeowner</label>
             <div class="radio-row">
               <label class="choice-item"><input type="radio" name="Director 3 - Homeowner" value="Yes" /> Yes</label>
               <label class="choice-item"><input type="radio" name="Director 3 - Homeowner" value="No" /> No</label>
             </div>
           </div>
-        </div>
 
-        <div class="field">
-          <label for="dir3HomeAddress">Home Address</label>
-          <input id="dir3HomeAddress" name="Director 3 - Home Address" type="text" />
-        </div>
+          <div id="dir3HomeownerBlock" class="hidden">
+            <div class="row">
+              <div class="col field">
+                <label for="dir3PropertyVal">What Is The Current Value Of Your Property (If Unsure, Please Estimate) £</label>
+                <input id="dir3PropertyVal" name="Director 3 - Property Valuation" type="text" />
+              </div>
+              <div class="col field">
+                <label>Is There Any Outstanding Mortgage Against The Property</label>
+                <div class="radio-row">
+                  <label class="choice-item"><input type="radio" name="Director 3 - Has Mortgage" value="Yes"> Yes</label>
+                  <label class="choice-item"><input type="radio" name="Director 3 - Has Mortgage" value="No"> No</label>
+                </div>
+              </div>
+            </div>
 
-        <div class="row">
-          <div class="col field">
-            <label for="dir3PrevAddress">Previous address if &lt; 3yrs</label>
-            <input id="dir3PrevAddress" name="Director 3 - Previous Address (<3yrs)" type="text" />
-          </div>
-          <div class="col field">
-            <label for="dir3MovedIn1">Date Moved In (Current)</label>
-            <input id="dir3MovedIn1" name="Director 3 - Date Moved In (Current)" type="text" placeholder="DD/MM/YYYY" />
-          </div>
-        </div>
+            <div id="dir3MortgageBlock" class="hidden">
+              <div class="row">
+                <div class="col field">
+                  <label for="dir3MortgageDebt">What Is The Outstanding Mortgage Amount Owed £ (If Unsure, Please Estimate)</label>
+                  <input id="dir3MortgageDebt" name="Director 3 - Mortgage Outstanding" type="text" />
+                </div>
+                <div class="col field">
+                  <label for="dir3MortgageEnd">When Does Your Current Mortgage Deal / Fixed Term End (If Unsure, Please Estimate)</label>
+                  <input id="dir3MortgageEnd" name="Director 3 - Mortgage Deal Ends" type="text" placeholder="DD/MM/YYYY" />
+                  <label class="choice-item" style="margin-top:6px;"><input type="checkbox" id="dir3NoFixed"> I Am Not In A Fixed Term</label>
+                </div>
+              </div>
 
-        <div class="row">
-          <div class="col field">
-            <label for="dir3MovedIn2">Date Moved In (Previous)</label>
-            <input id="dir3MovedIn2" name="Director 3 - Date Moved In (Previous)" type="text" placeholder="DD/MM/YYYY" />
-          </div>
-          <div class="col field">
-            <label for="dir3PropertyVal">Property Valuation (if homeowner) £</label>
-            <input id="dir3PropertyVal" name="Director 3 - Property Valuation" type="text" />
-          </div>
-        </div>
+              <div class="field">
+                <label for="dir3MortgageLender">Who Is Your Current Mortgage Lender</label>
+                <input id="dir3MortgageLender" name="Director 3 - Mortgage Lender" type="text" />
+              </div>
 
-        <div class="field">
-          <label for="dir3MortgageDebt">Property mortgage/debt £</label>
-          <input id="dir3MortgageDebt" name="Director 3 - Mortgage / Debt" type="text" />
+              <div class="field">
+                <label>Is There Any Additional Finance Secured Against Your Home (Not Mortgage)</label>
+                <div class="radio-row">
+                  <label class="choice-item"><input type="radio" name="Director 3 - Other Secured Finance" value="Yes"> Yes</label>
+                  <label class="choice-item"><input type="radio" name="Director 3 - Other Secured Finance" value="No"> No</label>
+                </div>
+              </div>
+
+              <div id="dir3OtherFinanceBlock" class="hidden">
+                <div class="row">
+                  <div class="col field">
+                    <label for="dir3FirstDebt">How Much Is The Outstanding Amount Owed £ (If Unsure, Please Estimate)</label>
+                    <input id="dir3FirstDebt" name="Director 3 - Additional Secured Amount Owed" type="text" />
+                  </div>
+                  <div class="col field">
+                    <label for="dir3FirstRedeem">When Is This Finance Due To Be Redeemed / Paid Off (If Unsure, Please Estimate)</label>
+                    <input id="dir3FirstRedeem" name="Director 3 - Additional Secured Redeem Date" type="text" placeholder="DD/MM/YYYY" />
+                  </div>
+                </div>
+                <div class="field">
+                  <label for="dir3FirstName">Who Is The Additional Secured Lender (Known As ‘Chargeholder’)</label>
+                  <input id="dir3FirstName" name="Director 3 - Additional Secured Lender" type="text" />
+                </div>
+
+                <div class="field">
+                  <label>Is There Any Further Finance In Addition To Above Secured Against The Property? (Not Mortgage Or Stated Above)</label>
+                  <div class="radio-row">
+                    <label class="choice-item"><input type="radio" name="Director 3 - Further Secured Finance" value="Yes"> Yes</label>
+                    <label class="choice-item"><input type="radio" name="Director 3 - Further Secured Finance" value="No"> No</label>
+                  </div>
+                </div>
+
+                <div id="dir3SecondChargeBlock" class="hidden">
+                  <div class="row">
+                    <div class="col field">
+                      <label for="dir32ndDebt">How Much Is The Outstanding Amount Owed £ (If Unsure, Please Estimate)</label>
+                      <input id="dir32ndDebt" name="Director 3 - Further Secured Amount Owed" type="text" />
+                    </div>
+                    <div class="col field">
+                      <label for="dir32ndRedeem">When Is The Finance Due To Be Redeemed / Paid Off (If Unsure, Please Estimate)</label>
+                      <input id="dir32ndRedeem" name="Director 3 - Further Secured Redeem Date" type="text" placeholder="DD/MM/YYYY" />
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label for="dir32ndName">Who Is The Further Secured Lender (Known As ‘Chargeholder’)</label>
+                    <input id="dir32ndName" name="Director 3 - Further Secured Lender" type="text" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         <hr class="section-sep" />
 
         <!-- ========================= -->
-        <!-- SECTION 3: EXISTING FINANCE -->
+        <!-- SECTION 3: EXISTING FINANCE (UNTOUCHED) -->
         <!-- ========================= -->
         <h3 class="section">3. Existing Finance</h3>
         <div class="subtext">Please list any existing facilities (Asset Finance / Unsecured Loans / Overdraft etc.)</div>
@@ -645,30 +905,293 @@
         <hr class="section-sep" />
 
         <!-- ========================= -->
-        <!-- SECTION 4: LOAN REQUIRED -->
+        <!-- SECTION 4: LOAN REQUIRED (WITH AMENDMENTS) -->
         <!-- ========================= -->
         <h3 class="section">4. Loan Required</h3>
 
-        <div class="row">
-          <div class="col field">
-            <label for="loanAmount">Loan Amount (£)</label>
-            <input id="loanAmount" name="Loan Amount (£)" type="text" />
-          </div>
-
-          <div class="col field">
-            <label for="loanTerm">Loan Term</label>
-            <input id="loanTerm" name="Loan Term" type="text" placeholder="e.g. 6 months / 12 months / 3 years" />
-          </div>
+        <div class="field">
+          <label for="idealLoan">Preferred Loan Amount £</label>
+          <input id="idealLoan" name="Preferred Loan Amount (£)" type="text" />
         </div>
 
         <div class="field">
+          <label>Loan Term Required (Select All That Apply)</label>
+          <div class="row">
+            <div class="col">
+              <label class="choice-item"><input type="checkbox" name="Loan Term" value="Under 6 Months"> Under 6 Months</label>
+              <label class="choice-item"><input type="checkbox" name="Loan Term" value="1 Year"> 1 Year</label>
+              <label class="choice-item"><input type="checkbox" name="Loan Term" value="3 Years"> 3 Years</label>
+              <label class="choice-item"><input type="checkbox" name="Loan Term" value="5 Years +"> 5 Years +</label>
+              <label class="choice-item"><input type="checkbox" id="loanTermOtherChk" name="Loan Term" value="Other"> Other (Please Explain)</label>
+            </div>
+            <div class="col">
+              <label class="choice-item"><input type="checkbox" name="Loan Term" value="6 - 12 Months"> 6 - 12 Months</label>
+              <label class="choice-item"><input type="checkbox" name="Loan Term" value="2 Years"> 2 Years</label>
+              <label class="choice-item"><input type="checkbox" name="Loan Term" value="4 Years"> 4 Years</label>
+              <label class="choice-item"><input type="checkbox" name="Loan Term" value="Not Sure / Need Guidance"> Not Sure / Need Guidance</label>
+            </div>
+          </div>
+        </div>
+
+        <div id="loanTermOtherBlock" class="hidden field">
+          <label for="loanTermOtherText">If Other, Please Explain</label>
+          <textarea id="loanTermOtherText" name="Loan Term - Other Details"></textarea>
+        </div>
+
+        <div class="field">
+          <label>Is This Loan Related To A Property</label>
+          <div class="radio-row">
+            <label class="choice-item"><input type="radio" name="Loan Related To Property" value="Yes"> Yes</label>
+            <label class="choice-item"><input type="radio" name="Loan Related To Property" value="No"> No</label>
+          </div>
+        </div>
+
+        <div id="propertyRelatedBlock" class="hidden">
+          <div class="field">
+            <label>Is This Loan For A Brand New Property Purchase</label>
+            <div class="radio-row">
+              <label class="choice-item"><input type="radio" name="Brand New Property Purchase" value="Yes"> Yes</label>
+              <label class="choice-item"><input type="radio" name="Brand New Property Purchase" value="No"> No</label>
+            </div>
+          </div>
+
+          <div id="newPurchaseBlock" class="hidden">
+            <div class="field">
+              <label>Please Choose One Of The Following Options</label>
+              <div class="radio-row" style="flex-direction:column;align-items:flex-start">
+                <label class="choice-item"><input type="radio" name="New Purchase Type" value="New Buy To Let Purchase"> New Buy To Let Purchase</label>
+                <label class="choice-item"><input type="radio" name="New Purchase Type" value="New Commercial Property Purchase"> New Commercial Property Purchase</label>
+                <label class="choice-item"><input type="radio" name="New Purchase Type" value="New Auction Property Purchase"> New Auction Property Purchase</label>
+                <label class="choice-item"><input type="radio" name="New Purchase Type" value="Other" id="newPurchaseOther"> Other (Please Explain)</label>
+              </div>
+            </div>
+
+            <div id="newPurchaseOtherBlock" class="hidden field">
+              <label for="newPurchaseOtherText">If Other, Please Explain</label>
+              <textarea id="newPurchaseOtherText" name="New Purchase - Other Details"></textarea>
+            </div>
+
+            <div class="field">
+              <label>Have You Found A Property Yet</label>
+              <div class="radio-row">
+                <label class="choice-item"><input type="radio" name="Found Property" value="Yes"> Yes</label>
+                <label class="choice-item"><input type="radio" name="Found Property" value="No"> No</label>
+              </div>
+            </div>
+
+            <div id="foundPropertyBlock" class="hidden">
+              <div class="field">
+                <label>Who Will Be The Registered Purchaser / Owner (Select All That Apply)</label>
+                <div class="radio-row" style="flex-direction:column;align-items:flex-start">
+                  <label class="choice-item"><input type="checkbox" name="Registered Purchaser" value="Company / Business Name Purchase"> Company / Business Name Purchase</label>
+                  <label class="choice-item"><input type="checkbox" name="Registered Purchaser" value="Shareholder 1 As Above"> Shareholder 1 As Above</label>
+                  <label class="choice-item"><input type="checkbox" name="Registered Purchaser" value="Shareholder 2 As Above"> Shareholder 2 As Above</label>
+                  <label class="choice-item"><input type="checkbox" name="Registered Purchaser" value="Shareholder 3 As Above"> Shareholder 3 As Above</label>
+                </div>
+              </div>
+
+              <div class="field">
+                <label>Do You Know The Address Of The Property You Wish To Purchase</label>
+                <div class="radio-row">
+                  <label class="choice-item"><input type="radio" name="Know New Property Address" value="Yes"> Yes</label>
+                  <label class="choice-item"><input type="radio" name="Know New Property Address" value="No (Currently Looking)"> No (Currently Looking)</label>
+                </div>
+              </div>
+
+              <div id="newPropertyAddressBlock" class="hidden">
+                <label>Please Provide Full Address</label>
+                <input name="New Property - Street" type="text" placeholder="Street / Building" />
+                <div style="height:8px"></div>
+                <input id="newPropertyCity" name="New Property - City" type="text" placeholder="City / Town" />
+                <div style="height:8px"></div>
+                <input id="newPropertyPostcode" name="New Property - Postcode" type="text" placeholder="Postcode" />
+                <span class="lookup" data-prefix="newProperty">Lookup Postcode</span>
+              </div>
+
+              <div class="row">
+                <div class="col field">
+                  <label for="newPropertyValue">What Is The Value / Purchase Price £</label>
+                  <input id="newPropertyValue" name="New Property Value / Purchase Price (£)" type="text" />
+                </div>
+                <div class="col field">
+                  <label>Do You Know How Much Deposit You Are Adding To The Purchase</label>
+                  <div class="radio-row">
+                    <label class="choice-item"><input type="radio" name="New Property Deposit Known" value="Yes"> Yes</label>
+                    <label class="choice-item"><input type="radio" name="New Property Deposit Known" value="Unsure (Need Guidance)"> Unsure (Need Guidance)</label>
+                  </div>
+                </div>
+              </div>
+
+              <div id="newPropertyDepositBlock" class="hidden field">
+                <label for="newPropertyDeposit">Deposit Amount £</label>
+                <input id="newPropertyDeposit" name="New Property Deposit (£)" type="text" />
+              </div>
+            </div> <!-- foundPropertyBlock -->
+          </div> <!-- newPurchaseBlock -->
+
+          <div class="field">
+            <label>Is This Loan A Remortgage Or Refinance Secured Against An Existing Property You Own</label>
+            <div class="radio-row">
+              <label class="choice-item"><input type="radio" name="Remortgage Or Refinance" value="Yes"> Yes</label>
+              <label class="choice-item"><input type="radio" name="Remortgage Or Refinance" value="No"> No</label>
+            </div>
+          </div>
+
+          <div id="refinanceBlock" class="hidden">
+            <div class="field">
+              <label>Please Select Which Property The Loan Will Be Secured Against (Choose One Or ‘Other’)</label>
+              <div class="radio-row" style="flex-direction:column;align-items:flex-start">
+                <label class="choice-item"><input type="radio" name="Refinance Property Type" value="Remortgage / Refinance Against Residential Home Address (As Above)"> Remortgage / Refinance Against Residential Home Address (As Above)</label>
+                <label class="choice-item"><input type="radio" name="Refinance Property Type" value="Remortgage / Refinance Against A Buy To Let Property"> Remortgage / Refinance Against A Buy To Let Property</label>
+                <label class="choice-item"><input type="radio" name="Refinance Property Type" value="Remortgage / Refinance Against A Commercial Property"> Remortgage / Refinance Against A Commercial Property</label>
+                <label class="choice-item"><input type="radio" name="Refinance Property Type" value="Other" id="refinanceOther"> Other (Please Explain)</label>
+              </div>
+            </div>
+
+            <div id="refinanceOtherBlock" class="hidden field">
+              <label for="refinanceOtherText">If Other, Please Explain</label>
+              <textarea id="refinanceOtherText" name="Refinance - Other Details"></textarea>
+            </div>
+
+            <!-- Residential home (as above) branch -->
+            <div id="refinanceResidentialBlock" class="hidden">
+              <div class="field">
+                <label>Which Directors Residential Home Address Should We Use As The Loan Security (Select All That Apply)</label>
+                <div class="radio-row" style="flex-direction:column;align-items:flex-start">
+                  <label class="choice-item"><input type="checkbox" name="Security Home" value="Shareholder 1 As Above"> Shareholder 1 As Above</label>
+                  <label class="choice-item"><input type="checkbox" name="Security Home" value="Shareholder 2 As Above"> Shareholder 2 As Above</label>
+                  <label class="choice-item"><input type="checkbox" name="Security Home" value="Shareholder 3 As Above"> Shareholder 3 As Above</label>
+                </div>
+              </div>
+            </div>
+
+            <!-- BTL / Commercial branch -->
+            <div id="refinanceOtherPropertyBlock" class="hidden">
+              <div class="field">
+                <label>Property Address To Be Remortgaged / Refinanced</label>
+                <input name="Refinance Property - Street" type="text" placeholder="Street / Building" />
+                <div style="height:8px"></div>
+                <input id="refinanceCity" name="Refinance Property - City" type="text" placeholder="City / Town" />
+                <div style="height:8px"></div>
+                <input id="refinancePostcode" name="Refinance Property - Postcode" type="text" placeholder="Postcode" />
+                <span class="lookup" data-prefix="refinance">Lookup Postcode</span>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col field">
+                <label for="refinanceMortgageDebt">Does The Property Have Outstanding Mortgage</label>
+                <div class="radio-row">
+                  <label class="choice-item"><input type="radio" name="Refinance - Has Outstanding Mortgage" value="Yes"> Yes</label>
+                  <label class="choice-item"><input type="radio" name="Refinance - Has Outstanding Mortgage" value="No"> No</label>
+                </div>
+              </div>
+              <div class="col field">
+                <label for="refinanceValue">What Is The Current Value Of Your Property (If Unsure, Please Estimate) £</label>
+                <input id="refinanceValue" name="Refinance - Current Value (£)" type="text" />
+              </div>
+            </div>
+
+            <div id="refinanceHasMortgageBlock" class="hidden">
+              <div class="row">
+                <div class="col field">
+                  <label for="refinanceOutstanding">What Is The Outstanding Mortgage Amount Owed £ (If Unsure, Please Estimate)</label>
+                  <input id="refinanceOutstanding" name="Refinance - Outstanding Mortgage Amount (£)" type="text" />
+                </div>
+                <div class="col field">
+                  <label for="refinanceDealEnd">When Does Your Current Mortgage Deal / Fixed Term End (If Unsure, Please Estimate)</label>
+                  <input id="refinanceDealEnd" name="Refinance - Mortgage Deal Ends" type="text" placeholder="DD/MM/YYYY" />
+                  <label class="choice-item" style="margin-top:6px;"><input type="checkbox" id="refinanceNoFixed"> I Am Not In A Fixed Term</label>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col field">
+                  <label for="refinanceMortgageLender">Who Is Your Current Mortgage Lender</label>
+                  <input id="refinanceMortgageLender" name="Refinance - Mortgage Lender" type="text" />
+                </div>
+                <div class="col field">
+                  <label>How Much Equity Would You Like To Release (Total)</label>
+                  <div class="radio-row">
+                    <label class="choice-item"><input type="radio" name="Refinance - Release Amount Option" value="Maximum Possible"> Maximum Possible</label>
+                    <label class="choice-item"><input type="radio" name="Refinance - Release Amount Option" value="Unsure (Need Guidance)"> Unsure (Need Guidance)</label>
+                    <label class="choice-item"><input type="radio" name="Refinance - Release Amount Option" value="I Have An Amount In Mind"> I Have An Amount In Mind</label>
+                  </div>
+                </div>
+              </div>
+
+              <div id="refinanceReleaseBlock" class="hidden field">
+                <label for="refinanceReleaseAmount">What Amount Do You Have In Mind £</label>
+                <input id="refinanceReleaseAmount" name="Refinance - Amount In Mind (£)" type="text" />
+              </div>
+
+              <div class="field">
+                <label>Is There Any Additional Finance Secured Against Your Home (Not Mortgage)</label>
+                <div class="radio-row">
+                  <label class="choice-item"><input type="radio" name="Refinance - Other Secured Finance" value="Yes"> Yes</label>
+                  <label class="choice-item"><input type="radio" name="Refinance - Other Secured Finance" value="No"> No</label>
+                </div>
+              </div>
+
+              <div id="refinanceOtherFinanceBlock" class="hidden">
+                <div class="row">
+                  <div class="col field">
+                    <label for="refinanceFirstDebt">How Much Is The Outstanding Amount Owed £ (If Unsure, Please Estimate)</label>
+                    <input id="refinanceFirstDebt" name="Refinance - Additional Secured Amount Owed" type="text" />
+                  </div>
+                  <div class="col field">
+                    <label for="refinanceFirstRedeem">When Is This Finance Due To Be Redeemed / Paid Off (If Unsure, Please Estimate)</label>
+                    <input id="refinanceFirstRedeem" name="Refinance - Additional Secured Redeem Date" type="text" placeholder="DD/MM/YYYY" />
+                  </div>
+                </div>
+                <div class="field">
+                  <label for="refinanceFirstName">Who Is The Additional Secured Lender (Known As ‘Chargeholder’)</label>
+                  <input id="refinanceFirstName" name="Refinance - Additional Secured Lender" type="text" />
+                </div>
+
+                <div class="field">
+                  <label>Is There Any Further Finance In Addition To Above Secured Against The Property? (Not Mortgage Or Stated Above)</label>
+                  <div class="radio-row">
+                    <label class="choice-item"><input type="radio" name="Refinance - Further Secured Finance" value="Yes"> Yes</label>
+                    <label class="choice-item"><input type="radio" name="Refinance - Further Secured Finance" value="No"> No</label>
+                  </div>
+                </div>
+
+                <div id="refinanceSecondChargeBlock" class="hidden">
+                  <div class="row">
+                    <div class="col field">
+                      <label for="refinance2ndDebt">How Much Is The Outstanding Amount Owed £ (If Unsure, Please Estimate)</label>
+                      <input id="refinance2ndDebt" name="Refinance - Further Secured Amount Owed" type="text" />
+                    </div>
+                    <div class="col field">
+                      <label for="refinance2ndRedeem">When Is The Finance Due To Be Redeemed / Paid Off (If Unsure, Please Estimate)</label>
+                      <input id="refinance2ndRedeem" name="Refinance - Further Secured Redeem Date" type="text" placeholder="DD/MM/YYYY" />
+                    </div>
+                  </div>
+                  <div class="field">
+                    <label for="refinance2ndName">Who Is The Further Secured Lender (Known As ‘Chargeholder’)</label>
+                    <input id="refinance2ndName" name="Refinance - Further Secured Lender" type="text" />
+                  </div>
+                </div>
+              </div>
+            </div> <!-- refinanceHasMortgageBlock -->
+          </div> <!-- refinanceBlock -->
+        </div> <!-- propertyRelatedBlock -->
+
+        <!-- Narrative boxes (unchanged from your existing style) -->
+        <div class="field">
           <label for="loanPurpose">Loan Purpose</label>
-          <textarea id="loanPurpose" name="Loan Purpose"></textarea>
+          <textarea id="loanPurpose" name="Loan Purpose" placeholder="Please provide as much detail as possible. Most lenders require a strong narrative to consider your case."></textarea>
         </div>
 
         <div class="field">
           <label for="businessActivity">Business Activity</label>
-          <textarea id="businessActivity" name="Business Activity"></textarea>
+          <textarea id="businessActivity" name="Business Activity" placeholder="Please explain what your main source of income is. Most lenders require a strong narrative to consider your case. How do you make money? Who are your main customers? Who do you sell to? How do you get paid? What payment terms do you offer etc?"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="otherHelpfulInfo">Please Provide Any Other Information That Will Assist Your Application</label>
+          <textarea id="otherHelpfulInfo" name="Other Helpful Information" placeholder="You can use this space to add details of any tenancy or lease agreements if you are purchasing or refinancing a property e.g. Monthly rental amount, term of tenancy/lease etc."></textarea>
         </div>
 
         <!-- DISCLOSURE / IMPORTANT TEXT -->
@@ -692,5 +1215,218 @@
     </div>
 
   </div>
+
+  <script>
+    // ===== Helpers (match Engagement Form behaviour) =====
+    function toggleOnRadio(name, blockId, showValues){
+      document.querySelectorAll('input[name="'+name+'"]').forEach(el=>{
+        el.addEventListener('change', e=>{
+          const block = document.getElementById(blockId);
+          if(!block) return;
+          const val = e.target.value;
+          const shouldShow = showValues ? showValues.includes(val) : (val === 'Yes');
+          block.classList.toggle('hidden', !shouldShow);
+        });
+      });
+    }
+    function bindCheckboxReveal(checkboxId, blockId){
+      const cb = document.getElementById(checkboxId);
+      const blk = document.getElementById(blockId);
+      if(!cb || !blk) return;
+      const update = ()=> blk.classList.toggle('hidden', !cb.checked);
+      cb.addEventListener('change', update);
+      update();
+    }
+
+    // ===== Section 1 behaviours =====
+    // Incorporation date -> trading date
+    (function(){
+      const same = document.getElementById('sameAsIncorp');
+      const incorp = document.getElementById('incorpDate');
+      const trading = document.getElementById('tradingStart');
+      if(!same || !incorp || !trading) return;
+      function apply(){
+        if(same.checked && incorp.value){ trading.value = incorp.value; }
+      }
+      same.addEventListener('change', apply);
+      incorp.addEventListener('change', apply);
+    })();
+
+    // Same as Registered Address toggle
+    (function(){
+      const same = document.getElementById('sameAsRegistered');
+      const tStreet = document.getElementById('tradingAddress');
+      const tCity = document.getElementById('tradingCity');
+      const tPost = document.getElementById('tradingPostcode');
+      const rStreet = document.getElementById('registeredAddress');
+      const rCity = document.getElementById('registeredCity');
+      const rPost = document.getElementById('registeredPostcode');
+      const block = document.getElementById('tradingAddressBlock');
+      function apply(){
+        const checked = same.checked;
+        block.classList.toggle('hidden', checked);
+        if(checked){
+          tStreet.value = rStreet.value || '';
+          tCity.value = rCity.value || '';
+          tPost.value = rPost.value || '';
+        }
+      }
+      if(same){
+        same.addEventListener('change', apply);
+        [rStreet,rCity,rPost].forEach(inp=> inp && inp.addEventListener('input', ()=> same.checked && apply()));
+        apply();
+      }
+    })();
+
+    // Phone must contain '0'; email must have '@'; website must start with www.
+    document.getElementById('clientProposalForm').addEventListener('submit', function(e){
+      const phoneOk = /0/.test(document.getElementById('mainContactPhone').value || '');
+      const emailOk = /@/.test(document.getElementById('mainWorkEmail').value || '');
+      const website = document.getElementById('companyWebsite').value || '';
+      const websiteOk = website === '' || /^www\\./i.test(website);
+      if(!phoneOk || !emailOk || !websiteOk){
+        e.preventDefault();
+        alert(
+          (!phoneOk ? "Main contact phone must contain a '0'.\\n" : "") +
+          (!emailOk ? "Main contact work email must contain '@'.\\n" : "") +
+          (!websiteOk ? "Business website must start with 'www.' if provided." : "")
+        );
+      }
+    });
+
+    // Turnover/Profit options
+    (function(){
+      const startup = document.getElementById('startupChk');
+      const under12 = document.getElementById('under12Chk');
+      const over12 = document.getElementById('over12Chk');
+      const startupNext = document.getElementById('startupNextSection');
+      const under12Block = document.getElementById('under12Block');
+      const over12Block = document.getElementById('over12Block');
+      function update(){
+        startupNext.classList.toggle('hidden', !(startup && startup.checked));
+        under12Block.classList.toggle('hidden', !(under12 && under12.checked));
+        over12Block.classList.toggle('hidden', !(over12 && over12.checked));
+      }
+      [startup,under12,over12].forEach(el=> el && el.addEventListener('change', update));
+      update();
+    })();
+
+    // Overdraft details
+    toggleOnRadio('Active Overdraft','overdraftBlock',['Yes']);
+
+    // Previous address reveals
+    bindCheckboxReveal('dir1PrevToggle','dir1PrevBlock');
+    bindCheckboxReveal('dir2PrevToggle','dir2PrevBlock');
+    bindCheckboxReveal('dir3PrevToggle','dir3PrevBlock');
+
+    // Homeowner branches
+    toggleOnRadio('Director 1 - Homeowner','dir1HomeownerBlock',['Yes']);
+    toggleOnRadio('Director 1 - Has Mortgage','dir1MortgageBlock',['Yes']);
+    toggleOnRadio('Director 1 - Other Secured Finance','dir1OtherFinanceBlock',['Yes']);
+    toggleOnRadio('Director 1 - Further Secured Finance','dir1SecondChargeBlock',['Yes']);
+
+    toggleOnRadio('Add Director 2','director2Block',['Yes']);
+    toggleOnRadio('Director 2 - Homeowner','dir2HomeownerBlock',['Yes']);
+    toggleOnRadio('Director 2 - Has Mortgage','dir2MortgageBlock',['Yes']);
+    toggleOnRadio('Director 2 - Other Secured Finance','dir2OtherFinanceBlock',['Yes']);
+    toggleOnRadio('Director 2 - Further Secured Finance','dir2SecondChargeBlock',['Yes']);
+
+    toggleOnRadio('Add Director 3','director3Block',['Yes']);
+    toggleOnRadio('Director 3 - Homeowner','dir3HomeownerBlock',['Yes']);
+    toggleOnRadio('Director 3 - Has Mortgage','dir3MortgageBlock',['Yes']);
+    toggleOnRadio('Director 3 - Other Secured Finance','dir3OtherFinanceBlock',['Yes']);
+    toggleOnRadio('Director 3 - Further Secured Finance','dir3SecondChargeBlock',['Yes']);
+
+    // Loan Required logic
+    bindCheckboxReveal('loanTermOtherChk','loanTermOtherBlock');
+    toggleOnRadio('Loan Related To Property','propertyRelatedBlock',['Yes']);
+    toggleOnRadio('Brand New Property Purchase','newPurchaseBlock',['Yes']);
+
+    (function(){ // Show Other text for "New Purchase Type"
+      const radios = document.querySelectorAll('input[name="New Purchase Type"]');
+      const otherBlock = document.getElementById('newPurchaseOtherBlock');
+      function update(){
+        let val = '';
+        radios.forEach(r=> r.checked && (val=r.value));
+        otherBlock.classList.toggle('hidden', val !== 'Other');
+      }
+      radios.forEach(r=> r.addEventListener('change', update));
+      update();
+    })();
+
+    toggleOnRadio('Found Property','foundPropertyBlock',['Yes']);
+    toggleOnRadio('Know New Property Address','newPropertyAddressBlock',['Yes']);
+    toggleOnRadio('New Property Deposit Known','newPropertyDepositBlock',['Yes']);
+
+    toggleOnRadio('Remortgage Or Refinance','refinanceBlock',['Yes']);
+
+    (function(){ // Refinance property type routing
+      const radios = document.querySelectorAll('input[name="Refinance Property Type"]');
+      const res = document.getElementById('refinanceResidentialBlock');
+      const otherProp = document.getElementById('refinanceOtherPropertyBlock');
+      const otherBlk = document.getElementById('refinanceOtherBlock');
+      function update(){
+        let val=''; radios.forEach(r=> r.checked && (val=r.value));
+        res.classList.toggle('hidden', val !== 'Remortgage / Refinance Against Residential Home Address (As Above)');
+        otherProp.classList.toggle('hidden', !(val === 'Remortgage / Refinance Against A Buy To Let Property' || val === 'Remortgage / Refinance Against A Commercial Property'));
+        otherBlk.classList.toggle('hidden', val !== 'Other');
+      }
+      radios.forEach(r=> r.addEventListener('change', update));
+      update();
+    })();
+
+    toggleOnRadio('Refinance - Has Outstanding Mortgage','refinanceHasMortgageBlock',['Yes']);
+    (function(){ // Release amount text
+      const name = 'Refinance - Release Amount Option';
+      const radios = document.querySelectorAll('input[name="'+name+'"]');
+      const block = document.getElementById('refinanceReleaseBlock');
+      function update(){
+        let val=''; radios.forEach(r=> r.checked && (val=r.value));
+        block.classList.toggle('hidden', val !== 'I Have An Amount In Mind');
+      }
+      radios.forEach(r=> r.addEventListener('change', update));
+      update();
+    })();
+
+    toggleOnRadio('Refinance - Other Secured Finance','refinanceOtherFinanceBlock',['Yes']);
+    toggleOnRadio('Refinance - Further Secured Finance','refinanceSecondChargeBlock',['Yes']);
+
+    // ===== UK Postcode Lookup via postcodes.io =====
+    async function lookupPostcodeFor(prefix){
+      try {
+        const postInput = document.getElementById(prefix + 'Postcode') || document.querySelector('[name="'+prefix+' - Postcode"]');
+        const cityInput = document.getElementById(prefix + 'City') || document.querySelector('[name="'+prefix+' - City"]') || document.querySelector('[name="'+prefix+' - City/Town"]');
+        if(!postInput){ alert('Postcode field not found.'); return; }
+        const raw = (postInput.value || '').trim().toUpperCase();
+        if(!raw){ alert('Please enter a postcode into the postcode field first.'); postInput.focus(); return; }
+        const pc = raw.replace(/\s+/g,''); // strip spaces for API
+        const res = await fetch('https://api.postcodes.io/postcodes/' + pc);
+        const data = await res.json();
+        if(data.status !== 200 || !data.result){
+          alert('Postcode not found. Please check and try again.');
+          return;
+        }
+        const r = data.result;
+        // Normalise / populate
+        postInput.value = (r.postcode || raw).toUpperCase();
+        if(cityInput){
+          cityInput.value = (r.post_town || r.admin_district || r.region || cityInput.value || '');
+        }
+        // Leave street/building for manual entry (postcodes.io does not provide line-level address)
+        alert('Postcode validated. Town/City populated where available.');
+      } catch(err){
+        console.error(err);
+        alert('Lookup failed. Please check your connection and try again.');
+      }
+    }
+
+    // Bind all lookup links
+    document.querySelectorAll('.lookup').forEach(el=>{
+      el.addEventListener('click', ()=>{
+        const prefix = el.getAttribute('data-prefix');
+        if(prefix) lookupPostcodeFor(prefix);
+      });
+    });
+  </script>
 </body>
 </html>
