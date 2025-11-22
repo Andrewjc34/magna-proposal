@@ -1117,9 +1117,9 @@ function toggleOnRadio(name, blockId, showValues){
 
   setup();
 })();
-      }
-    });  // This closes your document.getElementById('magnaForm').addEventListener
-  </script>  <!-- This closes your main script tag -->
+      document.body.addEventListener('click', ()=> window.location.href = HUBSPOT_MEETINGS);
+    })();
+  </script>
 
   <!-- Start of HubSpot Embed Code -->
   <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/8402236.js"></script>
