@@ -111,12 +111,8 @@
   </div>
 
   <div class="form-panel">
-    <!-- NOTE: action has been removed (previously pointed to usebasin). The form will now rely on the HubSpot script to capture submissions.
-         The page will also redirect the user to the repository's hosted thank-you page after submission (client-side).
-    -->
-    <form id="clientProposalForm" method="POST" novalidate>
-
-      <!-- removed external redirect and usebasin action (per request) -->
+    <!-- NOTE: changed to method="GET" and action to the thank-you page to avoid POST 405 on static hosting -->
+    <form id="clientProposalForm" method="GET" action="https://magna-proposal.vercel.app/thank-you.html" novalidate>
 
       <!-- ========================= -->
       <!-- 1. BUSINESS INFORMATION -->
@@ -736,29 +732,11 @@
 <!-- JAVASCRIPT: FORM LOGIC -->
 <!-- ========================= -->
 <script>
-/* Utility: serialize form to plain object */
-function formToObject(form){
-  const fd = new FormData(form);
-  const obj = {};
-  for(const [k,v] of fd.entries()){
-    // handle multiple fields with same name (checkbox groups)
-    if(obj.hasOwnProperty(k)){
-      if(!Array.isArray(obj[k])) obj[k] = [obj[k]];
-      obj[k].push(v);
-    } else {
-      obj[k] = v;
-    }
-  }
-  return obj;
-}
-
 /* Keep original validation logic intact (phone / email / website) */
 (function(){
   const form = document.getElementById('clientProposalForm');
   if(!form) return;
-
   form.addEventListener('submit', function(e){
-    // basic checks: phone, email, website format
     const phoneOk = /0/.test((document.getElementById('mainContactPhone') || {}).value || '');
     const emailOk = /@/.test((document.getElementById('mainWorkEmail') || {}).value || '');
     const websiteEl = document.getElementById('companyWebsite');
@@ -771,9 +749,8 @@ function formToObject(form){
         (!emailOk ? "Work email address must contain '@'.\n" : "") +
         (!websiteOk ? "Business website must start with 'www.' if provided." : "")
       );
-      return;
     }
-    // If validation passes, allow further submit handling below (do not return here)
+    // For Option 2 we allow the browser to continue with the GET navigation to thank-you.html
   });
 })();
 
@@ -1066,83 +1043,7 @@ function formToObject(form){
 })();
 </script>
 
-<script>
-/*
-  Submission handler and client-side redirect/backstop logic.
-
-  What this does:
-  - Keeps a local backup (localStorage) of the submitted form (useful if a remote submission fails).
-  - Inserts the HubSpot loader script (as requested).
-  - Adds a small client-side "redirect backstop" mechanism that attempts to navigate the user to the
-    public thank-you page after submission (with repeated attempts if navigation doesn't take effect
-    immediately). This is strictly client-side — HubSpot script (loaded below) is expected to capture
-    the submission server-side as per your existing HubSpot configuration for #clientProposalForm.
-*/
-(function(){
-  const THANK_YOU = 'https://magna-proposal.vercel.app/thank-you.html';
-  const form = document.getElementById('clientProposalForm');
-  if(!form) return;
-
-  // Insert HubSpot script (per your request)
-  (function insertHubspot(){
-    const id = 'hs-script-loader';
-    if(document.getElementById(id)) return;
-    const s = document.createElement('script');
-    s.type = 'text/javascript';
-    s.id = id;
-    s.async = true;
-    s.defer = true;
-    s.src = '//js.hs-scripts.com/8402236.js';
-    document.head.appendChild(s);
-  })();
-
-  // On submit: save a local backup and then start redirect attempts (client-visible)
-  form.addEventListener('submit', function(evt){
-    try {
-      const obj = formToObject(form);
-      // Save a timestamped backup (keep last submission only to avoid storing too much)
-      localStorage.setItem('magnaProposal_lastSubmission', JSON.stringify({
-        ts: new Date().toISOString(),
-        data: obj
-      }));
-    } catch(err){
-      // ignore backup failures
-      console.warn('Could not save local backup of form', err);
-    }
-
-    // Provide user immediate UI feedback (disable submit to avoid double-click)
-    const submitBtn = form.querySelector('button[type="submit"]');
-    if(submitBtn){
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Submitting…';
-    }
-
-    // Redirect/backstop logic:
-    // We attempt to navigate the client to the thank-you page after a short delay
-    // (giving HubSpot script a small window to intercept & send the submission).
-    // If the first navigation does not stick, we attempt again a few times at increasing intervals.
-    const attemptTimes = [800, 1600, 3000, 6000]; // ms after submit
-    attemptTimes.forEach((delay, idx) => {
-      setTimeout(() => {
-        try {
-          // Final guard: if already at thank-you or document is unloading, skip
-          if(window.location.href === THANK_YOU) return;
-          window.location.assign(THANK_YOU);
-        } catch(e){
-          // ignore navigation errors
-        }
-      }, delay);
-    });
-
-    // We DON'T call evt.preventDefault() here because HubSpot's inline script usually listens
-    // for native submit events to intercept and send the form to HubSpot. If you later want
-    // us to forcibly prevent native submission and implement a programmatic HubSpot API call
-    // (reliable server-side), provide the HubSpot form GUID and portal ID and we can wire that up.
-  });
-})();
-</script>
-
-<!-- HubSpot loader (also included above programmatically) -->
+<!-- HubSpot loader (kept once) -->
 <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/8402236.js"></script>
 
 </body>
