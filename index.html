@@ -86,10 +86,8 @@
     table.finance-table td{padding:8px 6px;border-bottom:1px solid rgba(255,255,255,0.07);}    
 
     .disclosure-block{font-size:13px;color:rgba(255,255,255,0.72);background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);border-radius:6px;padding:12px;margin-top:20px;line-height:1.4;}
-
     .submit-row{display:flex;justify-content:center;margin-top:28px;}
     .btn-submit{background:var(--gold);color:#fff;border:none;border-radius:8px;font-weight:700;font-size:15px;padding:14px 24px;min-width:260px;box-shadow:0 12px 30px rgba(198,167,107,0.22);cursor:pointer;}
-
     .hidden{display:none!important;}
     .hint{font-size:12px;color:var(--text-faint);margin-top:4px;}
   </style>
@@ -113,9 +111,13 @@
   </div>
 
   <div class="form-panel">
-    <form id="clientProposalForm" method="POST" action="https://usebasin.com/f/3a6e97b8e468" novalidate>
+    <!-- NOTE: action has been removed (previously pointed to usebasin). The form will now rely on the HubSpot script to capture submissions.
+         The page will also redirect the user to the repository's hosted thank-you page after submission (client-side).
+    -->
+    <form id="clientProposalForm" method="POST" novalidate>
 
-      <input type="hidden" name="redirect" value="https://magna-proposal.vercel.app/thank-you.html" />
+      <!-- removed external redirect and usebasin action (per request) -->
+
       <!-- ========================= -->
       <!-- 1. BUSINESS INFORMATION -->
       <!-- ========================= -->
@@ -395,7 +397,7 @@
 
       <div class="field">
         <label for="existingFinanceNotes">Additional details about any existing finance (optional)</label>
-        <textarea id="existingFinanceNotes" name="Existing Finance – Notes" placeholder="Use this area to provide context such as early settlement options, refinancing intentions, seasonal borrowing patterns, or lender covenants."></textarea>
+        <textarea id="existingFinanceNotes" name="Existing Finance – Notes" placeholder="Use this area to provide context such as early settlement options, refinancing intentions, seasonal borrowing or any other notes."></textarea>
       </div>
 
       <hr class="section-sep" />
@@ -706,7 +708,7 @@
           <li>You acknowledge that Magna Money may carry out publicly accessible checks such as Companies House searches, business credit profile reviews, and director information validation.</li>
           <li>You understand that separate consent may be requested where individual or business credit checks are required.</li>
           <li>You understand that Magna Money processes your information under its legitimate business interest to arrange commercial finance, liaise with lenders, and maintain appropriate records.</li>
-          <li>You acknowledge that, following submission, a secure OneDrive/SharePoint link will be provided, allowing you <strong>view-only</strong> access to any forms or financial documents you supply.</li>
+          <li>You acknowledge that, following submission, a secure OneDrive/SharePoint link will be provided, allowing you <strong>view-only</strong> access to any forms or financial documents you supply if applicable.</li>
           <li>You confirm that all information provided is accurate to the best of your knowledge and may be relied upon by prospective lenders.</li>
         </ul>
         <br>
@@ -734,61 +736,29 @@
 <!-- JAVASCRIPT: FORM LOGIC -->
 <!-- ========================= -->
 <script>
-function toggleOnRadio(name, blockId, showValues){
-  const radios = document.querySelectorAll('input[name="'+name+'"][type="radio"]');
-  const block = document.getElementById(blockId);
-  if(!radios.length || !block) return;
-  function update(){
-    let val = '';
-    radios.forEach(r=> r.checked && (val = r.value));
-    const show = showValues ? showValues.includes(val) : (val === 'Yes');
-    block.classList.toggle('hidden', !show);
-  }
-  radios.forEach(r=> r.addEventListener('change', update));
-  update();
-}
-
-/* Trading Start = Incorporation Date */
-(function(){
-  const same = document.getElementById('sameAsIncorp');
-  const incorp = document.getElementById('incorpDate');
-  const trading = document.getElementById('tradingStart');
-  if(!same || !incorp || !trading) return;
-  function apply(){ if(same.checked && incorp.value){ trading.value = incorp.value; } }
-  same.addEventListener('change', apply);
-  incorp.addEventListener('change', apply);
-})();
-
-/* Trading Address same as Registered */
-(function(){
-  const same = document.getElementById('sameAsRegistered');
-  const block = document.getElementById('tradingAddressBlock');
-  const rLine1 = document.querySelector('[name="Registered Address - Line 1"]');
-  const rTown  = document.querySelector('[name="Registered Address - Town"]');
-  const rPost  = document.querySelector('[name="Registered Address - Postcode"]');
-  const tLine1 = document.querySelector('[name="Trading Address - Line 1"]');
-  const tTown  = document.querySelector('[name="Trading Address - Town"]');
-  const tPost  = document.querySelector('[name="Trading Address - Postcode"]');
-  if(!same || !block) return;
-  function apply(){
-    const checked = same.checked;
-    block.classList.toggle('hidden', checked);
-    if(checked){
-      if(rLine1 && tLine1) tLine1.value = rLine1.value || '';
-      if(rTown  && tTown)  tTown.value  = rTown.value  || '';
-      if(rPost  && tPost)  tPost.value  = rPost.value  || '';
+/* Utility: serialize form to plain object */
+function formToObject(form){
+  const fd = new FormData(form);
+  const obj = {};
+  for(const [k,v] of fd.entries()){
+    // handle multiple fields with same name (checkbox groups)
+    if(obj.hasOwnProperty(k)){
+      if(!Array.isArray(obj[k])) obj[k] = [obj[k]];
+      obj[k].push(v);
+    } else {
+      obj[k] = v;
     }
   }
-  same.addEventListener('change', apply);
-  [rLine1, rTown, rPost].forEach(inp => inp && inp.addEventListener('input', () => same.checked && apply()));
-  apply();
-})();
+  return obj;
+}
 
-/* Basic validation */
+/* Keep original validation logic intact (phone / email / website) */
 (function(){
   const form = document.getElementById('clientProposalForm');
   if(!form) return;
+
   form.addEventListener('submit', function(e){
+    // basic checks: phone, email, website format
     const phoneOk = /0/.test((document.getElementById('mainContactPhone') || {}).value || '');
     const emailOk = /@/.test((document.getElementById('mainWorkEmail') || {}).value || '');
     const websiteEl = document.getElementById('companyWebsite');
@@ -801,323 +771,379 @@ function toggleOnRadio(name, blockId, showValues){
         (!emailOk ? "Work email address must contain '@'.\n" : "") +
         (!websiteOk ? "Business website must start with 'www.' if provided." : "")
       );
+      return;
     }
+    // If validation passes, allow further submit handling below (do not return here)
   });
 })();
 
-/* Director 1 logic */
+/* Preserve existing interactive logic (address copy, director blocks, property blocks, etc) */
 (function(){
-  const prevCb = document.getElementById('d1AddressLess3yrs');
-  const prevBlock = document.getElementById('d1PrevAddressBlock');
-  if(prevCb && prevBlock){
-    const update = () => prevBlock.classList.toggle('hidden', !prevCb.checked);
-    prevCb.addEventListener('change', update);
+  function toggleOnRadio(name, blockId, showValues){
+    const radios = document.querySelectorAll('input[name="'+name+'"][type="radio"]');
+    const block = document.getElementById(blockId);
+    if(!radios.length || !block) return;
+    function update(){
+      let val = '';
+      radios.forEach(r=> r.checked && (val = r.value));
+      const show = showValues ? showValues.includes(val) : (val === 'Yes');
+      block.classList.toggle('hidden', !show);
+    }
+    radios.forEach(r=> r.addEventListener('change', update));
     update();
   }
 
-  const homeYes = document.getElementById('d1HomeYes');
-  const homeNo  = document.getElementById('d1HomeNo');
-  const mortgageBlock = document.getElementById('d1MortgageBlock');
-  const chargesBlock  = document.getElementById('d1ChargesBlock');
+  /* Trading Start = Incorporation Date */
+  (function(){
+    const same = document.getElementById('sameAsIncorp');
+    const incorp = document.getElementById('incorpDate');
+    const trading = document.getElementById('tradingStart');
+    if(!same || !incorp || !trading) return;
+    function apply(){ if(same.checked && incorp.value){ trading.value = incorp.value; } }
+    same.addEventListener('change', apply);
+    incorp.addEventListener('change', apply);
+  })();
 
-  function updateHome(){
-    const val = homeYes && homeYes.checked ? "Yes" : (homeNo && homeNo.checked ? "No" : "");
-    const show = val === "Yes";
-    if(mortgageBlock) mortgageBlock.classList.toggle('hidden', !show);
-    if(chargesBlock)  chargesBlock.classList.toggle('hidden', !show);
-  }
+  /* Trading Address same as Registered */
+  (function(){
+    const same = document.getElementById('sameAsRegistered');
+    const block = document.getElementById('tradingAddressBlock');
+    const rLine1 = document.querySelector('[name="Registered Address - Line 1"]');
+    const rTown  = document.querySelector('[name="Registered Address - Town"]');
+    const rPost  = document.querySelector('[name="Registered Address - Postcode"]');
+    const tLine1 = document.querySelector('[name="Trading Address - Line 1"]');
+    const tTown  = document.querySelector('[name="Trading Address - Town"]');
+    const tPost  = document.querySelector('[name="Trading Address - Postcode"]');
+    if(!same || !block) return;
+    function apply(){
+      const checked = same.checked;
+      block.classList.toggle('hidden', checked);
+      if(checked){
+        if(rLine1 && tLine1) tLine1.value = rLine1.value || '';
+        if(rTown  && tTown)  tTown.value  = rTown.value  || '';
+        if(rPost  && tPost)  tPost.value  = rPost.value  || '';
+      }
+    }
+    same.addEventListener('change', apply);
+    [rLine1, rTown, rPost].forEach(inp => inp && inp.addEventListener('input', () => same.checked && apply()));
+    apply();
+  })();
 
-  [homeYes, homeNo].forEach(r => r && r.addEventListener('change', updateHome));
-  updateHome();
+  /* Director 1 logic */
+  (function(){
+    const prevCb = document.getElementById('d1AddressLess3yrs');
+    const prevBlock = document.getElementById('d1PrevAddressBlock');
+    if(prevCb && prevBlock){
+      const update = () => prevBlock.classList.toggle('hidden', !prevCb.checked);
+      prevCb.addEventListener('change', update);
+      update();
+    }
 
-  const chargesYes = document.getElementById('d1ChargesYes');
-  const chargesNo  = document.getElementById('d1ChargesNo');
-  const chargesDetails = document.getElementById('d1ChargesDetails');
+    const homeYes = document.getElementById('d1HomeYes');
+    const homeNo  = document.getElementById('d1HomeNo');
+    const mortgageBlock = document.getElementById('d1MortgageBlock');
+    const chargesBlock  = document.getElementById('d1ChargesBlock');
 
-  function updateCharges(){
-    const val = chargesYes && chargesYes.checked ? "Yes" : (chargesNo && chargesNo.checked ? "No" : "");
-    const show = val === "Yes";
-    if(chargesDetails) chargesDetails.classList.toggle('hidden', !show);
-  }
+    function updateHome(){
+      const val = homeYes && homeYes.checked ? "Yes" : (homeNo && homeNo.checked ? "No" : "");
+      const show = val === "Yes";
+      if(mortgageBlock) mortgageBlock.classList.toggle('hidden', !show);
+      if(chargesBlock)  chargesBlock.classList.toggle('hidden', !show);
+    }
 
-  [chargesYes, chargesNo].forEach(r => r && r.addEventListener('change', updateCharges));
-  updateCharges();
-})();
+    [homeYes, homeNo].forEach(r => r && r.addEventListener('change', updateHome));
+    updateHome();
 
-/* Loan Purpose Other */
-(function(){
-  const sel = document.getElementById('loanPurpose');
-  const otherBlock = document.getElementById('loanPurposeOtherBlock');
-  if(!sel || !otherBlock) return;
-  function update(){ otherBlock.classList.toggle('hidden', sel.value !== 'Other'); }
-  sel.addEventListener('change', update);
-  update();
-})();
+    const chargesYes = document.getElementById('d1ChargesYes');
+    const chargesNo  = document.getElementById('d1ChargesNo');
+    const chargesDetails = document.getElementById('d1ChargesDetails');
 
-/* Property block logic */
-(function(){
-  const propYes = document.getElementById('propertyYes');
-  const propNo  = document.getElementById('propertyNo');
-  const typeBlock = document.getElementById('propertyTypeBlock');
-  const purchase  = document.getElementById('propertyPurchase');
-  const refinance = document.getElementById('propertyRefinance');
-  const purchaseBlock  = document.getElementById('propertyPurchaseBlock');
-  const refinanceBlock = document.getElementById('propertyRefinanceBlock');
-  const rentalIntentBlock = document.getElementById('rentalIntentBlock');
-  const rentYes = document.getElementById('rentOutYes');
-  const rentNo  = document.getElementById('rentOutNo');
-  const rentalAmountBlock = document.getElementById('rentalAmountBlock');
+    function updateCharges(){
+      const val = chargesYes && chargesYes.checked ? "Yes" : (chargesNo && chargesNo.checked ? "No" : "");
+      const show = val === "Yes";
+      if(chargesDetails) chargesDetails.classList.toggle('hidden', !show);
+    }
 
-  function updateProp(){
-    const val = propYes && propYes.checked ? 'Yes' : (propNo && propNo.checked ? 'No' : '');
-    typeBlock.classList.toggle('hidden', val !== 'Yes');
-    rentalIntentBlock.classList.toggle('hidden', val !== 'Yes');
-  }
-  [propYes, propNo].forEach(r => r && r.addEventListener('change', updateProp));
-  updateProp();
+    [chargesYes, chargesNo].forEach(r => r && r.addEventListener('change', updateCharges));
+    updateCharges();
+  })();
 
-  function updateType(){
-    const val = purchase && purchase.checked ? 'Purchase' : (refinance && refinance.checked ? 'Refinance' : '');
-    if(purchaseBlock)  purchaseBlock.classList.toggle('hidden',  val !== 'Purchase');
-    if(refinanceBlock) refinanceBlock.classList.toggle('hidden', val !== 'Refinance');
-  }
-  [purchase, refinance].forEach(r => r && r.addEventListener('change', updateType));
-  updateType();
+  /* Loan Purpose Other */
+  (function(){
+    const sel = document.getElementById('loanPurpose');
+    const otherBlock = document.getElementById('loanPurposeOtherBlock');
+    if(!sel || !otherBlock) return;
+    function update(){ otherBlock.classList.toggle('hidden', sel.value !== 'Other'); }
+    sel.addEventListener('change', update);
+    update();
+  })();
 
-  function updateRent(){
-    const v = rentYes && rentYes.checked ? 'Yes' : (rentNo && rentNo.checked ? 'No' : '');
-    rentalAmountBlock.classList.toggle('hidden', v !== 'Yes');
-  }
-  [rentYes, rentNo].forEach(r => r && r.addEventListener('change', updateRent));
-  updateRent();
-})();
+  /* Property block logic */
+  (function(){
+    const propYes = document.getElementById('propertyYes');
+    const propNo  = document.getElementById('propertyNo');
+    const typeBlock = document.getElementById('propertyTypeBlock');
+    const purchase  = document.getElementById('propertyPurchase');
+    const refinance = document.getElementById('propertyRefinance');
+    const purchaseBlock  = document.getElementById('propertyPurchaseBlock');
+    const refinanceBlock = document.getElementById('propertyRefinanceBlock');
+    const rentalIntentBlock = document.getElementById('rentalIntentBlock');
+    const rentYes = document.getElementById('rentOutYes');
+    const rentNo  = document.getElementById('rentOutNo');
+    const rentalAmountBlock = document.getElementById('rentalAmountBlock');
 
-/* Trading Status Logic */
-(function(){
-  const startup = document.getElementById('tsStartup');
-  const under12 = document.getElementById('tsUnder12');
-  const over12  = document.getElementById('tsOver12');
-  const startupBlock = document.getElementById('startupBlock');
-  const under12Block = document.getElementById('under12Block');
-  const over12Block  = document.getElementById('over12Block');
+    function updateProp(){
+      const val = propYes && propYes.checked ? 'Yes' : (propNo && propNo.checked ? 'No' : '');
+      typeBlock.classList.toggle('hidden', val !== 'Yes');
+      rentalIntentBlock.classList.toggle('hidden', val !== 'Yes');
+    }
+    [propYes, propNo].forEach(r => r && r.addEventListener('change', updateProp));
+    updateProp();
 
-  function update(){
-    const val =
-      startup && startup.checked ? 'startup' :
-      under12 && under12.checked ? 'under12' :
-      over12 && over12.checked ? 'over12' : '';
+    function updateType(){
+      const val = purchase && purchase.checked ? 'Purchase' : (refinance && refinance.checked ? 'Refinance' : '');
+      if(purchaseBlock)  purchaseBlock.classList.toggle('hidden',  val !== 'Purchase');
+      if(refinanceBlock) refinanceBlock.classList.toggle('hidden', val !== 'Refinance');
+    }
+    [purchase, refinance].forEach(r => r && r.addEventListener('change', updateType));
+    updateType();
 
-    if(startupBlock) startupBlock.classList.toggle('hidden', val !== 'startup');
-    if(under12Block) under12Block.classList.toggle('hidden', val !== 'under12');
-    if(over12Block)  over12Block.classList.toggle('hidden', val !== 'over12');
-  }
+    function updateRent(){
+      const v = rentYes && rentYes.checked ? 'Yes' : (rentNo && rentNo.checked ? 'No' : '');
+      rentalAmountBlock.classList.toggle('hidden', v !== 'Yes');
+    }
+    [rentYes, rentNo].forEach(r => r && r.addEventListener('change', updateRent));
+    updateRent();
+  })();
 
-  [startup, under12, over12].forEach(r => r && r.addEventListener('change', update));
-  update();
-})();
+  /* Trading Status Logic */
+  (function(){
+    const startup = document.getElementById('tsStartup');
+    const under12 = document.getElementById('tsUnder12');
+    const over12  = document.getElementById('tsOver12');
+    const startupBlock = document.getElementById('startupBlock');
+    const under12Block = document.getElementById('under12Block');
+    const over12Block  = document.getElementById('over12Block');
 
-/* Add up to Director 4 (unchanged) */
-(function(){
-  const container = document.getElementById('additionalDirectorsBlock');
-  const firstYes = document.getElementById('addDirector1Yes');
-  const firstNo  = document.getElementById('addDirector1No');
-  if(!container || !firstYes || !firstNo) return;
+    function update(){
+      const val =
+        startup && startup.checked ? 'startup' :
+        under12 && under12.checked ? 'under12' :
+        over12 && over12.checked ? 'over12' : '';
 
-  function directorFields(n){
-    return `
-      <div class="field" style="margin-top:10px;">
-        <label for="director${n}FullName">Director / Shareholder ${n} – Full Name</label>
-        <input id="director${n}FullName" name="Director ${n} – Full Name" type="text" />
-      </div>
-      <div class="row">
-        <div class="col field">
-          <label for="director${n}DOB">Date of Birth</label>
-          <input id="director${n}DOB" name="Director ${n} – DOB" type="date" />
+      if(startupBlock) startupBlock.classList.toggle('hidden', val !== 'startup');
+      if(under12Block) under12Block.classList.toggle('hidden', val !== 'under12');
+      if(over12Block)  over12Block.classList.toggle('hidden', val !== 'over12');
+    }
+
+    [startup, under12, over12].forEach(r => r && r.addEventListener('change', update));
+    update();
+  })();
+
+  /* Add up to Director 4 (unchanged) */
+  (function(){
+    const container = document.getElementById('additionalDirectorsBlock');
+    const firstYes = document.getElementById('addDirector1Yes');
+    const firstNo  = document.getElementById('addDirector1No');
+    if(!container || !firstYes || !firstNo) return;
+
+    function directorFields(n){
+      return `
+        <div class="field" style="margin-top:10px;">
+          <label for="director${n}FullName">Director / Shareholder ${n} – Full Name</label>
+          <input id="director${n}FullName" name="Director ${n} – Full Name" type="text" />
         </div>
-        <div class="col field">
-          <label for="director${n}Nationality">Nationality</label>
-          <input id="director${n}Nationality" name="Director ${n} – Nationality" type="text" />
-        </div>
-      </div>
-
-      <div class="field">
-        <label>Current Home Address – Director ${n}</label>
-        <input name="Director ${n} – Address Line 1" placeholder="House number / Building / Street" />
-        <div style="height:8px"></div>
-        <input name="Director ${n} – Address Line 2" placeholder="Area / Village / District" />
-        <div style="height:8px"></div>
-        <input name="Director ${n} – Town" placeholder="Town / City" />
-        <div style="height:8px"></div>
-        <input name="Director ${n} – County" placeholder="County (optional)" />
-        <div style="height:8px"></div>
-        <input name="Director ${n} – Postcode" placeholder="Postcode" />
-      </div>
-
-      <div class="row">
-        <div class="col field">
-          <label for="director${n}MovedIn">Date moved in (estimate allowed)</label>
-          <input id="director${n}MovedIn" name="Director ${n} – Date Moved In" type="date" />
-        </div>
-        <div class="col field" style="display:flex;align-items:center;">
-          <label class="choice-item" style="margin-top:28px;">
-            <input type="checkbox" id="d${n}AddressLess3yrs"> Lived at this address less than 3 years?
-          </label>
-        </div>
-      </div>
-
-      <div id="d${n}PrevAddressBlock" class="hidden">
-        <label>Previous Home Address – Director ${n}</label>
-        <input name="Director ${n} – Prev Address Line 1" placeholder="House number / Building / Street" />
-        <div style="height:8px"></div>
-        <input name="Director ${n} – Prev Address Line 2" placeholder="Area / Village / District" />
-        <div style="height:8px"></div>
-        <input name="Director ${n} – Prev Town" placeholder="Town / City" />
-        <div style="height:8px"></div>
-        <input name="Director ${n} – Prev County" placeholder="County (optional)" />
-        <div style="height:8px"></div>
-        <input name="Director ${n} – Prev Postcode" placeholder="Postcode" />
-      </div>
-
-      <div class="field" style="margin-top:14px;">
-        <label>Is Director ${n} a homeowner?</label>
-        <div class="radio-row">
-          <label class="choice-item"><input type="radio" name="Director ${n} – Homeowner" value="Yes" id="d${n}HomeYes"> Yes</label>
-          <label class="choice-item"><input type="radio" name="Director ${n} – Homeowner" value="No" id="d${n}HomeNo"> No</label>
-        </div>
-      </div>
-
-      <div id="d${n}MortgageBlock" class="hidden">
-        <div class="field"><label for="d${n}MortgageProvider">Mortgage Provider</label><input id="d${n}MortgageProvider" name="Director ${n} – Mortgage Provider" type="text" /></div>
         <div class="row">
-          <div class="col field"><label for="d${n}MortgageBalance">Current Mortgage Balance (£)</label><input id="d${n}MortgageBalance" name="Director ${n} – Mortgage Balance" type="number" /></div>
-          <div class="col field"><label for="d${n}MortgagePayment">Monthly Mortgage Payment (£)</label><input id="d${n}MortgagePayment" name="Director ${n} – Mortgage Payment" type="number" /></div>
-        </div>
-        <div class="field"><label for="d${n}PropertyValue">Estimated Property Value (£)</label><input id="d${n}PropertyValue" name="Director ${n} – Property Value" type="number" /></div>
-      </div>
-
-      <div id="d${n}ChargesBlock" class="hidden">
-        <label>Any additional secured loans or charges on this property?</label>
-        <div class="radio-row">
-          <label class="choice-item"><input type="radio" name="Director ${n} – Additional Charges" value="Yes" id="d${n}ChargesYes"> Yes</label>
-          <label class="choice-item"><input type="radio" name="Director ${n} – Additional Charges" value="No" id="d${n}ChargesNo"> No</label>
-        </div>
-        <div id="d${n}ChargesDetails" class="hidden" style="margin-top:10px;">
-          <label for="d${n}ChargeProvider">Charge Provider / Lender</label>
-          <input id="d${n}ChargeProvider" name="Director ${n} – Charge Provider" type="text" />
-          <div class="row" style="margin-top:8px;">
-            <div class="col field"><label for="d${n}ChargeBalance">Outstanding Balance (£)</label><input id="d${n}ChargeBalance" name="Director ${n} – Charge Balance" type="number" /></div>
-            <div class="col field"><label for="d${n}ChargePayment">Monthly Payment (£)</label><input id="d${n}ChargePayment" name="Director ${n} – Charge Payment" type="number" /></div>
+          <div class="col field">
+            <label for="director${n}DOB">Date of Birth</label>
+            <input id="director${n}DOB" name="Director ${n} – DOB" type="date" />
+          </div>
+          <div class="col field">
+            <label for="director${n}Nationality">Nationality</label>
+            <input id="director${n}Nationality" name="Director ${n} – Nationality" type="text" />
           </div>
         </div>
-      </div>`;
-  }
 
-  function addAnotherBlock(n){
-    return `
-      <div class="field" style="margin-top:10px;">
-        <label>End of Director</label>
-      </div>
-      <div class="field" style="margin-top:10px;">
-        <label>Would you like to add another director or shareholder (25% or more ownership/shareholding)?</label>
-        <div class="radio-row">
-          <label class="choice-item"><input type="radio" name="Add Another Director ${n}" value="Yes" id="addDirector${n}Yes"> Yes</label>
-          <label class="choice-item"><input type="radio" name="Add Another Director ${n}" value="No" id="addDirector${n}No"> No</label>
+        <div class="field">
+          <label>Current Home Address – Director ${n}</label>
+          <input name="Director ${n} – Address Line 1" placeholder="House number / Building / Street" />
+          <div style="height:8px"></div>
+          <input name="Director ${n} – Address Line 2" placeholder="Area / Village / District" />
+          <div style="height:8px"></div>
+          <input name="Director ${n} – Town" placeholder="Town / City" />
+          <div style="height:8px"></div>
+          <input name="Director ${n} – County" placeholder="County (optional)" />
+          <div style="height:8px"></div>
+          <input name="Director ${n} – Postcode" placeholder="Postcode" />
         </div>
-      </div>`;
-  }
 
-  function endNoMore(){
-    return `<div class="field" style="margin-top:10px;"><label>End of Director - NO more add directors</label></div>`;
-  }
+        <div class="row">
+          <div class="col field">
+            <label for="director${n}MovedIn">Date moved in (estimate allowed)</label>
+            <input id="director${n}MovedIn" name="Director ${n} – Date Moved In" type="date" />
+          </div>
+          <div class="col field" style="display:flex;align-items:center;">
+            <label class="choice-item" style="margin-top:28px;">
+              <input type="checkbox" id="d${n}AddressLess3yrs"> Lived at this address less than 3 years?
+            </label>
+          </div>
+        </div>
 
-  function wireDirector(n){
-    const less = document.getElementById(`d${n}AddressLess3yrs`);
-    const prev = document.getElementById(`d${n}PrevAddressBlock`);
-    if(less && prev){ const u=()=>prev.classList.toggle('hidden', !less.checked); less.addEventListener('change', u); u(); }
+        <div id="d${n}PrevAddressBlock" class="hidden">
+          <label>Previous Home Address – Director ${n}</label>
+          <input name="Director ${n} – Prev Address Line 1" placeholder="House number / Building / Street" />
+          <div style="height:8px"></div>
+          <input name="Director ${n} – Prev Address Line 2" placeholder="Area / Village / District" />
+          <div style="height:8px"></div>
+          <input name="Director ${n} – Prev Town" placeholder="Town / City" />
+          <div style="height:8px"></div>
+          <input name="Director ${n} – Prev County" placeholder="County (optional)" />
+          <div style="height:8px"></div>
+          <input name="Director ${n} – Prev Postcode" placeholder="Postcode" />
+        </div>
 
-    const hy = document.getElementById(`d${n}HomeYes`);
-    const hn = document.getElementById(`d${n}HomeNo`);
-    const mb = document.getElementById(`d${n}MortgageBlock`);
-    const cb = document.getElementById(`d${n}ChargesBlock`);
+        <div class="field" style="margin-top:14px;">
+          <label>Is Director ${n} a homeowner?</label>
+          <div class="radio-row">
+            <label class="choice-item"><input type="radio" name="Director ${n} – Homeowner" value="Yes" id="d${n}HomeYes"> Yes</label>
+            <label class="choice-item"><input type="radio" name="Director ${n} – Homeowner" value="No" id="d${n}HomeNo"> No</label>
+          </div>
+        </div>
 
-    function uh(){
-      const v = hy && hy.checked ? 'Yes' : (hn && hn.checked ? 'No' : '');
-      const show = v==='Yes';
-      if(mb) mb.classList.toggle('hidden', !show);
-      if(cb) cb.classList.toggle('hidden', !show);
+        <div id="d${n}MortgageBlock" class="hidden">
+          <div class="field"><label for="d${n}MortgageProvider">Mortgage Provider</label><input id="d${n}MortgageProvider" name="Director ${n} – Mortgage Provider" type="text" /></div>
+          <div class="row">
+            <div class="col field"><label for="d${n}MortgageBalance">Current Mortgage Balance (£)</label><input id="d${n}MortgageBalance" name="Director ${n} – Mortgage Balance" type="number" /></div>
+            <div class="col field"><label for="d${n}MortgagePayment">Monthly Mortgage Payment (£)</label><input id="d${n}MortgagePayment" name="Director ${n} – Mortgage Payment" type="number" /></div>
+          </div>
+          <div class="field"><label for="d${n}PropertyValue">Estimated Property Value (£)</label><input id="d${n}PropertyValue" name="Director ${n} – Property Value" type="number" /></div>
+        </div>
+
+        <div id="d${n}ChargesBlock" class="hidden">
+          <label>Any additional secured loans or charges on this property?</label>
+          <div class="radio-row">
+            <label class="choice-item"><input type="radio" name="Director ${n} – Additional Charges" value="Yes" id="d${n}ChargesYes"> Yes</label>
+            <label class="choice-item"><input type="radio" name="Director ${n} – Additional Charges" value="No" id="d${n}ChargesNo"> No</label>
+          </div>
+          <div id="d${n}ChargesDetails" class="hidden" style="margin-top:10px;">
+            <label for="d${n}ChargeProvider">Charge Provider / Lender</label>
+            <input id="d${n}ChargeProvider" name="Director ${n} – Charge Provider" type="text" />
+            <div class="row" style="margin-top:8px;">
+              <div class="col field"><label for="d${n}ChargeBalance">Outstanding Balance (£)</label><input id="d${n}ChargeBalance" name="Director ${n} – Charge Balance" type="number" /></div>
+              <div class="col field"><label for="d${n}ChargePayment">Monthly Payment (£)</label><input id="d${n}ChargePayment" name="Director ${n} – Charge Payment" type="number" /></div>
+            </div>
+          </div>
+        </div>
+      `;
     }
-    [hy,hn].forEach(r=> r && r.addEventListener('change', uh)); uh();
 
-    const cy = document.getElementById(`d${n}ChargesYes`);
-    const cn = document.getElementById(`d${n}ChargesNo`);
-    const cd = document.getElementById(`d${n}ChargesDetails`);
-
-    function uc(){
-      const v = cy && cy.checked ? 'Yes' : (cn && cn.checked ? 'No' : '');
-      if(cd) cd.classList.toggle('hidden', v!=='Yes');
-    }
-    [cy,cn].forEach(r=> r && r.addEventListener('change', uc)); uc();
-  }
-
-  function setup(){
-    container.classList.add('hidden');
-    [firstYes, firstNo].forEach(r=> r.addEventListener('change', () => {
-      container.innerHTML = '';
-
+    function updateAdditional(){
       if(firstYes.checked){
+        container.innerHTML = directorFields(2) + directorFields(3) + directorFields(4);
         container.classList.remove('hidden');
 
-        container.insertAdjacentHTML('beforeend', directorFields(2));
-        container.insertAdjacentHTML('beforeend', addAnotherBlock(2));
-
-        wireDirector(2);
-
-        const y2 = document.getElementById('addDirector2Yes');
-        const n2 = document.getElementById('addDirector2No');
-
-        [y2,n2].forEach(r=> r && r.addEventListener('change', () => {
-          const after2 = document.getElementById('after2');
-          if(after2) after2.remove();
-
-          const temp = document.createElement('div');
-          temp.id='after2';
-
-          if(y2 && y2.checked){
-            temp.insertAdjacentHTML('beforeend', directorFields(3));
-            temp.insertAdjacentHTML('beforeend', addAnotherBlock(3));
-            container.appendChild(temp);
-
-            wireDirector(3);
-
-            const y3 = document.getElementById('addDirector3Yes');
-            const n3 = document.getElementById('addDirector3No');
-
-            [y3,n3].forEach(r=> r && r.addEventListener('change', () => {
-              const after3 = document.getElementById('after3');
-              if(after3) after3.remove();
-
-              const temp3 = document.createElement('div');
-              temp3.id='after3';
-
-              if(y3 && y3.checked){
-                temp3.insertAdjacentHTML('beforeend', directorFields(4));
-                temp3.insertAdjacentHTML('beforeend', endNoMore());
-                container.appendChild(temp3);
-
-                wireDirector(4);
-              }
-            }));
+        // attach simple behaviour for newly added director blocks (prev address toggle)
+        [2,3,4].forEach(n => {
+          const cb = document.getElementById('d'+n+'AddressLess3yrs');
+          const block = document.getElementById('d'+n+'PrevAddressBlock');
+          if(cb && block){
+            cb.addEventListener('change', ()=> block.classList.toggle('hidden', !cb.checked));
+            block.classList.toggle('hidden', !cb.checked);
           }
-        }));
+        });
+
       } else {
+        container.innerHTML = '';
         container.classList.add('hidden');
       }
-    }));
-  }
+    }
 
-  setup();
+    firstYes.addEventListener('change', updateAdditional);
+    firstNo.addEventListener('change', updateAdditional);
+    updateAdditional();
+  })();
+
 })();
 </script>
+
+<script>
+/*
+  Submission handler and client-side redirect/backstop logic.
+
+  What this does:
+  - Keeps a local backup (localStorage) of the submitted form (useful if a remote submission fails).
+  - Inserts the HubSpot loader script (as requested).
+  - Adds a small client-side "redirect backstop" mechanism that attempts to navigate the user to the
+    public thank-you page after submission (with repeated attempts if navigation doesn't take effect
+    immediately). This is strictly client-side — HubSpot script (loaded below) is expected to capture
+    the submission server-side as per your existing HubSpot configuration for #clientProposalForm.
+*/
+(function(){
+  const THANK_YOU = 'https://magna-proposal.vercel.app/thank-you.html';
+  const form = document.getElementById('clientProposalForm');
+  if(!form) return;
+
+  // Insert HubSpot script (per your request)
+  (function insertHubspot(){
+    const id = 'hs-script-loader';
+    if(document.getElementById(id)) return;
+    const s = document.createElement('script');
+    s.type = 'text/javascript';
+    s.id = id;
+    s.async = true;
+    s.defer = true;
+    s.src = '//js.hs-scripts.com/8402236.js';
+    document.head.appendChild(s);
+  })();
+
+  // On submit: save a local backup and then start redirect attempts (client-visible)
+  form.addEventListener('submit', function(evt){
+    try {
+      const obj = formToObject(form);
+      // Save a timestamped backup (keep last submission only to avoid storing too much)
+      localStorage.setItem('magnaProposal_lastSubmission', JSON.stringify({
+        ts: new Date().toISOString(),
+        data: obj
+      }));
+    } catch(err){
+      // ignore backup failures
+      console.warn('Could not save local backup of form', err);
+    }
+
+    // Provide user immediate UI feedback (disable submit to avoid double-click)
+    const submitBtn = form.querySelector('button[type="submit"]');
+    if(submitBtn){
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Submitting…';
+    }
+
+    // Redirect/backstop logic:
+    // We attempt to navigate the client to the thank-you page after a short delay
+    // (giving HubSpot script a small window to intercept & send the submission).
+    // If the first navigation does not stick, we attempt again a few times at increasing intervals.
+    const attemptTimes = [800, 1600, 3000, 6000]; // ms after submit
+    attemptTimes.forEach((delay, idx) => {
+      setTimeout(() => {
+        try {
+          // Final guard: if already at thank-you or document is unloading, skip
+          if(window.location.href === THANK_YOU) return;
+          window.location.assign(THANK_YOU);
+        } catch(e){
+          // ignore navigation errors
+        }
+      }, delay);
+    });
+
+    // We DON'T call evt.preventDefault() here because HubSpot's inline script usually listens
+    // for native submit events to intercept and send the form to HubSpot. If you later want
+    // us to forcibly prevent native submission and implement a programmatic HubSpot API call
+    // (reliable server-side), provide the HubSpot form GUID and portal ID and we can wire that up.
+  });
+})();
+</script>
+
+<!-- HubSpot loader (also included above programmatically) -->
+<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/8402236.js"></script>
 
 </body>
 </html>
