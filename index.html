@@ -1067,7 +1067,7 @@ document.getElementById('clientProposalForm').addEventListener('submit', functio
   });
 
   // POST to FlowRydr CRM (Airtable webhook)
-  fetch('https://hooks.airtable.com/workflows/v1/genericWebhook/appJiQnoNw2VOOdGj/wflEQSvAWGsSg4MxU/wtrpMJPru3gDprxel', {
+  fetch('https://hooks.airtable.com/workflows/v1/genericWebhook/appJiQnoNw2VOOdGj/wflEQSvAWGsSg4MxU/wtrpMJPru3gDprxel')
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data)
