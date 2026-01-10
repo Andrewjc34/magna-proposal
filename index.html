@@ -1043,39 +1043,8 @@
 })();
 </script>
 
-    
 <!-- HubSpot loader (kept once) -->
-type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/8402236.js"></<script>
-
-
-<!-- FlowRydr (Airtable) webhook submission -->
-document.getElementById('clientProposalForm').addEventListener('submit', function(e){
-  // Do NOT prevent default! Let HubSpot tracker work as usual.
-
-  // Gather form data
-  const form = e.target;
-  const data = {};
-  Array.from(form.elements).forEach(el => {
-    if (el.name && !el.disabled) {
-      if (el.type === 'checkbox') {
-        data[el.name] = el.checked;
-      } else if (el.type === 'radio') {
-        if (el.checked) data[el.name] = el.value;
-      } else {
-        data[el.name] = el.value;
-      }
-    }
-  });
-
-  // POST to FlowRydr CRM (Airtable webhook)
-  fetch('https://hooks.airtable.com/workflows/v1/genericWebhook/appJiQnoNw2VOOdGj/wflzwc68xecGo9J9g/wtrVtQeM9jaNQfRtB')
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data)
-  });
-  // No need to redirect or block the default action; HubSpot will handle the thank you page as before.
-});
-</script>
+<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/8402236.js"></script>
 
 </body>
 </html>
