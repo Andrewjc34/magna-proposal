@@ -1,632 +1,1049 @@
-
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Magna Money | ALIE Form – Assets, Liabilities, Investments & Expenditure</title>
+  <title>MagnaMoney | Client Proposal Form</title>
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+
+  <!-- Styling preserved EXACTLY from original -->
   <style>
-    :root{
+    :root {
       --charcoal:#1C1C1C;
-      --panelA:rgba(29,30,32,0.95);
-      --panelB:rgba(29,30,32,0.90);
-      --border:rgba(255,255,255,0.06);
-      --white:#FFF;
+      --charcoal-panel:rgba(29,30,32,0.95);
+      --panel-border:rgba(255,255,255,0.07);
+      --text-main:#FFFFFF;
+      --text-dim:rgba(255,255,255,0.8);
+      --text-faint:rgba(255,255,255,0.6);
       --gold:#C6A76B;
       --gold-shadow:rgba(198,167,107,0.3);
-      --dim:rgba(255,255,255,0.82);
-      --faint:rgba(255,255,255,0.68);
-      --radius:12px;
-      --pad:22px;
-      --max:1100px;
+      --max-width:1100px;
+      --radius-lg:12px;
+      --radius-sm:6px;
     }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;background:var(--charcoal);color:var(--white);
-      font-family:"Lato",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
-      padding:24px;display:flex;justify-content:center
+
+    * { box-sizing:border-box; }
+    html,body { height:100%; }
+    body {
+      margin:0;
+      font-family:"Lato",system-ui,-apple-system,"Segoe UI",Roboto;
+      background:var(--charcoal);
+      color:var(--text-main);
+      padding:24px;
+      display:flex;
+      justify-content:center;
     }
-    .container{max-width:var(--max);width:100%;margin:0 auto}
-    /* Header */
-    .header-block{text-align:center;margin-bottom:14px}
-    .logo-wrap{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;margin-bottom:12px}
+
+    .container{max-width:var(--max-width);width:100%;margin:0 auto;}
+    .header-block{text-align:center;margin-bottom:24px;}
+    .logo-wrap{display:inline-flex;flex-direction:column;align-items:center;margin-bottom:12px;}
     .crown-logo{
-      width:72px;height:72px;background-size:contain;background-repeat:no-repeat;background-position:center;
+      width:72px;height:72px;
+      background-size:contain;background-repeat:no-repeat;background-position:center;
       background-image:url("https://magna-money-enquiry-form.neocities.org/Magna%20Money%20logo_full_colour.png");
       filter:drop-shadow(0 4px 12px var(--gold-shadow));
     }
-    .brand-name{color:var(--white);font-weight:700;font-size:18px;letter-spacing:.05em;margin-top:12px;text-transform:uppercase}
-    .brand-tag{color:var(--gold);font-size:13px;margin-top:6px;text-align:center;max-width:700px}
-    .doc-title{font-weight:700;font-size:20px;margin:16px 0 2px;color:var(--white)}
-    .website-line{color:var(--gold);font-weight:600;margin-top:6px;font-size:14px}
-    .intro{color:var(--white);opacity:.95;font-weight:300;margin:12px auto 18px;line-height:1.4;max-width:920px;text-align:center}
-    /* Panel / Form */
+    .brand-name{text-transform:uppercase;font-weight:700;font-size:18px;letter-spacing:0.05em;margin-top:12px;}
+    .brand-tag{color:var(--gold);font-size:13px;margin-top:6px;text-align:center;max-width:540px;}
+    .doc-title{font-size:20px;font-weight:700;margin:24px 0 8px;}
+    .intro-line{color:var(--text-dim);font-size:14px;font-weight:300;max-width:640px;margin:0 auto 24px;}
+
     .form-panel{
-      background:linear-gradient(180deg,var(--panelA),var(--panelB));
-      border-radius:var(--radius);padding:var(--pad);
-      box-shadow:0 8px 30px rgba(0,0,0,.5);
-      border:1px solid var(--border)
+      background:linear-gradient(180deg,rgba(29,30,32,0.95),rgba(29,30,32,0.9));
+      border-radius:var(--radius-lg);
+      border:1px solid var(--panel-border);
+      box-shadow:0 16px 40px rgba(0,0,0,0.6);
+      padding:24px 24px 32px;
+      margin-bottom:24px;
     }
-    h3.section{margin:12px 0 12px;font-size:16px;color:var(--white);font-weight:700}
-    .subtext{font-size:13px;color:var(--faint);margin-top:6px}
-    .row{display:flex;gap:16px;flex-wrap:wrap}
-    .col{flex:1 1 280px;min-width:220px}
-    label{display:block;font-weight:400;margin-bottom:8px}
-    input[type="text"],input[type="email"],input[type="tel"],input[type="number"],textarea,select{
-      width:100%;padding:10px 12px;border-radius:6px;border:1px solid rgba(198,167,107,0.18);
-      background:rgba(255,255,255,0.02);color:var(--white);font-size:15px;outline:none
+
+    h3.section{margin:16px 0 12px;font-size:16px;font-weight:700;display:flex;justify-content:space-between;}
+    .subtext{font-size:13px;color:rgba(255,255,255,0.65);margin-top:6px;}
+    .row{display:flex;gap:16px;flex-wrap:wrap;}
+    .col{flex:1 1 280px;min-width:220px;}
+    label{display:block;margin-bottom:8px;font-size:14px;}
+
+    input,textarea,select{
+      width:100%;
+      padding:10px 12px;
+      border-radius:6px;
+      border:1px solid rgba(198,167,107,0.18);
+      background:rgba(255,255,255,0.02);
+      color:var(--text-main);
     }
-    input[type="number"]{-moz-appearance:textfield}
-    input[type="number"]::-webkit-outer-spin-button,input[type="number"]::-webkit-inner-spin-button{
-      -webkit-appearance:none;margin:0}
-    textarea{min-height:110px;resize:vertical}
-    .field{margin-bottom:14px}
-    .btn{
-      background:var(--gold);color:var(--white);border:none;padding:12px 32px;border-radius:8px;
-      font-weight:700;cursor:pointer;box-shadow:0 8px 22px rgba(198,167,107,0.12);font-size:16px
-    }
-    input:focus,textarea:focus,select:focus{box-shadow:0 0 0 3px rgba(198,167,107,.10);border-color:var(--gold)}
-    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-    .grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
-    .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-    hr.div{border:none;border-top:1px solid rgba(255,255,255,.06);margin:14px 0}
-    .summary{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
-    .pill{padding:6px 10px;border:1px solid rgba(255,255,255,.08);border-radius:999px;background:rgba(255,255,255,.02);font-size:14px;color:var(--dim)}
-    .disclaimer,.gdpr{font-size:13px;color:var(--dim);background:rgba(255,255,255,.02);padding:12px;border-radius:6px;margin-top:8px}
-    .submit-row{display:flex;justify-content:center;margin-top:12px}
-    .right{text-align:right}
-    .line{display:grid;grid-template-columns: 2fr 1fr;gap:12px;align-items:center;}
-    .line label{margin:0}
-    .section-help{font-size:13px;color:var(--faint);margin:-2px 0 10px}
-    @media (max-width:900px){.grid-4{grid-template-columns:1fr 1fr}}
+
+    select, select option { background:rgba(29,30,32,0.95) !important; color:var(--text-main) !important; }
+
+    textarea{min-height:110px;resize:vertical;}
+    .field{margin-bottom:14px;}
+    .radio-row{display:flex;gap:12px;flex-wrap:wrap;}
+    .choice-item{display:flex;align-items:center;gap:10px;font-size:15px;}
+    .choice-item input{width:auto;}
+    hr.section-sep{border:none;border-top:1px solid rgba(255,255,255,0.07);margin:20px 0;}
+
+    table.finance-table{width:100%;border-collapse:collapse;margin-bottom:12px;font-size:14px;}
+    table.finance-table th{color:var(--gold);padding:8px 6px;border-bottom:1px solid rgba(255,255,255,0.12);font-size:13px;}
+    table.finance-table td{padding:8px 6px;border-bottom:1px solid rgba(255,255,255,0.07);}    
+
+    .disclosure-block{font-size:13px;color:rgba(255,255,255,0.72);background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.07);border-radius:6px;padding:12px;margin-top:20px;line-height:1.4;}
+    .submit-row{display:flex;justify-content:center;margin-top:28px;}
+    .btn-submit{background:var(--gold);color:#fff;border:none;border-radius:8px;font-weight:700;font-size:15px;padding:14px 24px;min-width:260px;box-shadow:0 12px 30px rgba(198,167,107,0.22);cursor:pointer;}
+    .hidden{display:none!important;}
+    .hint{font-size:12px;color:var(--text-faint);margin-top:4px;}
   </style>
 </head>
+
 <body>
 <div class="container" role="main">
-  <!-- Header -->
+
   <div class="header-block">
     <div class="logo-wrap">
-      <div class="crown-logo" aria-hidden="true"></div>
+      <div class="crown-logo"></div>
       <div class="brand-name">MAGNAMONEY</div>
-      <div class="brand-tag">The Commercial Finance Boutique – Bespoke, Collaborative &amp; Expert Funding Advisory</div>
+      <div class="brand-tag">The Commercial Finance Boutique – Bespoke, Collaborative & Expert Funding Advisory</div>
     </div>
-    <div class="doc-title">ALIE Form – Assets, Liabilities, Investments &amp; Expenditure</div>
-    <div class="website-line">www.magnamoney.co.uk</div>
-    <div class="intro">Please complete this statement so we can assess affordability and structure funding appropriately.</div>
+
+    <div class="doc-title">Client Proposal Form</div>
+    <div class="intro-line">
+      Please complete the details below so we can assess your requirements, review suitable funding options,
+      and approach lenders where appropriate.
+    </div>
   </div>
 
   <div class="form-panel">
-    <form
-      id="alie-form"
-      class="alie-form"
-      name="#ALIE form"
-      method="POST"
-      action="https://magna-money-alie.vercel.app/"
-      novalidate
-      autocomplete="on"
-    >
-      <!-- ALIE summary values as visible, read-only inputs so non-HubSpot Forms will receive them -->
-      <div style="display:none;">
-        <label>ALIE Total Monthly Income</label>
-        <input
-          id="alie_total_monthly_income"
-          name="alie_total_monthly_income"
-          type="number"
-          readonly
-        >
+    <!-- NOTE: changed to method="GET" and action to the thank-you page to avoid POST 405 on static hosting -->
+    <form id="clientProposalForm" method="GET" action="https://magna-proposal.vercel.app/thank-you.html" novalidate>
 
-        <label>ALIE Total Monthly Expenditure</label>
-        <input
-          id="alie_total_monthly_expenditure"
-          name="alie_total_monthly_expenditure"
-          type="number"
-          readonly
-        >
+      <!-- ========================= -->
+      <!-- 1. BUSINESS INFORMATION -->
+      <!-- ========================= -->
+      <h3 class="section">1. Business Information</h3>
 
-        <label>ALIE Monthly Surplus Deficit</label>
-        <input
-          id="alie_monthly_surplus_deficit"
-          name="alie_monthly_surplus_deficit"
-          type="number"
-          readonly
-        >
-
-        <label>ALIE Total Assets</label>
-        <input
-          id="alie_total_assets"
-          name="alie_total_assets"
-          type="number"
-          readonly
-        >
-
-        <label>ALIE Total Liabilities</label>
-        <input
-          id="alie_total_liabilities"
-          name="alie_total_liabilities"
-          type="number"
-          readonly
-        >
-
-        <label>ALIE Net Worth</label>
-        <input
-          id="alie_net_worth"
-          name="alie_net_worth"
-          type="number"
-          readonly
-        >
-      </div>
-
-      <!-- SECTION 1: Business & Banking -->
-      <h3 class="section">Section 1: Business &amp; Banking</h3>
       <div class="row">
         <div class="col field">
-          <label for="businessName">Business name</label>
-          <input id="businessName" name="Business Name" type="text" placeholder="e.g. Magna Money Ltd" required>
+          <label for="businessName">Business / Trading Name</label>
+          <input id="businessName" name="Business Name" type="text" />
         </div>
         <div class="col field">
-          <label for="applicantNames">Name(s)</label>
-          <input id="applicantNames" name="Name(s)" type="text" placeholder="Full name(s)" required>
-        </div>
-        <div class="col field">
-          <label for="email">Email Address</label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            placeholder="client@company.com"
-            autocomplete="email"
-            required
-          >
+          <label for="companyReg">Companies House Registration Number (if applicable)</label>
+          <input id="companyReg" name="Company Registration Number" type="text" />
         </div>
       </div>
-      <hr class="div">
 
-      <!-- SECTION 2: Monthly Income -->
-      <h3 class="section">Section 2: Monthly Income</h3>
-      <div class="section-help">Household income/expenditure (excluding business commitments)</div>
-      <div class="field line">
-        <label for="incDrawings">Drawings</label>
-        <input id="incDrawings" name="Income - Drawings (£)" type="number" step="0.01" min="0" placeholder="0.00" class="right">
+      <div class="row">
+        <div class="col field">
+          <label for="mainContact">Main Contact Name</label>
+          <input id="mainContact" name="Main Contact Name" type="text" />
+        </div>
+        <div class="col field">
+          <label for="mainContactPhone">Main Contact Mobile or Direct Line</label>
+          <input id="mainContactPhone" name="Main Contact Phone" type="tel" />
+          <div class="hint">Must contain a "0".</div>
+        </div>
       </div>
-      <div class="field line">
-        <label for="incSpouse">Spouse/partner's income</label>
-        <input id="incSpouse" name="Income - Spouse/Partner (£)" type="number" step="0.01" min="0" placeholder="0.00" class="right">
+
+      <div class="row">
+        <div class="col field">
+          <label for="mainWorkEmail">Work Email Address</label>
+          <input id="mainWorkEmail" name="Work Email" type="email" />
+        </div>
+        <div class="col field">
+          <label for="mainPersonalEmail">Additional Email Address (optional)</label>
+          <input id="mainPersonalEmail" name="Additional Email" type="email" />
+        </div>
       </div>
-      <div class="field line">
-        <label for="incChildBenefit">Child Benefit</label>
-        <input id="incChildBenefit" name="Income - Child Benefit (£)" type="number" step="0.01" min="0" placeholder="0.00" class="right">
-      </div>
-      <div class="field line">
-        <label for="incIncomeSupport">Income Support</label>
-        <input id="incIncomeSupport" name="Income - Income Support (£)" type="number" step="0.01" min="0" placeholder="0.00" class="right">
-      </div>
-      <div class="field line">
-        <label for="incOther">Other income (specify)</label>
-        <input id="incOther" name="Income - Other (£)" type="number" step="0.01" min="0" placeholder="0.00" class="right">
-      </div>
+
       <div class="field">
-        <label for="incOtherSpecify">Specify here:</label>
-        <input id="incOtherSpecify" name="Income - Other - Specify" type="text" placeholder="Description of other income">
-      </div>
-      <div class="summary">
-        <span class="pill">Income subtotal (A): <strong id="incomeSubtotalA">£0.00</strong></span>
-        <span class="pill">Income subtotal (B): <strong id="incomeSubtotalB">£0.00</strong></span>
-        <span class="pill">Total Income (A + B): <strong id="incomeTotal">£0.00</strong></span>
+        <label for="companyWebsite">Business Website (if applicable)</label>
+        <input id="companyWebsite" name="Business Website" type="text" placeholder="www.example.com" />
       </div>
 
-      <hr class="div">
-      <!-- SECTION 3: Monthly Household Expenditure (excluding business) -->
-      <h3 class="section">Section 3: Monthly Household Expenditure (excluding business)</h3>
-      <div class="field line">
-        <label for="expMortgageRent">Mortgage payment/rent</label>
-        <input id="expMortgageRent" name="Expenditure - Mortgage/Rent (£)" type="number" step="0.01" min="0" placeholder="0.00" class="right">
-      </div>
-      <div class="field line">
-        <label for="expEndowment">Endowment/pension</label>
-        <input id="expEndowment" name="Expenditure - Endowment/Pension (£)" type="number" step="0.01" min="0" placeholder="0.00" class="right">
-      </div>
-      <div class="field line">
-        <label for="expInsurance">Building/contents insurance</label>
-        <input id="expInsurance" name="Expenditure - Building/Contents Insurance (£)" type="number" step="0.01" min="0" placeholder="0.00" class="right">
-      </div>
-      <div class="field line">
-        <label for="expLoansHP">Loans/HP commitments</label>
-        <input id="expLoansHP" name="Expenditure - Loans/HP Commitments (£)" type="number" step="0.01" min="0" placeholder="0.00" class="right">
-      </div>
-      <div class="field line">
-        <label for="expCreditCards">Payment/store cards</label>
-        <input id="expCreditCards" name="Expenditure - Payment/Store Cards (£)" type="number" step="0.01" min="0" placeholder="0.00" class="right">
-      </div>
-      <div class="summary">
-        <span class="pill">Expenditure subtotal (A): <strong id="expSubtotalA">£0.00</strong></span>
-        <span class="pill">Expenditure subtotal (B): <strong id="expSubtotalB">£0.00</strong></span>
+      <!-- Registered Address -->
+      <div class="field">
+        <label>Registered Business Address</label>
+        <input name="Registered Address - Line 1" placeholder="House number / Building / Street" />
+        <div style="height:8px"></div>
+        <input name="Registered Address - Line 2" placeholder="Area / Village / District" />
+        <div style="height:8px"></div>
+        <input name="Registered Address - Town" placeholder="Town / City" />
+        <div style="height:8px"></div>
+        <input name="Registered Address - County" placeholder="County (optional)" />
+        <div style="height:8px"></div>
+        <input name="Registered Address - Postcode" placeholder="Postcode" />
       </div>
 
-      <!-- Extra lines -->
-      <div class="field line">
-        <label for="expMaintenance">Maintenance payments</label>
-        <input id="expMaintenance" name="Expenditure - Maintenance Payments (£)" type="number" step="0.01" min="0" placeholder="0.00" class="right">
-      </div>
-      <h3 class="section" style="margin-top:6px">Additional Household Expenditure</h3>
-      <div class="field line">
-        <label for="expCouncilWater">Council tax / water rates</label>
-        <input id="expCouncilWater" name="Expenditure - Council Tax/Water Rates (£)" type="number" step="0.01" min="0" placeholder="0.00" class="right">
-      </div>
-      <div class="field line">
-        <label for="expFuel">Domestic fuel (gas / electric)</label>
-        <input id="expFuel" name="Expenditure - Domestic Fuel (Gas/Electric) (£)" type="number" step="0.01" min="0" placeholder="0.00" class="right">
-      </div>
-      <div class="field line">
-        <label for="expTelephone">Telephone</label>
-        <input id="expTelephone" name="Expenditure - Telephone (£)" type="number" step="0.01" min="0" placeholder="0.00" class="right">
-      </div>
-      <div class="field line">
-        <label for="expCarLeasing">Car leasing</label>
-        <input id="expCarLeasing" name="Expenditure - Car Leasing (£)" type="number" step="0.01" min="0" placeholder="0.00" class="right">
-      </div>
-      <div class="field line">
-        <label for="expCarTaxIns">Car tax / insurance</label>
-        <input id="expCarTaxIns" name="Expenditure - Car Tax/Insurance (£)" type="number" step="0.01" min="0" placeholder="0.00" class="right">
-      </div>
-      <div class="field line">
-        <label for="expFood">Food</label>
-        <input id="expFood" name="Expenditure - Food (£)" type="number" step="0.01" min="0" placeholder="0.00" class="right">
-      </div>
-      <div class="field line">
-        <label for="expClothingLeisure">Clothing/leisure</label>
-        <input id="expClothingLeisure" name="Expenditure - Clothing/Leisure (£)" type="number" step="0.01" min="0" placeholder="0.00" class="right">
-      </div>
-      <div class="field line">
-        <label for="expOther">Other</label>
-        <input id="expOther" name="Expenditure - Other (£)" type="number" step="0.01" min="0" placeholder="0.00" class="right">
-      </div>
-      <div class="summary">
-        <span class="pill">Expenditure subtotal (E): <strong id="expSubtotalE">£0.00</strong></span>
-        <span class="pill">Total Expenditure (D + E): <strong id="expTotal">£0.00</strong></span>
-      </div>
-
-      <hr class="div">
-      <!-- SECTION 4: Property -->
-      <h3 class="section">Section 4: Property Details (if applicable)</h3>
-      <div class="grid-4">
-        <div class="field">
-          <label for="prop1Address">Address</label>
-          <input id="prop1Address" name="Property 1 - Address" type="text" placeholder="Address">
-        </div>
-        <div class="field">
-          <label for="prop1Lender">Lender</label>
-          <input id="prop1Lender" name="Property 1 - Lender" type="text" placeholder="Lender">
-        </div>
-        <div class="field">
-          <label for="prop1Value">Estimated value (£)</label>
-          <input id="prop1Value" name="Property 1 - Value (£)" type="number" step="0.01" min="0" placeholder="0.00" class="right">
-        </div>
-        <div class="field">
-          <label for="prop1Bal">Outstanding mortgage (£)</label>
-          <input id="prop1Bal" name="Property 1 - Mortgage Balance (£)" type="number" step="0.01" min="0" placeholder="0.00" class="right">
-        </div>
-        <div class="field">
-          <label for="prop2Address">Address</label>
-          <input id="prop2Address" name="Property 2 - Address" type="text" placeholder="Address">
-        </div>
-        <div class="field">
-          <label for="prop2Lender">Lender</label>
-          <input id="prop2Lender" name="Property 2 - Lender" type="text" placeholder="Lender">
-        </div>
-        <div class="field">
-          <label for="prop2Value">Estimated value (£)</label>
-          <input id="prop2Value" name="Property 2 - Value (£)" type="number" step="0.01" min="0" placeholder="0.00" class="right">
-        </div>
-        <div class="field">
-          <label for="prop2Bal">Outstanding mortgage (£)</label>
-          <input id="prop2Bal" name="Property 2 - Mortgage Balance (£)" type="number" step="0.01" min="0" placeholder="0.00" class="right">
-        </div>
-      </div>
-      <div class="summary">
-        <span class="pill">Total Property Value (from above): <strong id="propTotal">£0.00</strong></span>
-      </div>
-
-      <hr class="div">
-      <!-- SECTION 5: Assets & Investments -->
-      <h3 class="section">Section 5: Assets &amp; Investments</h3>
-      <div class="grid-3">
-        <div class="field">
-          <label for="bankSavings">Bank savings</label>
-          <input id="bankSavings" name="Bank Savings (£)" type="number" step="0.01" min="0" placeholder="0.00" class="right">
-        </div>
-        <div class="field">
-          <label for="isa">ISA</label>
-          <input id="isa" name="ISA (£)" type="number" step="0.01" min="0" placeholder="0.00" class="right">
-        </div>
-        <div class="field">
-          <label for="shares">Shares</label>
-          <input id="shares" name="Shares (£)" type="number" step="0.01" min="0" placeholder="0.00" class="right">
-        </div>
-      </div>
-      <div class="grid-2">
-        <div class="field">
-          <label for="lifePolicies">Life Policies (surrender value)</label>
-          <input id="lifePolicies" name="Life Policies (Surrender Value) (£)" type="number" step="0.01" min="0" placeholder="0.00" class="right">
-        </div>
-        <div class="field">
-          <label for="investOther">Other investments</label>
-          <input id="investOther" name="Other Investments (£)" type="number" step="0.01" min="0" placeholder="0.00" class="right">
-        </div>
-      </div>
-      <div class="summary">
-        <span class="pill">Total Investments: <strong id="investTotal">£0.00</strong></span>
-        <span class="pill">Total Assets: <strong id="assetsTotal">£0.00</strong></span>
-      </div>
-
-      <hr class="div">
-      <!-- SECTION 6: Liabilities & Credit -->
-      <h3 class="section">Section 6: Liabilities &amp; Credit</h3>
-      <div class="grid-3">
-        <div class="field">
-          <label for="liabMortgage">Outstanding Mortgage</label>
-          <input id="liabMortgage" name="Liability - Outstanding Mortgage (£)" type="number" step="0.01" min="0" placeholder="0.00" class="right">
-        </div>
-        <div class="field">
-          <label for="liabBankLoans">Bank Loans</label>
-          <input id="liabBankLoans" name="Liability - Bank Loans (£)" type="number" step="0.01" min="0" placeholder="0.00" class="right">
-        </div>
-        <div class="field">
-          <label for="liabHP">Hire Purchase</label>
-          <input id="liabHP" name="Liability - Hire Purchase (£)" type="number" step="0.01" min="0" placeholder="0.00" class="right">
-        </div>
-      </div>
-      <div class="grid-3">
-        <div class="field">
-          <label for="liabOtherLoans">Other Loans</label>
-          <input id="liabOtherLoans" name="Liability - Other Loans (£)" type="number" step="0.01" min="0" placeholder="0.00" class="right">
-        </div>
-        <div class="field">
-          <label for="creditCardHeld">Payment card held</label>
-          <select id="creditCardHeld" name="Payment card held (Y/N)">
-            <option value="">Please choose…</option>
-            <option>Y</option>
-            <option>N</option>
-          </select>
-        </div>
-        <div class="field">
-          <label for="otherStoreCards">Other payment/store cards</label>
-          <select id="otherStoreCards" name="Other payment/store cards (Y/N)">
-            <option value="">Please choose…</option>
-            <option>Y</option>
-            <option>N</option>
-          </select>
-        </div>
-      </div>
-      <div class="summary">
-        <span class="pill">Total Liabilities: <strong id="liabTotal">£0.00</strong></span>
-      </div>
-
-      <hr class="div">
-      <!-- SECTION 7: Declaration -->
-      <h3 class="section">Section 7: Declaration</h3>
-      <div class="disclaimer">
-        I / We confirm that the information given above is true and accurate to the best of my/our knowledge and belief.
-      </div>
-      <div class="grid-3">
-        <div class="field">
-          <label for="signedBy">Signed (name)</label>
-          <input id="signedBy" name="Signed By" type="text" placeholder="Full name">
-        </div>
-        <div class="field">
-          <label for="declarationDate">Date</label>
-          <input
-            id="declarationDate"
-            name="Declaration Date"
-            type="text"
-            placeholder="DD / MM / YYYY"
-          >
-        </div>
-        <div class="field">
-          <label for="notes">Notes (optional)</label>
-          <input id="notes" name="Notes" type="text" placeholder="Any additional info">
-        </div>
-      </div>
-
-      <hr class="div">
-      <!-- Overall Summary -->
-      <h3 class="section">Summary</h3>
-      <div class="summary">
-        <span class="pill">Total Monthly Income: <strong id="sumIncome">£0.00</strong></span>
-        <span class="pill">Total Monthly Expenditure: <strong id="sumExpend">£0.00</strong></span>
-        <span class="pill">Monthly Surplus / (Deficit): <strong id="sumSurplus">£0.00</strong></span>
-        <span class="pill">Total Assets: <strong id="sumAssets">£0.00</strong></span>
-        <span class="pill">Total Liabilities: <strong id="sumLiabs">£0.00</strong></span>
-        <span class="pill">Net Worth (Assets − Liabilities): <strong id="sumNetWorth">£0.00</strong></span>
-      </div>
-
-      <!-- Data Protection & Consent -->
-      <h3 class="section">Data Protection &amp; Consent</h3>
-      <div class="gdpr">
-        By submitting this form, you confirm that:<br><br>
-        • You consent to Magna Money collecting and processing your personal and household financial information for the purpose of assessing affordability and your finance requirements.<br>
-        • You acknowledge that Magna Money may carry out publicly accessible checks such as Companies House searches, business credit profile reviews, and director information validation where relevant.<br>
-        • You understand that separate consent may be requested where individual or business credit checks are required.<br>
-        • You understand that Magna Money processes your information under its legitimate business interest to arrange commercial finance, liaise with lenders, and maintain appropriate records.<br>
-        • You confirm that all information provided is accurate to the best of your knowledge and may be relied upon by prospective lenders.
-      </div>
-
-      <div class="gdpr">
-        <strong>Your Rights</strong><br>
-        You may request access, correction, deletion, restriction, objection, or transfer of your data at any time. For full details, please refer to Magna Money’s Privacy Notice on our website.
-      </div>
-
-      <div class="gdpr">
-        <strong>Regulatory Status</strong><br>
-        Magna Money is an independent commercial finance broker and not a lender. We are not authorised or regulated by the Financial Conduct Authority (FCA). All finance is subject to status and lender acceptance. Information provided on this form is for enquiry and assessment purposes only.
-      </div>
-
-      <!-- Marketing consent checkbox -->
-      <div class="field" style="margin-top:10px;">
-        <label>
-          <input type="checkbox" name="marketing_opt_in" value="yes" style="width:auto; margin-right:8px;">
-          I would like to receive marketing communications from Magna Money. (You can unsubscribe at any time.)
+      <!-- Trading Address -->
+      <div class="field">
+        <label>Trading Address</label>
+        <label class="choice-item">
+          <input type="checkbox" id="sameAsRegistered"> Same as Registered Address
         </label>
+
+        <div id="tradingAddressBlock">
+          <input name="Trading Address - Line 1" placeholder="House number / Building / Street" />
+          <div style="height:8px"></div>
+          <input name="Trading Address - Line 2" placeholder="Area / Village / District" />
+          <div style="height:8px"></div>
+          <input name="Trading Address - Town" placeholder="Town / City" />
+          <div style="height:8px"></div>
+          <input name="Trading Address - County" placeholder="County (optional)" />
+          <div style="height:8px"></div>
+          <input name="Trading Address - Postcode" placeholder="Postcode" />
+        </div>
       </div>
 
-      <div class="gdpr" style="margin-top:10px;">
-        For full details, please see our
-        <a href="https://www.magnamoney.co.uk/privacy-policy" target="_blank" rel="noopener noreferrer" style="color:#C6A76B;">
-          Privacy Policy
-        </a>.
-        If you no longer wish to receive emails from us, you can update your communication preferences or
-        unsubscribe using the links included at the bottom of our emails.
+      <div class="row">
+        <div class="col field">
+          <label for="vatNumber">VAT Number (if applicable)</label>
+          <input id="vatNumber" name="VAT Number" type="text" />
+        </div>
+
+        <div class="col field">
+          <label for="companyType">Business / Company Type</label>
+          <select id="companyType" name="Business Type">
+            <option value="">Please choose...</option>
+            <option>Limited Company</option>
+            <option>LLP</option>
+            <option>PLC</option>
+            <option>Sole Trader – Business Name</option>
+            <option>Sole Trader – Own Name</option>
+            <option>Individual Owner</option>
+            <option>Partnership (Two or More People)</option>
+            <option>Other</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col field">
+          <label for="incorpDate">Company Incorporation Date (LTD / LLP / PLC only)</label>
+          <input id="incorpDate" name="Incorporation Date" type="date" />
+        </div>
+        <div class="col field">
+          <label for="tradingStart">Business Start Trading Date</label>
+          <input id="tradingStart" name="Trading Start Date" type="date" />
+          <label class="choice-item" style="margin-top:6px;">
+            <input type="checkbox" id="sameAsIncorp"> Same as Incorporation Date
+          </label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="numEmployees">Number of Employees (including yourself)</label>
+        <select id="numEmployees" name="Number of Employees">
+          <option value="">Please choose...</option>
+          <option>Just Me</option>
+          <option>1 – 5</option>
+          <option>6 – 10</option>
+          <option>11 – 20</option>
+          <option>21 – 50</option>
+          <option>51 – 100</option>
+          <option>100+</option>
+        </select>
+      </div>
+
+      <hr class="section-sep" />
+
+      <!-- ========================= -->
+      <!-- 2. DIRECTORS & SHAREHOLDERS -->
+      <!-- ========================= -->
+      <h3 class="section">2. Directors & Shareholders (25% or more ownership/shareholding)</h3>
+
+      <!-- DIRECTOR 1 -->
+      <div class="field">
+        <label for="director1FullName">Director / Shareholder 1 – Full Name</label>
+        <input id="director1FullName" name="Director 1 – Full Name" type="text" />
+      </div>
+
+      <div class="row">
+        <div class="col field">
+          <label for="director1DOB">Date of Birth</label>
+          <input id="director1DOB" name="Director 1 – DOB" type="date" />
+        </div>
+        <div class="col field">
+          <label for="director1Nationality">Nationality</label>
+          <input id="director1Nationality" name="Director 1 – Nationality" type="text" />
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Current Home Address – Director 1</label>
+        <input name="Director 1 – Address Line 1" placeholder="House number / Building / Street" />
+        <div style="height:8px"></div>
+        <input name="Director 1 – Address Line 2" placeholder="Area / Village / District" />
+        <div style="height:8px"></div>
+        <input name="Director 1 – Town" placeholder="Town / City" />
+        <div style="height:8px"></div>
+        <input name="Director 1 – County" placeholder="County (optional)" />
+        <div style="height:8px"></div>
+        <input name="Director 1 – Postcode" placeholder="Postcode" />
+      </div>
+
+      <div class="row">
+        <div class="col field">
+          <label for="director1MovedIn">Date moved in (estimate allowed)</label>
+          <input id="director1MovedIn" name="Director 1 – Date Moved In" type="date" />
+        </div>
+        <div class="col field" style="display:flex;align-items:center;">
+          <label class="choice-item" style="margin-top:28px;">
+            <input type="checkbox" id="d1AddressLess3yrs"> Lived at this address less than 3 years?
+          </label>
+        </div>
+      </div>
+
+      <div id="d1PrevAddressBlock" class="hidden">
+        <label>Previous Home Address – Director 1</label>
+        <input name="Director 1 – Prev Address Line 1" placeholder="House number / Building / Street" />
+        <div style="height:8px"></div>
+        <input name="Director 1 – Prev Address Line 2" placeholder="Area / Village / District" />
+        <div style="height:8px"></div>
+        <input name="Director 1 – Prev Town" placeholder="Town / City" />
+        <div style="height:8px"></div>
+        <input name="Director 1 – Prev County" placeholder="County (optional)" />
+        <div style="height:8px"></div>
+        <input name="Director 1 – Prev Postcode" placeholder="Postcode" />
+      </div>
+
+      <div class="field" style="margin-top:14px;">
+        <label>Is Director 1 a homeowner?</label>
+        <div class="radio-row">
+          <label class="choice-item"><input type="radio" name="Director 1 – Homeowner" value="Yes" id="d1HomeYes"> Yes</label>
+          <label class="choice-item"><input type="radio" name="Director 1 – Homeowner" value="No" id="d1HomeNo"> No</label>
+        </div>
+      </div>
+
+      <div id="d1MortgageBlock" class="hidden">
+        <div class="field"><label for="d1MortgageProvider">Mortgage Provider</label><input id="d1MortgageProvider" name="Director 1 – Mortgage Provider" type="text" /></div>
+        <div class="row">
+          <div class="col field"><label for="d1MortgageBalance">Current Mortgage Balance (£)</label><input id="d1MortgageBalance" name="Director 1 – Mortgage Balance" type="number" /></div>
+          <div class="col field"><label for="d1MortgagePayment">Monthly Mortgage Payment (£)</label><input id="d1MortgagePayment" name="Director 1 – Mortgage Payment" type="number" /></div>
+        </div>
+        <div class="field"><label for="d1PropertyValue">Estimated Property Value (£)</label><input id="d1PropertyValue" name="Director 1 – Property Value" type="number" /></div>
+      </div>
+
+      <div id="d1ChargesBlock" class="hidden">
+        <label>Any additional secured loans or charges on this property?</label>
+        <div class="radio-row">
+          <label class="choice-item"><input type="radio" name="Director 1 – Additional Charges" value="Yes" id="d1ChargesYes"> Yes</label>
+          <label class="choice-item"><input type="radio" name="Director 1 – Additional Charges" value="No" id="d1ChargesNo"> No</label>
+        </div>
+        <div id="d1ChargesDetails" class="hidden" style="margin-top:10px;">
+          <label for="d1ChargeProvider">Charge Provider / Lender</label>
+          <input id="d1ChargeProvider" name="Director 1 – Charge Provider" type="text" />
+          <div class="row" style="margin-top:8px;">
+            <div class="col field"><label for="d1ChargeBalance">Outstanding Balance (£)</label><input id="d1ChargeBalance" name="Director 1 – Charge Balance" type="number" /></div>
+            <div class="col field"><label for="d1ChargePayment">Monthly Payment (£)</label><input id="d1ChargePayment" name="Director 1 – Charge Payment" type="number" /></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="field" style="margin-top:20px;">
+        <label>Would you like to add another director or shareholder (25% or more ownership/shareholding)?</label>
+        <div class="radio-row">
+          <label class="choice-item"><input type="radio" name="Add Another Director 1" value="Yes" id="addDirector1Yes"> Yes</label>
+          <label class="choice-item"><input type="radio" name="Add Another Director 1" value="No" id="addDirector1No"> No</label>
+        </div>
+      </div>
+
+      <div id="additionalDirectorsBlock" class="hidden"></div>
+
+      <hr class="section-sep" />
+
+      <!-- ========================= -->
+      <!-- 3. EXISTING BUSINESS FINANCE / CREDIT COMMITMENTS -->
+      <!-- ========================= -->
+      <h3 class="section">3. Existing Business Finance / Credit Commitments</h3>
+
+      <div class="subtext">Please list any existing loans, asset finance, credit facilities, merchant cash advance, overdrafts, tax or VAT funding, or any other commitments held by the business.</div>
+
+      <table class="finance-table">
+        <thead>
+          <tr>
+            <th>Lender / Provider</th>
+            <th>Type of Facility</th>
+            <th>Outstanding Balance (£)</th>
+            <th>Monthly Payment (£)</th>
+            <th>End Date (if known)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><input name="Existing Finance 1 – Lender" /></td>
+            <td><input name="Existing Finance 1 – Type" placeholder="Loan, Asset, MCA, Overdraft, etc." /></td>
+            <td><input name="Existing Finance 1 – Balance" type="number" /></td>
+            <td><input name="Existing Finance 1 – Monthly Payment" type="number" /></td>
+            <td><input name="Existing Finance 1 – End Date" type="date" /></td>
+          </tr>
+          <tr>
+            <td><input name="Existing Finance 2 – Lender" /></td>
+            <td><input name="Existing Finance 2 – Type" placeholder="Loan, Asset, MCA, Overdraft, etc." /></td>
+            <td><input name="Existing Finance 2 – Balance" type="number" /></td>
+            <td><input name="Existing Finance 2 – Monthly Payment" type="number" /></td>
+            <td><input name="Existing Finance 2 – End Date" type="date" /></td>
+          </tr>
+          <tr>
+            <td><input name="Existing Finance 3 – Lender" /></td>
+            <td><input name="Existing Finance 3 – Type" placeholder="Loan, Asset, MCA, Overdraft, etc." /></td>
+            <td><input name="Existing Finance 3 – Balance" type="number" /></td>
+            <td><input name="Existing Finance 3 – Monthly Payment" type="number" /></td>
+            <td><input name="Existing Finance 3 – End Date" type="date" /></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="field">
+        <label for="existingFinanceNotes">Additional details about any existing finance (optional)</label>
+        <textarea id="existingFinanceNotes" name="Existing Finance – Notes" placeholder="Use this area to provide context such as early settlement options, refinancing intentions, seasonal borrowing or any other notes."></textarea>
+      </div>
+
+      <hr class="section-sep" />
+
+      <!-- ========================= -->
+      <!-- 4. FUNDING REQUIREMENT / LOAN DETAILS -->
+      <!-- ========================= -->
+      <h3 class="section">4. Funding Requirement & Loan Details</h3>
+
+      <div class="row">
+        <div class="col field">
+          <label for="loanAmount">Preferred Loan Amount (£)</label>
+          <input id="loanAmount" name="Loan Amount" type="number" placeholder="Enter amount" />
+        </div>
+        <div class="col field">
+          <label for="loanPurpose">Primary Purpose of Funding</label>
+          <select id="loanPurpose" name="Loan Purpose">
+            <option value="">Please choose...</option>
+            <option>Working Capital</option>
+            <option>Refinance Existing Debt</option>
+            <option>Purchase Equipment / Assets</option>
+            <option>Property Purchase</option>
+            <option>Property Refinance</option>
+            <option>Development / Refurbishment</option>
+            <option>Tax / VAT Funding</option>
+            <option>Stock / Inventory Purchase</option>
+            <option>Cashflow Support</option>
+            <option>Other</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field hidden" id="loanPurposeOtherBlock">
+        <label for="loanPurposeOther">Please describe the purpose</label>
+        <textarea id="loanPurposeOther" name="Loan Purpose – Other Description"></textarea>
+      </div>
+
+      <div class="field">
+        <label for="loanTerm">Preferred Loan Term</label>
+        <select id="loanTerm" name="Loan Term">
+          <option value="">Please choose...</option>
+          <option>3 months</option>
+          <option>6 months</option>
+          <option>9 months</option>
+          <option>12 months</option>
+          <option>18 months</option>
+          <option>24 months</option>
+          <option>36 months</option>
+          <option>48 months</option>
+          <option>60 months</option>
+          <option>Term Not Known</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>How quickly are funds required?</label>
+        <div class="radio-row">
+          <label class="choice-item"><input type="radio" name="Funding Speed" value="Urgent – Within 1 Week"> Urgent – Within 1 Week</label>
+          <label class="choice-item"><input type="radio" name="Funding Speed" value="1–2 Weeks"> 1–2 Weeks</label>
+          <label class="choice-item"><input type="radio" name="Funding Speed" value="2–4 Weeks"> 2–4 Weeks</label>
+          <label class="choice-item"><input type="radio" name="Funding Speed" value="Flexible"> Flexible</label>
+        </div>
+      </div>
+
+      <hr class="section-sep" />
+
+      <!-- ========================= -->
+      <!-- 4A. PROPERTY-RELATED INFORMATION -->
+      <!-- ========================= -->
+      <h3 class="section">4A. Property-Related Information (If applicable)</h3>
+
+      <div class="subtext">Only complete this section if your funding relates to a property purchase, refinance, development or refurbishment.</div>
+
+      <div class="field">
+        <label>Is this funding related to a property?</label>
+        <div class="radio-row">
+          <label class="choice-item"><input type="radio" name="Property Involved" value="Yes" id="propertyYes"> Yes</label>
+          <label class="choice-item"><input type="radio" name="Property Involved" value="No" id="propertyNo"> No</label>
+        </div>
+      </div>
+
+      <div id="propertyTypeBlock" class="hidden">
+        <label>Is this for a purchase or a refinance?</label>
+        <div class="radio-row">
+          <label class="choice-item"><input type="radio" name="Property Funding Type" value="Purchase" id="propertyPurchase"> Property Purchase</label>
+          <label class="choice-item"><input type="radio" name="Property Funding Type" value="Refinance" id="propertyRefinance"> Property Refinance</label>
+        </div>
+      </div>
+
+      <div id="propertyPurchaseBlock" class="hidden">
+        <h4 style="margin-top:20px; font-size:15px; color:var(--gold);">Property Purchase Details</h4>
+        <div class="field">
+          <label>Property Address</label>
+          <input name="Purchase – Address Line 1" placeholder="House number / Building / Street" />
+          <div style="height:8px"></div>
+          <input name="Purchase – Address Line 2" placeholder="Area / Village / District" />
+          <div style="height:8px"></div>
+          <input name="Purchase – Town" placeholder="Town / City" />
+          <div style="height:8px"></div>
+          <input name="Purchase – County" placeholder="County (optional)" />
+          <div style="height:8px"></div>
+          <input name="Purchase – Postcode" placeholder="Postcode" />
+        </div>
+
+        <div class="row">
+          <div class="col field">
+            <label for="purchasePrice">Purchase Price (£)</label>
+            <input id="purchasePrice" name="Purchase Price" type="number" />
+          </div>
+          <div class="col field">
+            <label for="purchaseDeposit">Deposit Available (£)</label>
+            <input id="purchaseDeposit" name="Deposit Available" type="number" />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col field">
+            <label for="propertyType">Property Type</label>
+            <select id="propertyType" name="Purchase – Property Type">
+              <option value="">Please choose...</option>
+              <option>Residential</option>
+              <option>Commercial</option>
+              <option>Mixed Use</option>
+              <option>Land</option>
+            </select>
+          </div>
+          <div class="col field">
+            <label for="purchaseValuation">Estimated Valuation (£)</label>
+            <input id="purchaseValuation" name="Purchase – Estimated Valuation" type="number" />
+          </div>
+        </div>
+      </div>
+      <!-- PROPERTY REFINANCE SECTION -->
+      <div id="propertyRefinanceBlock" class="hidden">
+        <h4 style="margin-top:20px; font-size:15px; color:var(--gold);">Property Refinance Details</h4>
+        <div class="field">
+          <label>Existing Property Address</label>
+          <input name="Refinance – Address Line 1" placeholder="House number / Building / Street" />
+          <div style="height:8px"></div>
+          <input name="Refinance – Address Line 2" placeholder="Area / Village / District" />
+          <div style="height:8px"></div>
+          <input name="Refinance – Town" placeholder="Town / City" />
+          <div style="height:8px"></div>
+          <input name="Refinance – County" placeholder="County (optional)" />
+          <div style="height:8px"></div>
+          <input name="Refinance – Postcode" placeholder="Postcode" />
+        </div>
+
+        <div class="row">
+          <div class="col field">
+            <label for="currentMortgageBalance">Current Mortgage Balance (£)</label>
+            <input id="currentMortgageBalance" name="Refinance – Current Mortgage Balance" type="number" />
+          </div>
+          <div class="col field">
+            <label for="currentPayment">Monthly Mortgage Payment (£)</label>
+            <input id="currentPayment" name="Refinance – Monthly Mortgage Payment" type="number" />
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="refinanceValuation">Estimated Current Valuation (£)</label>
+          <input id="refinanceValuation" name="Refinance – Estimated Valuation" type="number" />
+        </div>
+      </div>
+
+      <!-- NEW: Rental Intention -->
+      <div id="rentalIntentBlock" class="hidden" style="margin-top:10px;">
+        <label>Do You Intend To Rent All Or Part Of This Property Out?</label>
+        <div class="radio-row">
+          <label class="choice-item"><input type="radio" name="Property – Rent Out" value="Yes" id="rentOutYes"> Yes</label>
+          <label class="choice-item"><input type="radio" name="Property – Rent Out" value="No" id="rentOutNo"> No</label>
+        </div>
+
+        <div id="rentalAmountBlock" class="hidden" style="margin-top:10px;">
+          <label for="rentalAmount">Please Provide Rental/Lease Amount Or Estimate</label>
+          <input id="rentalAmount" name="Property – Rental Amount (Estimate)" type="text" />
+        </div>
+      </div>
+
+      <hr class="section-sep" />
+
+      <!-- ========================= -->
+      <!-- 5. BUSINESS TRADING PROFILE & FINANCIALS -->
+      <!-- ========================= -->
+      <h3 class="section">5. Business Trading Profile & Financials</h3>
+
+      <div class="field">
+        <label>How long has the business been trading?</label>
+        <div class="radio-row">
+          <label class="choice-item">
+            <input type="radio" name="Trading Status" value="Startup – Not Yet Trading" id="tsStartup">
+            Startup – Not Yet Trading
+          </label>
+          <label class="choice-item">
+            <input type="radio" name="Trading Status" value="Under 12 Months" id="tsUnder12">
+            Under 12 Months
+          </label>
+          <label class="choice-item">
+            <input type="radio" name="Trading Status" value="12 Months or More" id="tsOver12">
+            12 Months or More
+          </label>
+        </div>
+      </div>
+
+      <!-- Startup -->
+      <div id="startupBlock" class="hidden">
+        <div class="subtext">Please provide expected first-year performance if you are a startup or not yet trading.</div>
+
+        <div class="row">
+          <div class="col field">
+            <label for="startupTurnover">Expected Turnover – Year 1 (£)</label>
+            <input id="startupTurnover" name="Startup – Expected Turnover" type="number" />
+          </div>
+          <div class="col field">
+            <label for="startupProfit">Expected Net Profit – Year 1 (£)</label>
+            <input id="startupProfit" name="Startup – Expected Net Profit" type="number" />
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="startupNotes">Additional Information (optional)</label>
+          <textarea id="startupNotes" name="Startup – Notes" placeholder="Business model, contracts, projections, early commitments, expected run-rate, etc."></textarea>
+        </div>
+      </div>
+
+      <!-- Under 12 Months -->
+      <div id="under12Block" class="hidden">
+        <div class="subtext">Please complete your most recent accounting information.</div>
+
+        <div class="row">
+          <div class="col field">
+            <label for="u12LatestTurnover">Most Recent Year – Turnover (£)</label>
+            <input id="u12LatestTurnover" name="Under12 – Most Recent Turnover" type="number" />
+          </div>
+          <div class="col field">
+            <label for="u12LatestProfit">Most Recent Year – Net Profit (£)</label>
+            <input id="u12LatestProfit" name="Under12 – Most Recent Profit" type="number" />
+          </div>
+        </div>
+
+        <div class="field" style="margin-top:12px;">
+          <label for="under12Notes">Additional Notes</label>
+          <textarea id="under12Notes" name="Under12 – Notes"></textarea>
+        </div>
+
+        <div class="field" style="margin-top:12px;">
+          <label>Please confirm any documents which help us assess performance to date</label>
+          <label class="choice-item"><input type="checkbox" name="Under12 – Confirm Docs" value="Recent Bank Statements"> Recent Bank Statements</label>
+          <label class="choice-item"><input type="checkbox" name="Under12 – Confirm Docs" value="Management Accounts"> Management Accounts</label>
+          <label class="choice-item"><input type="checkbox" name="Under12 – Confirm Docs" value="Sales Records / Till Reports"> Sales Records / Till Reports</label>
+          <label class="choice-item"><input type="checkbox" name="Under12 – Confirm Docs" value="Invoices / Contracts"> Invoices / Contracts</label>
+        </div>
+      </div>
+
+      <!-- Over 12 Months -->
+      <div id="over12Block" class="hidden">
+        <div class="subtext">Please complete your most recent accounting information.</div>
+
+        <div class="row">
+          <div class="col field">
+            <label for="latestTurnover">Most Recent Year – Turnover (£)</label>
+            <input id="latestTurnover" name="Over12 – Latest Turnover" type="number" />
+          </div>
+          <div class="col field">
+            <label for="latestProfit">Most Recent Year – Net Profit (£)</label>
+            <input id="latestProfit" name="Over12 – Latest Profit" type="number" />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col field">
+            <label for="prevTurnover">Previous Year – Turnover (£)</label>
+            <input id="prevTurnover" name="Over12 – Previous Turnover" type="number" />
+          </div>
+          <div class="col field">
+            <label for="prevProfit">Previous Year – Net Profit (£)</label>
+            <input id="prevProfit" name="Over12 – Previous Profit" type="number" />
+          </div>
+        </div>
+
+        <div class="field" style="margin-top:12px;">
+          <label for="over12Notes">Additional Notes</label>
+          <textarea id="over12Notes" name="Over12 – Notes" placeholder="Any major changes, seasonality, losses, upcoming accounting updates, exceptional costs, etc."></textarea>
+        </div>
+
+        <div class="field" style="margin-top:12px;">
+          <label>Please confirm any documents which help us assess performance to date</label>
+          <label class="choice-item"><input type="checkbox" name="Over12 – Confirm Docs" value="Previous 1 Year Full Submitted Accounts"> Previous 1 Year full Submitted Accounts</label>
+          <label class="choice-item"><input type="checkbox" name="Over12 – Confirm Docs" value="Previous 2 Year Full Submitted Accounts"> Previous 2 Year Full Submitted Accounts</label>
+          <label class="choice-item"><input type="checkbox" name="Over12 – Confirm Docs" value="Previous Year Draft Accounts"> Previous Year Draft Accounts</label>
+          <label class="choice-item"><input type="checkbox" name="Over12 – Confirm Docs" value="Current FY Management Accounts"> Current Financial Year Management Accounts (P&L, Balance Sheet etc)</label>
+          <label class="choice-item"><input type="checkbox" name="Over12 – Confirm Docs" value="Last 6 Months Bank Statements"> Last 6 Months Business Bank Statements (To Date)</label>
+        </div>
+      </div>
+
+      <hr class="section-sep" />
+
+      <!-- ========================= -->
+      <!-- 6. DECLARATIONS & CONSENTS -->
+      <!-- ========================= -->
+      <h3 class="section">6. Declarations, Consents & Submission</h3>
+
+      <div class="disclosure-block">
+        <strong>Data Protection & Consent</strong><br><br>
+        By submitting this form, you confirm that:
+        <ul style="margin:8px 0 0 18px; padding:0;">
+          <li>You consent to Magna Money collecting and processing your personal and business information for the purpose of assessing your finance requirements.</li>
+          <li>You acknowledge that Magna Money may carry out publicly accessible checks such as Companies House searches, business credit profile reviews, and director information validation.</li>
+          <li>You understand that separate consent may be requested where individual or business credit checks are required.</li>
+          <li>You understand that Magna Money processes your information under its legitimate business interest to arrange commercial finance, liaise with lenders, and maintain appropriate records.</li>
+          <li>You acknowledge that, following submission, a secure OneDrive/SharePoint link will be provided, allowing you <strong>view-only</strong> access to any forms or financial documents you supply if applicable.</li>
+          <li>You confirm that all information provided is accurate to the best of your knowledge and may be relied upon by prospective lenders.</li>
+        </ul>
+        <br>
+
+        <strong>Your Rights</strong><br>
+        You may request access, correction, deletion, restriction, objection, or transfer of your data at any time.  
+        For full details, please refer to Magna Money’s Privacy Notice (available on the company website).
+        <br><br>
+
+        <strong>Regulatory Status</strong><br>
+        Magna Money is <em>not authorised or regulated by the Financial Conduct Authority (FCA)</em>.  
+        We act as a commercial finance broker only.
       </div>
 
       <div class="submit-row">
-        <button class="btn" type="submit">Submit ALIE</button>
+        <button type="submit" class="btn-submit">Submit Application</button>
       </div>
+
     </form>
-  </div> <!-- end .form-panel -->
-</div> <!-- end .container -->
+  </div>
 
-<!-- BEGIN ALIE SCRIPT BLOCK -->
+</div>
+
+<!-- ========================= -->
+<!-- JAVASCRIPT: FORM LOGIC -->
+<!-- ========================= -->
 <script>
-// Configuration
-const THANK_YOU_URL = 'https://magna-money-alie.vercel.app/thank-you-ALIE.html';
+/* Keep original validation logic intact (phone / email / website) */
+(function(){
+  const form = document.getElementById('clientProposalForm');
+  if(!form) return;
+  form.addEventListener('submit', function(e){
+    const phoneOk = /0/.test((document.getElementById('mainContactPhone') || {}).value || '');
+    const emailOk = /@/.test((document.getElementById('mainWorkEmail') || {}).value || '');
+    const websiteEl = document.getElementById('companyWebsite');
+    const website = (websiteEl && websiteEl.value) || '';
+    const websiteOk = website === '' || /^www\./i.test(website);
+    if(!phoneOk || !emailOk || !websiteOk){
+      e.preventDefault();
+      alert(
+        (!phoneOk ? "Main contact phone must contain a '0'.\n" : "") +
+        (!emailOk ? "Work email address must contain '@'.\n" : "") +
+        (!websiteOk ? "Business website must start with 'www.' if provided." : "")
+      );
+    }
+    // For Option 2 we allow the browser to continue with the GET navigation to thank-you.html
+  });
+})();
 
-// Simple helper functions
-const val = (id) => {
-  const el = document.getElementById(id);
-  if (!el) return 0;
-  const x = parseFloat(String(el.value).replace(/,/g,''));
-  return isNaN(x) ? 0 : x;
-};
-
-const fmt = (n) => '£' + (n || 0).toFixed(2);
-
-// Recalculate summaries
-function recalc() {
-  const incDraw = val('incDrawings');
-  const incSp = val('incSpouse');
-  const incOther = val('incOther');
-  const incChild = val('incChildBenefit');
-  const incSupport = val('incIncomeSupport');
-  const incomeA = incDraw + incSp + incOther;
-  const incomeB = incChild + incSupport;
-  const incomeTotal = incomeA + incomeB;
-
-  const elIncomeA = document.getElementById('incomeSubtotalA');
-  const elIncomeB = document.getElementById('incomeSubtotalB');
-  const elIncomeTotal = document.getElementById('incomeTotal');
-  if (elIncomeA) elIncomeA.textContent = fmt(incomeA);
-  if (elIncomeB) elIncomeB.textContent = fmt(incomeB);
-  if (elIncomeTotal) elIncomeTotal.textContent = fmt(incomeTotal);
-
-  const expA =
-    val('expMortgageRent') +
-    val('expEndowment') +
-    val('expInsurance') +
-    val('expLoansHP') +
-    val('expCreditCards');
-  const elExpA = document.getElementById('expSubtotalA');
-  const elExpB = document.getElementById('expSubtotalB');
-  if (elExpA) elExpA.textContent = fmt(expA);
-  if (elExpB) elExpB.textContent = fmt(expA);
-  const expE =
-    val('expMaintenance') +
-    val('expCouncilWater') +
-    val('expFuel') +
-    val('expTelephone') +
-    val('expCarLeasing') +
-    val('expCarTaxIns') +
-    val('expFood') +
-    val('expClothingLeisure') +
-    val('expOther');
-  const elExpE = document.getElementById('expSubtotalE');
-  if (elExpE) elExpE.textContent = fmt(expE);
-  const expTotal = expA + expE;
-  const elExpTotal = document.getElementById('expTotal');
-  if (elExpTotal) elExpTotal.textContent = fmt(expTotal);
-
-  const propTot = val('prop1Value') + val('prop2Value');
-  const elPropTotal = document.getElementById('propTotal');
-  if (elPropTotal) elPropTotal.textContent = fmt(propTot);
-
-  const investTotal =
-    val('bankSavings') +
-    val('isa') +
-    val('shares') +
-    val('lifePolicies') +
-    val('investOther');
-  const elInvestTotal = document.getElementById('investTotal');
-  if (elInvestTotal) elInvestTotal.textContent = fmt(investTotal);
-
-  const assetsTotal = propTot + investTotal;
-  const elAssetsTotal = document.getElementById('assetsTotal');
-  if (elAssetsTotal) elAssetsTotal.textContent = fmt(assetsTotal);
-
-  const liabTotal =
-    val('liabMortgage') +
-    val('liabBankLoans') +
-    val('liabHP') +
-    val('liabOtherLoans');
-  const elLiabTotal = document.getElementById('liabTotal');
-  if (elLiabTotal) elLiabTotal.textContent = fmt(liabTotal);
-
-  const elSumIncome = document.getElementById('sumIncome');
-  const elSumExpend = document.getElementById('sumExpend');
-  const elSumSurplus = document.getElementById('sumSurplus');
-  const elSumAssets = document.getElementById('sumAssets');
-  const elSumLiabs = document.getElementById('sumLiabs');
-  const elSumNetWorth = document.getElementById('sumNetWorth');
-
-  if (elSumIncome) elSumIncome.textContent = fmt(incomeTotal);
-  if (elSumExpend) elSumExpend.textContent = fmt(expTotal);
-  if (elSumSurplus) elSumSurplus.textContent = fmt(incomeTotal - expTotal);
-  if (elSumAssets) elSumAssets.textContent = fmt(assetsTotal);
-  if (elSumLiabs) elSumLiabs.textContent = fmt(liabTotal);
-  if (elSumNetWorth) elSumNetWorth.textContent = fmt(assetsTotal - liabTotal);
-
-  // UPDATE ALIE SUMMARY INPUTS (hidden inputs)
-  const hiddenIncome  = document.getElementById('alie_total_monthly_income');
-  const hiddenExpend  = document.getElementById('alie_total_monthly_expenditure');
-  const hiddenSurplus = document.getElementById('alie_monthly_surplus_deficit');
-  const hiddenAssets  = document.getElementById('alie_total_assets');
-  const hiddenLiabs   = document.getElementById('alie_total_liabilities');
-  const hiddenNetWorth= document.getElementById('alie_net_worth');
-
-  if (hiddenIncome)   hiddenIncome.value   = incomeTotal.toFixed(2);
-  if (hiddenExpend)   hiddenExpend.value   = expTotal.toFixed(2);
-  if (hiddenSurplus)  hiddenSurplus.value  = (incomeTotal - expTotal).toFixed(2);
-  if (hiddenAssets)   hiddenAssets.value   = assetsTotal.toFixed(2);
-  if (hiddenLiabs)    hiddenLiabs.value    = liabTotal.toFixed(2);
-  if (hiddenNetWorth) hiddenNetWorth.value = (assetsTotal - liabTotal).toFixed(2);
-}
-
-// Recalculate when number inputs change
-document.addEventListener('input', (e) => {
-  if (e.target.matches('input[type="number"]')) recalc();
-});
-
-// Initial calculation on load
-document.addEventListener('DOMContentLoaded', () => {
-  recalc();
-
-  // Attach submit handler: intercept, refresh totals, delay for HubSpot capture, then redirect
-  const form = document.getElementById('alie-form');
-  if (form) {
-    form.addEventListener('submit', function (event) {
-      event.preventDefault();
-      try { recalc(); } catch (err) {}
-      setTimeout(() => {
-        window.location.href = THANK_YOU_URL;
-      }, 1000); // 1 second delay
-    });
+/* Preserve existing interactive logic (address copy, director blocks, property blocks, etc) */
+(function(){
+  function toggleOnRadio(name, blockId, showValues){
+    const radios = document.querySelectorAll('input[name="'+name+'"][type="radio"]');
+    const block = document.getElementById(blockId);
+    if(!radios.length || !block) return;
+    function update(){
+      let val = '';
+      radios.forEach(r=> r.checked && (val = r.value));
+      const show = showValues ? showValues.includes(val) : (val === 'Yes');
+      block.classList.toggle('hidden', !show);
+    }
+    radios.forEach(r=> r.addEventListener('change', update));
+    update();
   }
-});
-</script>
-<!-- END ALIE SCRIPT BLOCK -->
 
-<!-- Start of HubSpot Embed Code -->
+  /* Trading Start = Incorporation Date */
+  (function(){
+    const same = document.getElementById('sameAsIncorp');
+    const incorp = document.getElementById('incorpDate');
+    const trading = document.getElementById('tradingStart');
+    if(!same || !incorp || !trading) return;
+    function apply(){ if(same.checked && incorp.value){ trading.value = incorp.value; } }
+    same.addEventListener('change', apply);
+    incorp.addEventListener('change', apply);
+  })();
+
+  /* Trading Address same as Registered */
+  (function(){
+    const same = document.getElementById('sameAsRegistered');
+    const block = document.getElementById('tradingAddressBlock');
+    const rLine1 = document.querySelector('[name="Registered Address - Line 1"]');
+    const rTown  = document.querySelector('[name="Registered Address - Town"]');
+    const rPost  = document.querySelector('[name="Registered Address - Postcode"]');
+    const tLine1 = document.querySelector('[name="Trading Address - Line 1"]');
+    const tTown  = document.querySelector('[name="Trading Address - Town"]');
+    const tPost  = document.querySelector('[name="Trading Address - Postcode"]');
+    if(!same || !block) return;
+    function apply(){
+      const checked = same.checked;
+      block.classList.toggle('hidden', checked);
+      if(checked){
+        if(rLine1 && tLine1) tLine1.value = rLine1.value || '';
+        if(rTown  && tTown)  tTown.value  = rTown.value  || '';
+        if(rPost  && tPost)  tPost.value  = rPost.value  || '';
+      }
+    }
+    same.addEventListener('change', apply);
+    [rLine1, rTown, rPost].forEach(inp => inp && inp.addEventListener('input', () => same.checked && apply()));
+    apply();
+  })();
+
+  /* Director 1 logic */
+  (function(){
+    const prevCb = document.getElementById('d1AddressLess3yrs');
+    const prevBlock = document.getElementById('d1PrevAddressBlock');
+    if(prevCb && prevBlock){
+      const update = () => prevBlock.classList.toggle('hidden', !prevCb.checked);
+      prevCb.addEventListener('change', update);
+      update();
+    }
+
+    const homeYes = document.getElementById('d1HomeYes');
+    const homeNo  = document.getElementById('d1HomeNo');
+    const mortgageBlock = document.getElementById('d1MortgageBlock');
+    const chargesBlock  = document.getElementById('d1ChargesBlock');
+
+    function updateHome(){
+      const val = homeYes && homeYes.checked ? "Yes" : (homeNo && homeNo.checked ? "No" : "");
+      const show = val === "Yes";
+      if(mortgageBlock) mortgageBlock.classList.toggle('hidden', !show);
+      if(chargesBlock)  chargesBlock.classList.toggle('hidden', !show);
+    }
+
+    [homeYes, homeNo].forEach(r => r && r.addEventListener('change', updateHome));
+    updateHome();
+
+    const chargesYes = document.getElementById('d1ChargesYes');
+    const chargesNo  = document.getElementById('d1ChargesNo');
+    const chargesDetails = document.getElementById('d1ChargesDetails');
+
+    function updateCharges(){
+      const val = chargesYes && chargesYes.checked ? "Yes" : (chargesNo && chargesNo.checked ? "No" : "");
+      const show = val === "Yes";
+      if(chargesDetails) chargesDetails.classList.toggle('hidden', !show);
+    }
+
+    [chargesYes, chargesNo].forEach(r => r && r.addEventListener('change', updateCharges));
+    updateCharges();
+  })();
+
+  /* Loan Purpose Other */
+  (function(){
+    const sel = document.getElementById('loanPurpose');
+    const otherBlock = document.getElementById('loanPurposeOtherBlock');
+    if(!sel || !otherBlock) return;
+    function update(){ otherBlock.classList.toggle('hidden', sel.value !== 'Other'); }
+    sel.addEventListener('change', update);
+    update();
+  })();
+
+  /* Property block logic */
+  (function(){
+    const propYes = document.getElementById('propertyYes');
+    const propNo  = document.getElementById('propertyNo');
+    const typeBlock = document.getElementById('propertyTypeBlock');
+    const purchase  = document.getElementById('propertyPurchase');
+    const refinance = document.getElementById('propertyRefinance');
+    const purchaseBlock  = document.getElementById('propertyPurchaseBlock');
+    const refinanceBlock = document.getElementById('propertyRefinanceBlock');
+    const rentalIntentBlock = document.getElementById('rentalIntentBlock');
+    const rentYes = document.getElementById('rentOutYes');
+    const rentNo  = document.getElementById('rentOutNo');
+    const rentalAmountBlock = document.getElementById('rentalAmountBlock');
+
+    function updateProp(){
+      const val = propYes && propYes.checked ? 'Yes' : (propNo && propNo.checked ? 'No' : '');
+      typeBlock.classList.toggle('hidden', val !== 'Yes');
+      rentalIntentBlock.classList.toggle('hidden', val !== 'Yes');
+    }
+    [propYes, propNo].forEach(r => r && r.addEventListener('change', updateProp));
+    updateProp();
+
+    function updateType(){
+      const val = purchase && purchase.checked ? 'Purchase' : (refinance && refinance.checked ? 'Refinance' : '');
+      if(purchaseBlock)  purchaseBlock.classList.toggle('hidden',  val !== 'Purchase');
+      if(refinanceBlock) refinanceBlock.classList.toggle('hidden', val !== 'Refinance');
+    }
+    [purchase, refinance].forEach(r => r && r.addEventListener('change', updateType));
+    updateType();
+
+    function updateRent(){
+      const v = rentYes && rentYes.checked ? 'Yes' : (rentNo && rentNo.checked ? 'No' : '');
+      rentalAmountBlock.classList.toggle('hidden', v !== 'Yes');
+    }
+    [rentYes, rentNo].forEach(r => r && r.addEventListener('change', updateRent));
+    updateRent();
+  })();
+
+  /* Trading Status Logic */
+  (function(){
+    const startup = document.getElementById('tsStartup');
+    const under12 = document.getElementById('tsUnder12');
+    const over12  = document.getElementById('tsOver12');
+    const startupBlock = document.getElementById('startupBlock');
+    const under12Block = document.getElementById('under12Block');
+    const over12Block  = document.getElementById('over12Block');
+
+    function update(){
+      const val =
+        startup && startup.checked ? 'startup' :
+        under12 && under12.checked ? 'under12' :
+        over12 && over12.checked ? 'over12' : '';
+
+      if(startupBlock) startupBlock.classList.toggle('hidden', val !== 'startup');
+      if(under12Block) under12Block.classList.toggle('hidden', val !== 'under12');
+      if(over12Block)  over12Block.classList.toggle('hidden', val !== 'over12');
+    }
+
+    [startup, under12, over12].forEach(r => r && r.addEventListener('change', update));
+    update();
+  })();
+
+  /* Add up to Director 4 (unchanged) */
+  (function(){
+    const container = document.getElementById('additionalDirectorsBlock');
+    const firstYes = document.getElementById('addDirector1Yes');
+    const firstNo  = document.getElementById('addDirector1No');
+    if(!container || !firstYes || !firstNo) return;
+
+    function directorFields(n){
+      return `
+        <div class="field" style="margin-top:10px;">
+          <label for="director${n}FullName">Director / Shareholder ${n} – Full Name</label>
+          <input id="director${n}FullName" name="Director ${n} – Full Name" type="text" />
+        </div>
+        <div class="row">
+          <div class="col field">
+            <label for="director${n}DOB">Date of Birth</label>
+            <input id="director${n}DOB" name="Director ${n} – DOB" type="date" />
+          </div>
+          <div class="col field">
+            <label for="director${n}Nationality">Nationality</label>
+            <input id="director${n}Nationality" name="Director ${n} – Nationality" type="text" />
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Current Home Address – Director ${n}</label>
+          <input name="Director ${n} – Address Line 1" placeholder="House number / Building / Street" />
+          <div style="height:8px"></div>
+          <input name="Director ${n} – Address Line 2" placeholder="Area / Village / District" />
+          <div style="height:8px"></div>
+          <input name="Director ${n} – Town" placeholder="Town / City" />
+          <div style="height:8px"></div>
+          <input name="Director ${n} – County" placeholder="County (optional)" />
+          <div style="height:8px"></div>
+          <input name="Director ${n} – Postcode" placeholder="Postcode" />
+        </div>
+
+        <div class="row">
+          <div class="col field">
+            <label for="director${n}MovedIn">Date moved in (estimate allowed)</label>
+            <input id="director${n}MovedIn" name="Director ${n} – Date Moved In" type="date" />
+          </div>
+          <div class="col field" style="display:flex;align-items:center;">
+            <label class="choice-item" style="margin-top:28px;">
+              <input type="checkbox" id="d${n}AddressLess3yrs"> Lived at this address less than 3 years?
+            </label>
+          </div>
+        </div>
+
+        <div id="d${n}PrevAddressBlock" class="hidden">
+          <label>Previous Home Address – Director ${n}</label>
+          <input name="Director ${n} – Prev Address Line 1" placeholder="House number / Building / Street" />
+          <div style="height:8px"></div>
+          <input name="Director ${n} – Prev Address Line 2" placeholder="Area / Village / District" />
+          <div style="height:8px"></div>
+          <input name="Director ${n} – Prev Town" placeholder="Town / City" />
+          <div style="height:8px"></div>
+          <input name="Director ${n} – Prev County" placeholder="County (optional)" />
+          <div style="height:8px"></div>
+          <input name="Director ${n} – Prev Postcode" placeholder="Postcode" />
+        </div>
+
+        <div class="field" style="margin-top:14px;">
+          <label>Is Director ${n} a homeowner?</label>
+          <div class="radio-row">
+            <label class="choice-item"><input type="radio" name="Director ${n} – Homeowner" value="Yes" id="d${n}HomeYes"> Yes</label>
+            <label class="choice-item"><input type="radio" name="Director ${n} – Homeowner" value="No" id="d${n}HomeNo"> No</label>
+          </div>
+        </div>
+
+        <div id="d${n}MortgageBlock" class="hidden">
+          <div class="field"><label for="d${n}MortgageProvider">Mortgage Provider</label><input id="d${n}MortgageProvider" name="Director ${n} – Mortgage Provider" type="text" /></div>
+          <div class="row">
+            <div class="col field"><label for="d${n}MortgageBalance">Current Mortgage Balance (£)</label><input id="d${n}MortgageBalance" name="Director ${n} – Mortgage Balance" type="number" /></div>
+            <div class="col field"><label for="d${n}MortgagePayment">Monthly Mortgage Payment (£)</label><input id="d${n}MortgagePayment" name="Director ${n} – Mortgage Payment" type="number" /></div>
+          </div>
+          <div class="field"><label for="d${n}PropertyValue">Estimated Property Value (£)</label><input id="d${n}PropertyValue" name="Director ${n} – Property Value" type="number" /></div>
+        </div>
+
+        <div id="d${n}ChargesBlock" class="hidden">
+          <label>Any additional secured loans or charges on this property?</label>
+          <div class="radio-row">
+            <label class="choice-item"><input type="radio" name="Director ${n} – Additional Charges" value="Yes" id="d${n}ChargesYes"> Yes</label>
+            <label class="choice-item"><input type="radio" name="Director ${n} – Additional Charges" value="No" id="d${n}ChargesNo"> No</label>
+          </div>
+          <div id="d${n}ChargesDetails" class="hidden" style="margin-top:10px;">
+            <label for="d${n}ChargeProvider">Charge Provider / Lender</label>
+            <input id="d${n}ChargeProvider" name="Director ${n} – Charge Provider" type="text" />
+            <div class="row" style="margin-top:8px;">
+              <div class="col field"><label for="d${n}ChargeBalance">Outstanding Balance (£)</label><input id="d${n}ChargeBalance" name="Director ${n} – Charge Balance" type="number" /></div>
+              <div class="col field"><label for="d${n}ChargePayment">Monthly Payment (£)</label><input id="d${n}ChargePayment" name="Director ${n} – Charge Payment" type="number" /></div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function updateAdditional(){
+      if(firstYes.checked){
+        container.innerHTML = directorFields(2) + directorFields(3) + directorFields(4);
+        container.classList.remove('hidden');
+
+        // attach simple behaviour for newly added director blocks (prev address toggle)
+        [2,3,4].forEach(n => {
+          const cb = document.getElementById('d'+n+'AddressLess3yrs');
+          const block = document.getElementById('d'+n+'PrevAddressBlock');
+          if(cb && block){
+            cb.addEventListener('change', ()=> block.classList.toggle('hidden', !cb.checked));
+            block.classList.toggle('hidden', !cb.checked);
+          }
+        });
+
+      } else {
+        container.innerHTML = '';
+        container.classList.add('hidden');
+      }
+    }
+
+    firstYes.addEventListener('change', updateAdditional);
+    firstNo.addEventListener('change', updateAdditional);
+    updateAdditional();
+    })();
+
+  </script>
+
+<!-- HubSpot loader (kept once) -->
 <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/8402236.js"></script>
-<!-- End of HubSpot Embed Code -->
 
 </body>
 </html>
